@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevAcademy</title>
+    <link rel="stylesheet" href="../Bootstrap/css/bootstrap.css">
+    <link href="../TP_Bootstrap/Projet_bootstrap.css" rel="stylesheet" />
+    <link href="Devoir_sem2.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../TP_Bootstrap/css/style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <style>
+        body {
+            background: rgb(115, 234, 108);
+            margin: 142px;
+        }
+
+        .d1 {
+            font-size: 15px;
+            width: 50%;
+            border-color: #09ff00;
+            transition: 0.4s ease-in-out;
+            border: 1px solid #09ff00;
+            transform: translateY(-10px) scale(1.00);
+            box-shadow: 0 0 19px #0aff02;
+            border-radius: 12px;
+            background: rgb(10, 10, 10);
+            height: 450px;
+            position: fixed;
+            bottom: 2px;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .navbar-nav .nav-link {
+            position: relative;
+            color: hsl(0, 0%, 90%);
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 50%;
+            background-color: #1faf1acb;
+            transition: all 0.3s ease-in-out;
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav .nav-link:hover::before {
+            width: 100%;
+        }
+
+        .navbar-nav .nav-link:hover {
+
+            background-color: #13cd1352;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            font-weight: 500;
+            font-size: 17px;
+        }
+
+        h1 {
+            font-size: 40px;
+            color: rgb(21, 20, 20);
+            position: absolute;
+            top: 6%;
+            left: -150px;
+            animation: slideIn 4s forwards;
+            margin-top: -64px;
+
+        }
+
+        @keyframes slideIn {
+            to {
+                left: 30%;
+                color: rgb(238, 130, 130);
+
+            }
+        }
+
+        .but2 {
+            font-size: 14px;
+            background: green;
+            color: white;
+            padding: 2px;
+            border: none;
+            border-radius: 5px;
+            margin-left: 229px;
+        }
+
+        .but2:hover {
+            background-color: transparent;
+            color: #09ff00;
+            border: 1px dashed #09ff00;
+            transition: 2s;
+            margin-left: 13%;
+            transform: scale(2);
+
+        }
+
+        .but {
+            font-size: 19px;
+            background: green;
+            color: white;
+            padding: 2px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .but:hover {
+            background-color: transparent;
+            color: #09ff00;
+            border: 1px dashed #09ff00;
+            transition: 2s;
+            margin-left: 4%;
+            transform: scale(2);
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark fixed-top navbar  ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="Devoir_sem2.html">
+                <h5 style="color: black;font-weight: bold;font-size: 30px;">Dev<span
+                        style="color: #0c5e11c4;">Academy</span> </h5>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="courHtml.html"
+                            style="color: hsl(0, 0%, 4%);">Html</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courCss.html" style="color: hsl(0, 0%, 4%);">Css</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="courBootstrap.html" style="color: hsl(0, 0%, 4%);"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Bootstrap
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="courExercices.html">Exercices</a></li>
+                            <li><a class="dropdown-item" href="courBootstrap.html">tutoriels</a></li>
+                            <li><a class="dropdown-item" href="courBootstrap.html">Apprendre bootstrap</a></li>
+                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courJavaScript.html" style="color: hsl(0, 0%, 4%);">JavaScript</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courExercices.html" style="color: hsl(0, 0%, 4%);">Exercices</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="courQuiz.html" style="color: hsl(0, 0%, 4%);"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Quiz
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="Quizhtml.html">Html</a></li>
+                            <li><a class="dropdown-item" href="Quizcss.html">Css</a></li>
+                            <li><a class="dropdown-item" href="Quizjs.html">JavaScript</a></li>
+                            <li><a class="dropdown-item" href="Quizbootstrap.html">Bootstrap</a></li>
+                        </ul>
+                </ul>
+                <!-- Boutons Connexion / Inscription -->
+                <div class="d-flex">
+                    <a href="#" class="btn btn-outline-success me-2" data-bs-toggle="modal"
+                        data-bs-target="#loginModal">Connexion</a>
+                    <a href="#" class="btn btn-success" data-bs-toggle="modal"
+                        data-bs-target="#registerModal">Inscription</a>
+                </div>
+
+                <!-- Modal Connexion -->
+                <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="loginModalLabel">Connexion</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Fermer"></button>
+                            </div>
+                            <form action="/login" method="POST"> <!-- Exemple d'action -->
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label for="loginEmail" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="loginEmail" name="email"
+                                            placeholder="votre@email.com" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="loginPassword" class="form-label">Mot de passe</label>
+                                        <input type="password" class="form-control" id="loginPassword" name="password"
+                                            placeholder="Mot de passe" required>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Fermer</button>
+                                    <button type="submit" class="btn btn-success">Se connecter</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Inscription -->
+                <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="registerModalLabel">Inscription</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Fermer"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="registerName" class="form-label">Nom</label>
+                                        <input type="text" class="form-control" id="registerName"
+                                            placeholder="Votre nom">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="registerEmail" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="registerEmail"
+                                            placeholder="votre@email.com">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="registerPassword" class="form-label">Mot de passe</label>
+                                        <input type="password" class="form-control" id="registerPassword"
+                                            placeholder="Mot de passe">
+                                    </div>
+                                    <button type="submit" class="btn btn-success w-100">S'inscrire</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </nav>
+
+    <div>
+        <div class="w3-panel w3-card w3-light-grey">
+            <h4 style="font-weight: 800;">Correction 1 HTML</h4>
+            <div class="w3-code htmlHigh notranslate">
+                &lt;!DOCTYPE html&gt;<br>&lt;html lang="fr"&gt;<br>
+                &lt;head&gt;<br>
+                &lt;title&gt;Titre de la page&lt;/title&gt;<br>
+                &lt;/head&gt;<br>
+                &lt;body&gt;<br><br>
+
+                &lt;h1"&gt;Titre de niveau 1&lt;/h1&gt;<br><br>
+
+                &lt;/body&gt;<br>
+                &lt;/html&gt;
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="w3-panel w3-card w3-light-grey">
+            <h4 style="font-weight: 800;">Correction 2 HTML</h4>
+            <div class="w3-code htmlHigh notranslate">
+                &lt;!DOCTYPE html&gt;<br>&lt;html lang="fr"&gt;<br>
+                &lt;head&gt;<br>
+                &lt;title&gt;Titre de la page&lt;/title&gt;<br>
+                &lt;/head&gt;<br>
+                &lt;body&gt;<br><br>
+
+                &lt;form action = "#" method = "post"&gt;<br>
+
+                &lt;label for="nom"&gt;Nom&lt;/label&gt;<br>
+                &lt;input type="text" id="nom" name="nom"&gt;<br>
+
+                &lt;label for="nom"&gt;Prenom&lt;/label&gt;<br>
+                &lt;input type="text" id="prenom" name="prenom"&gt;<br>
+
+                &lt;label for="nom"&gt;Adresse&lt;/label&gt;<br>
+                &lt;input type="text" id="adresse" name="adresse"&gt;<br>
+
+                &lt;button type="submit"&gt;Envoyer&lt;/button&gt;<br>
+
+                &lt;/form&gt;<br><br>
+
+                &lt;/body&gt;<br>
+                &lt;/html&gt;
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="w3-panel w3-card w3-light-grey">
+            <h4 style="font-weight: 800;">Correction 1 CSS</h4>
+            <div class="w3-code htmlHigh notranslate">
+                &lt;!DOCTYPE html&gt;<br>&lt;html lang="fr"&gt;<br>
+                &lt;head&gt;<br>
+                &lt;title&gt;Titre de la page&lt;/title&gt;<br><br>
+                &lt;style&gt;<br>
+                h5 {<br>
+                color: black;<br>
+                }<br>
+                &lt;/style&gt;<br><br>
+                &lt;/head&gt;<br>
+                &lt;body&gt;<br><br>
+
+                &lt;h5&gt;Titre de niveau 5&lt;/h5&gt;<br><br>
+
+                &lt;/body&gt;<br>
+                &lt;/html&gt;
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="w3-panel w3-card w3-light-grey">
+            <h4 style="font-weight: 800;">Correction 2 CSS</h4>
+            <div class="w3-code htmlHigh notranslate">
+                &lt;!DOCTYPE html&gt;<br>&lt;html lang="fr"&gt;<br>
+                &lt;head&gt;<br>
+                &lt;title&gt;Titre de la page&lt;/title&gt;<br><br>
+                &lt;style&gt;<br>
+                @keyframes Animation {<br>
+                from {<br>
+                opacity: 0;<br>
+                transform: translateX(-50px);<br>
+                }<br>
+                to {<br>
+                opacity: 1;<br>
+                transform: translateX(0);<br>
+                }<br>
+                }<br>
+
+                p {<br>
+                animation: Animation 2s ease-in-out;<br>
+                }<br>
+                &lt;/style&gt;<br><br>
+                &lt;/head&gt;<br>
+                &lt;body&gt;<br><br>
+
+                &lt;p&gt;Ceci est un paragraphe&lt;/p&gt;<br><br>
+
+                &lt;/body&gt;<br>
+                &lt;/html&gt;
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="w3-panel w3-card w3-light-grey">
+            <h4 style="font-weight: 800;">Correction 1 JS</h4>
+            <div class="w3-code htmlHigh notranslate">
+                &lt;!DOCTYPE html&gt;<br>&lt;html lang="fr"&gt;<br>
+                &lt;head&gt;<br>
+                &lt;title&gt;Titre de la page&lt;/title&gt;<br>
+                &lt;/head&gt;<br>
+                &lt;body&gt;<br><br>
+                &lt;script type="text/javascript"&gt;<br>
+                // Exercice 1 JavaScript<br>
+                //Exercice 1<br>
+                let age = 23;<br>
+                console.log(age);<br>
+                const PI = 3.14;<br>
+                console.log(PI);<br>
+                var a = 2;<br>
+                var b = '2';<br>
+                console.log(!(a==b));<br>
+                //Redefinition du constante (impossible)<br>
+                // PI = 3.1415<br>
+                &lt;/script&gt;<br><br>
+                &lt;/body&gt;<br>
+                &lt;/html&gt;
+            </div>
+        </div>
+    </div>
+
+
+    <div>
+        <div class="w3-panel w3-card w3-light-grey">
+            <h4 style="font-weight: 800;">Correction 2 JS</h4>
+            <div class="w3-code htmlHigh notranslate">
+                &lt;!DOCTYPE html&gt;<br>&lt;html lang="fr"&gt;<br>
+                &lt;head&gt;<br>
+                &lt;title&gt;Titre de la page&lt;/title&gt;<br>
+                &lt;/head&gt;<br>
+                &lt;body&gt;<br><br>
+                &lt;script type="text/javascript"&gt;<br>
+                // Exercice 2 JavaScript<br>
+                var x = 3 , y = 4;<br>
+                // Addition<br>
+                console.log('La somme de '+x + ' et '+y + ' est : ', x+y);<br>
+
+                // Soustraction<br>
+                console.log('La soustraction de '+x + ' et '+y + ' est : ', x-y);<br>
+
+                // Multiplication<br>
+                console.log('La multiplication de '+x + ' et '+y + ' est : ', x*y);<br>
+
+                // Division entiere<br>
+                console.log('La division de '+x + ' et '+y + ' est : ', x/y);<br>
+                // Modulo<br>
+                console.log('Le modulo de '+x + ' et '+y + ' est : ', x%y);<br>
+                &lt;/script&gt;<br><br>
+                &lt;/body&gt;<br>
+                &lt;/html&gt;
+            </div>
+        </div>
+    </div>
+
+
+    <div style="display: flex; flex-direction: row;">
+        <a class="navbar-brand" href="Quizhtml.html">
+            <h5 style="color: hsl(0, 0%, 4%);margin-left: 24px;"><button class="but">QUIZ</button></h5>
+        </a>
+
+        <a class="navbar-brand" href="courExercices.html">
+            <h5 style="color: hsl(0, 0%, 4%);margin-left: 838px;"><button class="but">Exercices</button></h5>
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener('scroll', function () {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+    <script src="../Bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

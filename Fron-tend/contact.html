@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevAcademy</title>
+    <link rel="stylesheet" href="../Bootstrap/css/bootstrap.css">
+    <link href="../TP_Bootstrap/Projet_bootstrap.css" rel="stylesheet" />
+    <link href="Devoir_sem2.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../TP_Bootstrap/css/style.css">
+
+
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            font-family: 'poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .d {
+            display: flex;
+            flex-direction: row;
+        }
+
+        h1 {
+            text-align: center;
+            justify-content: center;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+
+
+        }
+
+        h4 {
+            font-size: 20px;
+            font-weight: bold;
+
+        }
+
+        form {
+            position: relative;
+            width: 300px;
+            margin-top: 35px;
+        }
+
+        form,
+        input {
+            width: 100%;
+            padding: 20px 10px 10px;
+            background: transparent;
+            border-color: white;
+            border-top: none;
+            border-right: none;
+            border-left: none;
+            font-size: 1em;
+            outline: none;
+            color: white;
+            margin-bottom: 43px;
+        }
+
+        form,
+        textarea {
+            width: 100%;
+            padding: 20px 10px 10px;
+            background: transparent;
+            border-color: white;
+            border-top: none;
+            border-right: none;
+            border-left: none;
+            border-width: 2px;
+            font-size: 1em;
+            outline: none;
+            color: white;
+            margin-bottom: 43px;
+            max-height: 122px;
+
+        }
+
+        ::placeholder,
+        input {
+            color: transparent;
+            color: #e9e8e8;
+        }
+
+        input[type="submit"] {
+            border: 2px solid #fff;
+            color: white;
+            cursor: pointer;
+            margin-bottom: 80px;
+            font-weight: bold;
+            width: 132px;
+
+        }
+
+        label,
+        input[type="checkbox"] {
+            color: white;
+            width: 32px;
+        }
+
+        .form_contact form input[type="submit"] {
+            margin-bottom: 0;
+            background-color: #ea1f33;
+            color: #fff;
+            border: 0;
+        }
+
+        .dd1 {
+            background-image: url(img1.jpg);
+            width: 400px;
+            height: 400px;
+            margin-left: 34px;
+            margin-top: -98px;
+
+
+        }
+
+        form,
+        .dd {
+            width: 90%;
+            padding: 10px 5px 5px;
+            background: transparent;
+            border-color: white;
+            border-top: none;
+            border-right: none;
+            border-left: none;
+            font-size: 1em;
+            outline: none;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        ::placeholder,
+        .ddt {
+            color: rgb(90, 84, 84);
+
+        }
+
+        .dd[type="submit"] {
+            border: 1px solid #595959;
+            color: rgb(21, 19, 19);
+            cursor: pointer;
+            margin-bottom: 49px;
+            font-weight: bold;
+            width: 132px;
+            margin-top: 13px;
+
+
+        }
+
+        form,
+        .dt {
+            width: 90%;
+            padding: 10px 5px 5px;
+            background: transparent;
+            border-color: white;
+            border-top: none;
+            border-right: none;
+            border-left: none;
+            font-size: 1em;
+            outline: none;
+            color: white;
+            margin-bottom: 10px;
+            max-height: 90px;
+
+        }
+
+        .d11 {
+            padding-bottom: 100px;
+            width: 50%;
+            margin-left: 40px;
+
+        }
+
+        .dd1 {
+            background-image: url(d3.jpg);
+            width: 400px;
+            height: 400px;
+            margin-left: 34px;
+            margin-top: -98px;
+        }
+
+        img {
+            padding: 6px;
+            padding-top: 12px;
+        }
+
+        .s {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .navbar-nav .nav-link {
+            position: relative;
+            color: hsl(0, 0%, 90%);
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 50%;
+            background-color: #1faf1acb;
+            transition: all 0.3s ease-in-out;
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav .nav-link:hover::before {
+            width: 100%;
+        }
+
+        .navbar-nav .nav-link:hover {
+
+            background-color: #13cd1352;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            font-weight: 500;
+            font-size: 17px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark fixed-top navbar ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="Devoir_sem2.html">
+                <h5 style="color: black;font-weight: bold;font-size: 30px;">Dev<span
+                        style="color: #0c5e11c4;">Academy</span> </h5>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="courHtml.html"
+                            style="color: hsl(0, 0%, 4%);">Html</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courCss.html" style="color: hsl(0, 0%, 4%);">Css</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="courBootstrap.html" style="color: hsl(0, 0%, 4%);"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Bootstrap
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="courExercices.html">Exercices</a></li>
+                            <li><a class="dropdown-item" href="courBootstrap.html">tutoriels</a></li>
+                            <li><a class="dropdown-item" href="courBootstrap.html">Apprendre bootstrap</a></li>
+                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courJavaScript.html" style="color: hsl(0, 0%, 4%);">JavaScript</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courExercices.html" style="color: hsl(0, 0%, 4%);">Exercices</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="courQuiz.html" style="color: hsl(0, 0%, 4%);"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Quiz
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="Quizhtml.html">Html</a></li>
+                            <li><a class="dropdown-item" href="Quizcss.html">Css</a></li>
+                            <li><a class="dropdown-item" href="Quizjs.html">JavaScript</a></li>
+                            <li><a class="dropdown-item" href="Quizbootstrap.html">Bootstrap</a></li>
+                        </ul>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" style="width: 305px;margin-left: 196px;" type="search" placeholder="Recherche" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit" href="#"
+                        style="color: hsl(0, 0%, 4%);height: 34px;">Recherche</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+
+    <section style="margin-top: 145px;">
+        <div class="d">
+
+            <div class="dd1">
+                <div>
+                    <h4 style="margin-top: 25px; margin-left: 35px;color: rgb(40, 36, 36);font-size: 28px;">Suivez nous
+                    </h4>
+                    <div style="margin-left: 30px;">
+                        <img width="35px" height="35px" src="f.png">
+                        <img width="35px" height="35px" src="t.png">
+                        <img width="35px" height="35px" src="i.png">
+                        <img width="35px" height="35px" src="t4.png">
+                    </div>
+                </div>
+            </div>
+
+
+            <div style="margin-top: -120px;" class="d11">
+                <h2 style="margin-bottom: 34px;">formulaire de contact</h2>
+
+                <div class="form">
+                    <input class="dd" style="background: rgb(230, 229, 229);" type="text" placeholder="Nom">
+                </div>
+
+                <div class="form">
+                    <input class="dd" style="background: rgb(230, 229, 229);" type="text" placeholder="Prenom">
+                </div>
+
+                <div class="form">
+                    <input class="dd" style="background: rgb(230, 229, 229);" type="text" placeholder="E-mail">
+                </div>
+
+                <div class="form">
+                    <textarea class="dt" style="background: rgb(230, 229, 229);" name="" cols="30" rows="10"
+                        placeholder="Message"></textarea>
+
+                </div>
+
+                <div class="form">
+                    <input input class="dd" type="submit" value="SOUMETTRE">
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <script>
+        document.addEventListener('scroll', function () {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+    <script src="../Bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

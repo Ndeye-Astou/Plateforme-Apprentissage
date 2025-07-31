@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../Bootstrap/css/bootstrap.css">
+    <link href="../TP_Bootstrap/Projet_bootstrap.css" rel="stylesheet" />
+    <link href="Devoir_sem2.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../TP_Bootstrap/css/style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <style>
+        .d {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .d1 {
+
+            background: white;
+            height: 630px;
+            padding: 50px;
+            width: 50px;
+            margin-left: 24px;
+            border-color: #09ff00;
+            transition: 0.4s ease-in-out;
+            border: 1px solid #0cf904;
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 0 15px #0aff02;
+            border-radius: 12px;
+            position: sticky;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 47%;
+        }
+
+        .d2 {
+            font-size: 15px;
+            width: 50%;
+            padding-bottom: 15px;
+            margin-left: 24px;
+            background: white;
+            border-color: #09ff00;
+            transition: 0.4s ease-in-out;
+            border: 1px solid #09ff00;
+            transform: translateY(-10px) scale(1.00);
+            box-shadow: 0 0 15px #0aff02;
+            border-radius: 12px;
+            margin-right: 60px;
+        }
+
+        h1:hover {
+            text-align: center;
+            justify-content: center;
+            color: rgb(72, 93, 74);
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            justify-content: center;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        img:hover {
+            animation-name: rotate;
+            animation-duration: 1s;
+            animation-iteration-count: 10;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .m9:hover {
+            text-align: center;
+            justify-content: center;
+            color: rgb(240, 16, 16);
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .m1:hover {
+            text-align: center;
+            justify-content: center;
+            color: rgb(240, 16, 16);
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .m1 {
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+        h4 {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .etudiant {
+            font-weight: 0px;
+            font-size: small;
+            color: rgb(27, 26, 26);
+
+        }
+
+        section {
+            background-color: rgb(241, 248, 248);
+            color: black;
+        }
+
+        .etudiant:hover {
+            background-color: #09ff00;
+        }
+
+        div::before {
+            content: "";
+            width: 4px;
+            height: 100%;
+            margin: 0;
+
+
+        }
+
+        div::after {
+            content: "";
+            width: 4px;
+            height: 100%;
+            margin: 0 1%;
+        }
+
+        .but {
+            font-size: 19px;
+            background: green;
+            color: white;
+            padding: 2px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .but:hover {
+            background-color: transparent;
+            color: #09ff00;
+            border: 1px dashed #09ff00;
+            transition: 2s;
+            margin-left: 4%;
+            transform: scale(2);
+
+        }
+
+        .but2 {
+            font-size: 19px;
+            background: green;
+            color: white;
+            padding: 2px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .but2:hover {
+            background-color: transparent;
+            color: #09ff00;
+            border: 1px dashed #09ff00;
+            transition: 2s;
+            margin-left: 4%;
+            transform: scale(2);
+
+        }
+
+        .but2 {
+            font-size: 19px;
+            background: green;
+            color: white;
+            padding: 2px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .but2:hover {
+            background-color: transparent;
+            color: #09ff00;
+            border: 1px dashed #09ff00;
+            transition: 2s;
+            margin-left: 10%;
+            transform: scale(2);
+
+        }
+
+
+        .navbar-nav .nav-link {
+            position: relative;
+            color: hsl(0, 0%, 90%);
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 50%;
+            background-color: #1faf1acb;
+            transition: all 0.3s ease-in-out;
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav .nav-link:hover::before {
+            width: 100%;
+        }
+
+        .navbar-nav .nav-link:hover {
+
+            background-color: #13cd1352;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            font-weight: 500;
+            font-size: 17px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark fixed-top navbar ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="Devoir_sem2.html">
+                <h5 style="color: black;font-weight: bold;font-size: 30px;">EBEK<span
+                        style="color: #0c5e11c4;">TEK</span> </h5>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="courHtml.html"
+                            style="color: hsl(0, 0%, 4%);">Html</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courCss.html" style="color: hsl(0, 0%, 4%);">Css</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="courBootstrap.html" style="color: hsl(0, 0%, 4%);"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Bootstrap
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="courExercices.html">Exercices</a></li>
+                            <li><a class="dropdown-item" href="courBootstrap.html">tutoriels</a></li>
+                            <li><a class="dropdown-item" href="courBootstrap.html">Apprendre bootstrap</a></li>
+                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courJavaScript.html" style="color: hsl(0, 0%, 4%);">JavaScript</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courExercices.html" style="color: hsl(0, 0%, 4%);">Exercices</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="courQuiz.html" style="color: hsl(0, 0%, 4%);"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Quiz
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="Quizhtml.html">Html</a></li>
+                            <li><a class="dropdown-item" href="Quizcss.html">Css</a></li>
+                            <li><a class="dropdown-item" href="Quizjs.html">JavaScript</a></li>
+                            <li><a class="dropdown-item" href="Quizbootstrap.html">Bootstrap</a></li>
+                        </ul>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit" href="#"
+                        style="color: hsl(0, 0%, 4%);">Recherche</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <section>
+        <div class="d">
+            <div class="d1">
+                <div>
+                    <h1><strong>Bootstrap</strong></h1>
+                </div>
+                <div>
+                    <a href="Bootstrap.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Introduction bootstrap</h6>
+                    </a>
+                </div>
+                <div>
+                    <a href="Bootstrap.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Navbar bootstrap</h6>
+                    </a>
+                </div>
+                <div>
+                    <a href="Bootstrap.html">
+                        <h6 class="etudiant" style="font-weight: 900;">fluide bootstrap</h6>
+                    </a>
+                </div>
+                <div>
+                    <a href="Bootstrap.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Page responsive</h6>
+                    </a>
+                </div>
+                <div>
+                    <a href="Bootstrap.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Interativites</h6>
+                    </a>
+                </div>
+                <div>
+                    <a href="Bootstrap.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Creation bordures</h6>
+                    </a>
+                </div>
+                <div>
+                    <a href="Bootstrap.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Les couleurs</h6>
+                    </a>
+                </div>
+                <div>
+                    <a href="Bootstrap.html">
+                        <h6 class="etudiant" style="font-weight: 900;">grille bootstrap</h6>
+                    </a>
+                </div>
+            </div>
+
+
+
+            <div class="d2"
+                style="margin-left: 64px;width: 3123px;padding-left: 12px;height: auto;padding-right: 12px;">
+                <div>
+                    <img style="width: 60px;height: 50px;text-align: center;margin-left: 377px;margin-top: 7px;"
+                        src="boot.png" alt="">
+                </div>
+
+                <div>
+                    <h1>Bootstrap 5 : comment démarrer
+                    </h1>
+                </div>
+
+                <div>
+                    <h5 style="font-size: 20px;font-weight: 600;margin-top: 22px;margin-left: 12px;">Qu'est-ce que
+                        Bootstrap ?</h5>
+                    <p>Bootstrap est un framework front-end gratuit pour un développement Web plus rapide et plus facile
+                    </p>
+                    <p>Bootstrap comprend des modèles de conception basés sur HTML et CSS pour la typographie, les
+                        formulaires, les boutons, les tableaux, la navigation, les modaux, les carrousels d'images et
+                        bien d'autres, ainsi que des plugins JavaScript en option</p>
+                    <p>Bootstrap vous donne également la possibilité de créer facilement des designs réactifs</p>
+
+                </div>
+
+                <div style="background: #cce6d9;">
+                    <h5 style="font-size: 20px;font-weight: 600;margin-top: 22px;margin-left: 12px;"> Qu'est-ce que le
+                        Responsive Web Design ?</h5>
+                    <p>Le Responsive Web Design consiste à créer des sites Web qui s'ajustent automatiquement pour
+                        s'afficher correctement sur tous les appareils, des petits téléphones aux grands ordinateurs de
+                        bureau.</p>
+                </div>
+                <div class="w3-panel w3-card w3-light-grey" style="margin-top: 22px;">
+                    <h4>Exemple</h4>
+                    <div class="w3-code htmlHigh notranslate">
+                        &lt;!DOCTYPE html&gt;<br>&lt;html lang="fr"&gt;<br>
+                        &lt;head&gt;<br>
+                        &lt;meta charset="UTF-8"&gt;<br>
+                        &lt;title&gt;Titre de la page&lt;/title&gt;<br><br>
+                        &lt;div class="container-fluid p-5 bg-primary text-white text-center"&gt;<br>
+                        &lt;h1&gt;Ma premiere Page Bootstrap&lt;/h1&gt;<br>
+                        &lt;p&gt;Redimensionnez cette page réactive pour voir l'effet !&lt;/p&gt;<br>
+                        &lt;/div&gt;<br>
+                        &lt;div class="container mt-5"&gt;<br>
+                        &lt;div class="row"&gt;<br>
+                        &lt;div class="col-sm-4"&gt;<br>
+                        &lt;h3&gt;Column 1&lt;/h3&gt;<br>
+                        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit...&lt;/p&gt;<br>
+                        &lt;p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...&lt;/p&gt;<br>
+                        &lt;/div&gt;<br>
+                        &lt;div class="col-sm-4"&gt;<br>
+                        &lt;h3&gt;Column 2&lt;/h3&gt;<br>
+                        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit...&lt;/p&gt;<br>
+                        &lt;p&gt;Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...&lt;/p&gt;<br>
+                        &lt;/div&gt;<br>
+                        &lt;div class="col-sm-4"&gt;<br>
+                        &lt;h3&gt;Column 3&lt;/h3&gt;<br>
+                        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit...&lt;/p&gt;<br>
+                        &lt;p&gt;Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...&lt;/p&gt;<br>
+                        &lt;/div&gt;<br>
+                        &lt;/div&gt;<br>
+                        &lt;/div&gt;<br><br>
+
+                        &lt;/body&gt;<br>
+                        &lt;/html&gt;
+                    </div>
+                </div>
+                <script src="https://www.w3schools.com/lib/w3codecolor.js"></script>
+                <script>
+                    w3CodeColor();
+                </script>
+                <a class="navbar-brand" href="Essaye.html">
+                    <h5 style="color: hsl(0, 0%, 4%);margin-left: 5px;"><button class="but2">Essayez-le vous même
+                        </button>
+                    </h5>
+                </a>
+
+                <div>
+                    <h5 style="font-size: 20px;font-weight: 600;margin-top: 23px;margin-left: 12px;">Versions de
+                        Bootstrap</h5>
+                    <p>Bootstrap 5 (sorti en 2021) est la dernière version de Bootstrap (sortie en 2013) ; avec de
+                        nouveaux
+                        composants, une feuille de style plus rapide et plus de réactivité.</p>
+                    <p> Bootstrap 5 prend en charge les dernières versions stables de tous les principaux navigateurs et
+                        plates-formes. Cependant, Internet Explorer 11 et les versions antérieures ne sont pas pris en
+                        charge.</p>
+
+                    <p>La principale différence entre Bootstrap 5 et Bootstrap 3 et 4 est que Bootstrap 5 est passé à
+                        JavaScript vanilla au lieu de jQuery.</p>
+                </div>
+
+                <div style="background: rgb(221, 235, 159);">
+                    <p><strong>Remarque :</strong> Bootstrap 3 et Bootstrap 4 sont toujours pris en charge par l'équipe
+                        pour les corrections de bogues critiques et les modifications de la documentation, et il est
+                        parfaitement sûr de continuer à les utiliser. Cependant, de nouvelles fonctionnalités ne leur
+                        seront PAS ajoutées.</p>
+                </div>
+
+                <div>
+                    <h5 style="font-size: 20px;font-weight: 600;margin-top: 23px;margin-left: 12px;">Avantages de
+                        Bootstrap :</h5>
+                    <ul>
+                        <li type="square" style="font-size: 14px;"><strong>Facile à utiliser :</strong> toute personne
+                            possédant des connaissances de base en HTML et CSS peut commencer à utiliser Bootstrap</li>
+                        <li type="square" style="font-size: 14px;"><strong>Fonctionnalités réactives :</strong> le CSS
+                            réactif de Bootstrap s'adapte aux téléphones, tablettes et ordinateurs de bureau</li>
+                        <li type="square" style="font-size: 14px;"><strong>Approche mobile d'abord :</strong> dans
+                            Bootstrap, les styles mobiles d'abord font partie du framework de base</li>
+                        <li type="square" style="font-size: 14px;"><strong>Compatibilité du navigateur :</strong>
+                            Bootstrap 5 est compatible avec tous les navigateurs modernes (Chrome, Firefox, Edge, Safari
+                            et Opera). Notez que si vous avez besoin de la prise en charge d'IE 11 et des versions
+                            antérieures, vous devez utiliser BS4 ou BS3.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 style="font-size: 20px;font-weight: 600;margin-top: 23px;margin-left: 12px;">Où obtenir
+                        Bootstrap 5 ?</h5>
+                    <p>Il existe deux façons de commencer à utiliser Bootstrap 5 sur votre propre site Web.</p>
+                    <p>Vous pouvez :</p>
+                    <ul>
+                        <li type="square">Inclure Bootstrap 5 à partir d'un CDN</li>
+                        <li type="square">Télécharger Bootstrap 5 depuis <a href="https://getbootstrap.com"
+                                target="_blank">getbootstrap.com</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 style="font-size: 20px;font-weight: 600;margin-top: 23px;margin-left: 12px;">Bootstrap 5 CDN
+                    </h5>
+                    <p>Si vous ne souhaitez pas télécharger et héberger Bootstrap 5 vous-même, vous pouvez l'inclure à
+                        partir d'un CDN (Content Delivery Network).</p>
+                    <p style="font-size: small;">jsDelivr fournit un support CDN pour CSS et JavaScript de Bootstrap :
+                    </p>
+
+                    <div class="w3-panel w3-card w3-light-grey">
+                        <h4>Exemple</h4>
+                        <div class="w3-code htmlHigh notranslate">
+                            &lt;!DOCTYPE html&gt;<br>&lt;html&gt;<br>
+                            &lt;title&gt;Titres HTML&lt;/title&gt;<br><br>
+                            &lt;!-- Latest compiled and minified CSS --&gt;<br>
+                            &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+                            rel="stylesheet"&gt;<br>
+                            &lt;!-- Latest compiled JavaScript --&gt;
+                            &lt;script
+                            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
+
+                            &lt;/body&gt;<br>
+                            &lt;/html&gt;
+                        </div>
+                    </div>
+                    <a class="navbar-brand" href="Essaye.html">
+                        <h5 style="color: hsl(0, 0%, 4%);margin-left: 5px;"><button class="but2">Essayez-le vous même
+                            </button>
+                        </h5>
+                    </a>
+                </div>
+
+
+                <div style="background: #f7fac0;">
+                    <p><strong>L'un des avantages de l'utilisation du CDN Bootstrap 5 :</strong>
+                    <p>De nombreux utilisateurs ont déjà téléchargé Bootstrap 5 depuis jsDelivr lorsqu'ils visitent un
+                        autre site. Par conséquent, il sera chargé à partir du cache lorsqu'ils visiteront votre site,
+                        ce qui accélère le temps de chargement. De plus, la plupart des CDN s'assureront qu'une fois
+                        qu'un utilisateur demandera un fichier, il sera servi à partir du serveur le plus proche de lui,
+                        ce qui accélère également le temps de chargement.</p>
+                    </p>
+                    <div>
+                        <p><strong>JavaScript ?</strong>
+                        <p>Bootstrap 5 utilise JavaScript pour différents composants (comme les modaux, les info-bulles,
+                            les popovers, etc.). Cependant, si vous utilisez simplement la partie CSS de Bootstrap, vous
+                            n'en avez pas besoin.</p>
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <h5 style="font-size: 20px;font-weight: 600;margin-top: 23px;margin-left: 12px;">Téléchargement de
+                        Bootstrap 5</h5>
+                    <p>Si vous souhaitez télécharger et héberger Bootstrap 5 vous-même, accédez à <a
+                            href="https://getbootstrap.com/" target="_blank">getbootstrap.com</a> et suivez les
+                        instructions qui y sont données.</p>
+                </div>
+
+                <div>
+                    <h5 style="font-size: 20px;font-weight: 600;margin-top: 17px;margin-left: 12px;">Créez votre
+                        première page Web avec Bootstrap 5</h5>
+                    <ol>
+                        <li>
+                            <h5 style="font-size: 15px;font-weight: 700;margin-top: 13px;">Ajoutez le doctype HTML5</h5>
+                        </li>
+                        <p>Bootstrap 5 utilise des éléments HTML et des propriétés CSS qui nécessitent le doctype
+                            HTML5.</p>
+                        <p>Incluez toujours le doctype HTML5 au début de la page, ainsi que l'attribut lang et le
+                            titre et le jeu de caractères corrects :</p>
+
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple HTML</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                &lt;!DOCTYPE html&gt;<br>&lt;html lang="fr"&gt;<br>
+                                &lt;head&gt;<br>
+                                &lt;meta charset="UTF-8"&gt;<br>
+                                &lt;title&gt;Exemple Bootstrap 5&lt;/title&gt;<br>
+                                &lt;/body&gt;<br>
+                                &lt;/html&gt;
+                            </div>
+                        </div>
+
+
+                        <li>
+                            <h5 style="font-size: 15px;font-weight: 700;margin-top: 17px;">Bootstrap 5 est avant tout
+                                destiné aux appareils mobiles</h5>
+                        </li>
+                        <p>Bootstrap 5 est conçu pour être réactif aux appareils mobiles. Les styles mobiles font partie
+                            du framework de base.</p>
+                        <p>Pour garantir un rendu correct et un zoom tactile, ajoutez la &lt;meta&gt; balise suivante à
+                            l'intérieur de l' &lt;head&gt; élément :</p>
+
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple HTML</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;<br>
+                            </div>
+                        </div>
+                        <p>La partie <code>width=device-width</code> définit la largeur de la page pour qu'elle suive la
+                            largeur de l'écran de l'appareil (qui varie en fonction de l'appareil).</p>
+                        <p>La partie <code>initial-scale=1</code> définit le niveau de zoom initial lorsque la page est
+                            chargée pour la première fois par le navigateur.</p>
+                        </li>
+
+
+                        <li>
+                            <h5 style="font-size: 15px;font-weight: 700;margin-top: 17px;">Conteneurs</h5>
+                        </li>
+                        <p>Bootstrap 5 nécessite également un élément conteneur pour envelopper le contenu du site.</p>
+                        <p>Vous avez le choix entre deux classes de conteneurs :</p>
+                        <ul>
+                            <li type="square">La <code>.container</code> classe fournit un conteneur réactif à largeur
+                                fixe</li>
+                            <li type="square">La <code>.container-fluid</code> classe fournit un conteneur pleine
+                                largeur, couvrant
+                                toute la largeur de la fenêtre d'affichage</li>
+                        </ul>
+                    </ol>
+                </div>
+
+                <div>
+                    <h5 style="font-size: 23px;font-weight: 600;margin-top: 23px;margin-left: 12px;">Deux pages de
+                        Bootstrap de base de 5</h5>
+                    <p>L'exemple suivant montre le code d'une page Bootstrap 5 de base (avec un conteneur réactif à
+                        largeur fixe) :</p>
+
+                    <div class="w3-panel w3-card w3-light-grey">
+                        <h4>Exemple de conteneur</h4>
+                        <div class="w3-code htmlHigh notranslate">
+                            &lt;!DOCTYPE html&gt;<br>&lt;html lang="fr"&gt;<br>
+                            &lt;head&gt;<br>
+                            &lt;meta charset="UTF-8"&gt;<br>
+                            &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;<br>
+                            &lt;title&gt;Exemple Bootstrap&lt;/title&gt;<br>
+                            &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"&gt;<br>
+                            &lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"&gt;<br>
+                            &lt;/script&gt;<br>
+                            &lt;/head&gt;<br>
+                            &lt;body&gt;<br><br>
+                            &lt;div class="container"&gt;<br>
+                            &lt;h1&gt;Ma première page Bootstrap&lt;/h1&gt;<br>
+                            &lt;p&gt;Cette partie est à l'intérieur d'une classe container&lt;/p&gt;<br>
+                            &lt;p&gt;La classe .container fournit un conteneur à largeur fixe et réactif.&lt;/p&gt;<br>
+                            &lt;/div&gt;<br><br>
+                            &lt;/body&gt;<br>
+                            &lt;/html&gt;
+                        </div>
+                    
+                    <a class="navbar-brand" href="Bootstrap.html">
+                        <h5 style="color: hsl(0, 0%, 4%);margin-left: 5px;"><button class="but2">Essayez-le vous même
+                            </button>
+                        </h5>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <p>L'exemple suivant montre le code d'une page Bootstrap 5 de base (avec un conteneur pleine largeur) :</p>
+                
+                <div class="w3-panel w3-card w3-light-grey">
+                    <h4>Exemple de conteneur de fluide</h4>
+                    <div class="w3-code htmlHigh notranslate">
+                        &lt;!DOCTYPE html&gt;<br>&lt;html lang="fr"&gt;<br>
+                        &lt;head&gt;<br>
+                        &lt;meta charset="UTF-8"&gt;<br>
+                        &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;<br>
+                        &lt;title&gt;Exemple Bootstrap&lt;/title&gt;<br>
+                        &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"&gt;<br>
+                        &lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"&gt;<br>
+                        &lt;/script&gt;<br>
+                        &lt;/head&gt;<br>
+                        &lt;body&gt;<br><br>
+                        &lt;div class="container-fluid"&gt;<br>
+                        &lt;h1&gt;Ma première page Bootstrap&lt;/h1&gt;<br>
+                        &lt;p&gt;Cette partie est à l'intérieur d'une classe container&lt;/p&gt;<br>
+                        &lt;p&gt;La classe .container fournit un conteneur à largeur fixe et réactif.&lt;/p&gt;<br>
+                        &lt;/div&gt;<br><br>
+                        &lt;/body&gt;<br>
+                        &lt;/html&gt;
+                    </div>
+                
+                <a class="navbar-brand" href="Bootstrap.html">
+                    <h5 style="color: hsl(0, 0%, 4%);margin-left: 5px;"><button class="but2">Essayez-le vous même
+                        </button>
+                    </h5>
+                </a>
+            </div>
+            </div>
+
+                <div style="display: flex; flex-direction: row;">
+                    <a class="navbar-brand" href="Quizbootstrap.html">
+                        <h5 style="color: hsl(0, 0%, 4%);margin-left: 24px;"><button class="but">Quiz</button>
+                        </h5>
+                    </a>
+
+                    <a class="navbar-brand" href="courExercices.html">
+                        <h5 style="color: hsl(0, 0%, 4%);margin-left: 688px;"><button class="but">Exercices</button>
+                        </h5>
+                    </a>
+                </div>
+
+
+            </div>
+    </section>
+
+    <footer class="container-fluid bg-dark text-white p-4">
+        <p>&copy; 2024 Ebektek. Tous droits réservés.</p>
+    </footer>
+
+    <script src="../Bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

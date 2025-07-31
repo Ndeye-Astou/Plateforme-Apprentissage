@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevAcademy - Maîtriser HTML : Fondations du Web</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #0c5e11;
+      --primary-light: #13cd13;
+      --secondary: #4a90e2;
+      --accent: #ff6b35;
+      --dark: #1a1a1a;
+      --light: #f8f9fa;
+      --gray: #6c757d;
+      --success-bg: #e8f5e9;
+      --primary-color: #0c5e11;
+      --accent-color: #ff6b35;
+      --dark-text: #1a1a1a;
+      --light-text: #ffffff;
+      --card-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      --transition: all 0.3s ease;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--dark);
+      background-color: #f8fbfa;
+      overflow-x: hidden;
+      line-height: 1.6;
+      counter-reset: section;
+    }
+
+    .free-banner {
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      font-weight: 600;
+      font-size: 1.1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .free-banner:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: repeating-linear-gradient(45deg,
+          rgba(255, 255, 255, 0.1),
+          rgba(255, 255, 255, 0.1) 10px,
+          rgba(255, 255, 255, 0.2) 10px,
+          rgba(255, 255, 255, 0.2) 20px);
+      z-index: 1;
+    }
+
+    .free-banner span {
+      position: relative;
+      z-index: 2;
+    }
+
+    .free-badge {
+      background: #ff6b35;
+      color: white;
+      padding: 3px 12px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: inline-block;
+      margin-left: 10px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .navbar {
+      background: linear-gradient(135deg, #ffffff, #f5f9f5);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      transition: all 0.4s ease;
+    }
+
+    .navbar.scrolled {
+      padding: 5px 0;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .navbar-brand {
+      font-weight: 800;
+      font-size: 1.9rem;
+      letter-spacing: -0.5px;
+    }
+
+    .brand-primary {
+      color: var(--primary-color);
+      position: relative;
+    }
+
+    .brand-primary::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--accent-color);
+      border-radius: 2px;
+    }
+
+    .sidebar {
+      background: white;
+      border-radius: 16px;
+      box-shadow: var(--card-shadow);
+      position: sticky;
+      top: 100px;
+      padding: 25px;
+      height: fit-content;
+      max-height: 85vh;
+      overflow-y: auto;
+      transition: var(--transition);
+    }
+
+    .sidebar:hover {
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    }
+
+    .content-container {
+      background: white;
+      border-radius: 16px;
+      box-shadow: var(--card-shadow);
+      padding: 35px;
+      margin-bottom: 40px;
+      transition: var(--transition);
+    }
+
+    .content-container:hover {
+      box-shadow: 0 15px 45px rgba(0,0,0,0.12);
+    }
+
+    .section-title {
+      text-align: center;
+      margin: 35px 0;
+      position: relative;
+      padding-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+      border-radius: 4px;
+    }
+
+    .html-icon {
+      display: block;
+      margin: 0 auto 25px;
+      width: 110px;
+      height: 110px;
+      transition: transform 0.5s ease;
+      filter: drop-shadow(0 5px 15px rgba(10, 255, 2, 0.2));
+    }
+
+    .html-icon:hover {
+      transform: scale(1.05) rotate(5deg);
+    }
+
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      padding: 12px 15px;
+      margin: 8px 0;
+      border-radius: 8px;
+      color: var(--dark-text);
+      text-decoration: none;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      font-weight: 500;
+    }
+
+    .sidebar-link.active {
+      background-color: rgba(46, 204, 113, 0.08);
+      color: var(--primary-color);
+    }
+
+    .sidebar-link::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 4px;
+      background: var(--accent-color);
+      transform: translateX(-10px);
+      transition: var(--transition);
+      opacity: 0;
+    }
+
+    .sidebar-link:hover {
+      background-color: rgba(46, 204, 113, 0.08);
+      color: var(--primary-color);
+      transform: translateX(5px);
+    }
+
+    .sidebar-link:hover::before {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .sidebar-link i {
+      margin-right: 12px;
+      width: 24px;
+      text-align: center;
+      color: var(--primary-color);
+      transition: var(--transition);
+    }
+
+    .sidebar-link:hover i {
+      color: var(--accent-color);
+      transform: scale(1.2);
+    }
+
+    .code-block {
+      background: #1e1e1e;
+      color: #dcdcdc;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 25px 0;
+      overflow-x: auto;
+      font-size: 0.95rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      position: relative;
+      border-left: 4px solid var(--accent-color);
+    }
+
+    .code-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #2a2a2a;
+      padding: 8px 15px;
+      border-radius: 8px 8px 0 0;
+      margin: -20px -20px 15px -20px;
+      font-family: monospace;
+      color: #bbb;
+      font-size: 0.9rem;
+    }
+
+    .copy-btn {
+      background: transparent;
+      border: none;
+      color: #bbb;
+      cursor: pointer;
+      transition: var(--transition);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+
+    .copy-btn:hover {
+      color: var(--accent-color);
+      background: rgba(255,255,255,0.1);
+    }
+
+    .try-btn {
+      display: inline-flex;
+      align-items: center;
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      color: white;
+      padding: 10px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      border: none;
+      margin: 20px 0;
+      box-shadow: 0 4px 15px rgba(10, 90, 30, 0.2);
+    }
+
+    .try-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(10, 90, 30, 0.3);
+      color: white;
+    }
+
+    .try-btn i {
+      margin-right: 8px;
+      transition: var(--transition);
+    }
+
+    .try-btn:hover i {
+      transform: translateX(3px);
+    }
+
+    .nav-link {
+      position: relative;
+      color: var(--dark-text) !important;
+      font-weight: 500;
+      transition: var(--transition);
+      padding: 8px 15px !important;
+      border-radius: 8px;
+      margin: 0 5px;
+    }
+
+    .nav-link:hover {
+      color: var(--primary-color) !important;
+      background: rgba(46, 204, 113, 0.1);
+    }
+
+    .example-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .example-table th, 
+    .example-table td {
+      border: 1px solid #e9ecef;
+      padding: 15px;
+      text-align: left;
+    }
+
+    .example-table th {
+      background-color: rgba(46, 204, 113, 0.1);
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+
+    .example-table tr:nth-child(even) {
+      background-color: rgba(0,0,0,0.02);
+    }
+
+    .example-table tr:hover {
+      background-color: rgba(46, 204, 113, 0.05);
+    }
+
+    .footer {
+      background: linear-gradient(135deg, #1a3c21, #0a4a0f);
+      color: var(--light-text);
+      padding: 50px 0 30px;
+      margin-top: 60px;
+      position: relative;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: 0;
+      width: 100%;
+      height: 20px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23f8fbf8" fill-opacity="1" d="M0,160L48,165.3C96,171,192,181,288,181.3C384,181,480,171,576,165.3C672,160,768,160,864,170.7C960,181,1056,203,1152,197.3C1248,192,1344,160,1392,144L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+      background-size: cover;
+    }
+
+    .conclusion-box {
+      background: linear-gradient(to right, rgba(46, 204, 113, 0.05), rgba(10, 74, 15, 0.05));
+      border-left: 4px solid var(--accent-color);
+      padding: 25px;
+      border-radius: 0 12px 12px 0;
+      margin: 40px 0;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .conclusion-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%232ecc71' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+      opacity: 0.3;
+    }
+
+    .progress-container {
+      position: fixed;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: transparent;
+      z-index: 1000;
+    }
+
+    .progress-bar {
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .scroll-top {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      color: white;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: var(--transition);
+      z-index: 1000;
+      box-shadow: 0 5px 20px rgba(10, 90, 30, 0.3);
+    }
+
+    .scroll-top.show {
+      opacity: 1;
+    }
+
+    .scroll-top:hover {
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 8px 25px rgba(10, 90, 30, 0.4);
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 20px 0;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: var(--transition);
+      border-top: 3px solid var(--accent-color);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .feature-card i {
+      font-size: 2.5rem;
+      color: var(--accent-color);
+      margin-bottom: 20px;
+    }
+
+    .highlight {
+      background: linear-gradient(120deg, rgba(46, 204, 113, 0.15), rgba(46, 204, 113, 0));
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+
+    .interactive-element {
+      background: rgba(46, 204, 113, 0.08);
+      border: 2px dashed var(--accent-color);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 25px 0;
+      text-align: center;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .interactive-element:hover {
+      background: rgba(46, 204, 113, 0.15);
+      transform: scale(1.01);
+    }
+
+    .interactive-element h5 {
+      color: var(--primary-color);
+      margin-bottom: 15px;
+    }
+
+    .html-explanation {
+      background: linear-gradient(135deg, #f0f9f0, #e6f7e6);
+      border-radius: 12px;
+      padding: 30px;
+      margin: 30px 0;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .analogy-box {
+      background: white;
+      border-left: 4px solid var(--accent-color);
+      padding: 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 25px 0;
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 30px;
+      margin: 25px 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 4px;
+      background: var(--accent-color);
+    }
+
+    .timeline-item {
+      margin-bottom: 30px;
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -34px;
+      top: 5px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      border: 4px solid var(--accent-color);
+    }
+
+    /* Nouvelles fonctionnalités ajoutées */
+    .progress-section {
+      position: relative;
+      margin: 40px 0;
+      padding-left: 30px;
+    }
+    
+    .progress-section::before {
+      counter-increment: section;
+      content: counter(section);
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: var(--primary-color);
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    
+    .tooltip-icon {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background: var(--primary-color);
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 20px;
+      font-size: 12px;
+      cursor: help;
+      margin-left: 5px;
+    }
+    
+    .quiz-container {
+      background: rgba(46, 204, 113, 0.05);
+      border-radius: 12px;
+      padding: 25px;
+      margin: 30px 0;
+      border: 1px solid rgba(46, 204, 113, 0.2);
+    }
+    
+    .quiz-question {
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+    
+    .quiz-option {
+      background: white;
+      padding: 12px 15px;
+      border-radius: 8px;
+      margin: 8px 0;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 1px solid #e9ecef;
+    }
+    
+    .quiz-option:hover {
+      background: rgba(46, 204, 113, 0.1);
+      border-color: var(--primary-color);
+    }
+    
+    .quiz-option.correct {
+      background: rgba(46, 204, 113, 0.15);
+      border-color: var(--primary-color);
+    }
+    
+    .quiz-option.incorrect {
+      background: rgba(255, 107, 53, 0.1);
+      border-color: var(--accent-color);
+    }
+    
+    .quiz-feedback {
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+      display: none;
+    }
+    
+    .quiz-feedback.correct {
+      background: rgba(46, 204, 113, 0.1);
+      border: 1px solid var(--primary-color);
+      color: var(--primary-color);
+      display: block;
+    }
+    
+    .quiz-feedback.incorrect {
+      background: rgba(255, 107, 53, 0.1);
+      border: 1px solid var(--accent-color);
+      color: var(--accent-color);
+      display: block;
+    }
+    
+    .code-line {
+      display: block;
+      position: relative;
+      padding-left: 45px;
+    }
+    
+    .code-line::before {
+      content: attr(data-line);
+      position: absolute;
+      left: 0;
+      width: 30px;
+      text-align: right;
+      padding-right: 10px;
+      color: #6c757d;
+      user-select: none;
+    }
+    
+    .interactive-form {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      margin: 25px 0;
+    }
+    
+    .learning-path {
+      display: flex;
+      flex-direction: column;
+      margin: 30px 0;
+    }
+    
+    .path-step {
+      position: relative;
+      padding: 20px 20px 20px 50px;
+      margin-bottom: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+      transition: var(--transition);
+    }
+    
+    .path-step:hover {
+      transform: translateX(5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+    
+    .path-step::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--primary-color);
+    }
+    
+    .path-step::after {
+      content: '';
+      position: absolute;
+      left: 30px;
+      top: 100%;
+      height: 20px;
+      width: 2px;
+      background: var(--primary-color);
+    }
+    
+    .path-step:last-child::after {
+      display: none;
+    }
+    
+    .path-step.completed::before {
+      background: var(--accent-color);
+      content: '✓';
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+    
+    .section-indicator {
+      display: inline-block;
+      background: var(--primary-color);
+      color: white;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+    
+    .code-output {
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+      padding: 20px;
+      margin-top: 15px;
+    }
+
+    @media (max-width: 992px) {
+      .sidebar {
+        position: static;
+        margin-bottom: 30px;
+      }
+      
+      .section-title::after {
+        width: 100px;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Barre de progression -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- Bannière de gratuité -->
+  <div class="free-banner">
+      <span>Plateforme d'apprentissage 100% GRATUITE <span class="free-badge">SANS ABONNEMENT</span></span>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+      <div class="container">
+          <a class="navbar-brand" href="Devoir_sem2.html">
+              <h1>Dev<span class="brand-primary">Academy</span></h1>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                      <a class="nav-link" href="courHtml.html">HTML</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="courCss.html">CSS</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="courJavaScript.html">JavaScript</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                          <i class="fab fa-bootstrap me-2"></i>Bootstrap
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="Exo.html">Exercices</a></li>
+                          <li><a class="dropdown-item" href="courBootstrap.html">Tutoriels</a></li>
+                          <li><a class="dropdown-item" href="courBootstrap.html">Apprendre Bootstrap</a></li>
+                      </ul>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="courExercices.html">Exercices</a></li>
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                          <i class="fas fa-question-circle me-2"></i>Quiz
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="Quizhtml.html">HTML</a></li>
+                          <li><a class="dropdown-item" href="Quizcss.html">CSS</a></li>
+                          <li><a class="dropdown-item" href="Quizjs.html">JavaScript</a></li>
+                          <li><a class="dropdown-item" href="Quizbootstrap.html">Bootstrap</a></li>
+                      </ul>
+                  </li>
+              </ul>
+              <!-- Boutons Connexion / Inscription -->
+              <div class="d-flex">
+                  <a href="#" class="btn btn-outline-success me-2" data-bs-toggle="modal"
+                      data-bs-target="#loginModal">Connexion</a>
+                  <a href="#" class="btn btn-success" data-bs-toggle="modal"
+                      data-bs-target="#registerModal">Inscription</a>
+              </div>
+          </div>
+      </div>
+  </nav>
+
+  <!-- Scroll to top button -->
+  <div class="scroll-top">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <div class="container py-4">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-lg-3 mb-4">
+        <div class="sidebar">
+          <h3 class="text-center mb-4"><i class="fab fa-html5 me-2 text-success"></i>HTML</h3>
+          <a href="#what-is-html" class="sidebar-link"><i class="fas fa-question-circle"></i>Qu'est-ce que HTML ?</a>
+          <a href="#how-works" class="sidebar-link"><i class="fas fa-cogs"></i>Comment ça marche ?</a>
+          <a href="#structure" class="sidebar-link active"><i class="fas fa-sitemap"></i>Structure HTML</a>
+          <a href="#elements" class="sidebar-link"><i class="fas fa-cube"></i>Éléments de base</a>
+          <a href="#lists" class="sidebar-link"><i class="fas fa-list"></i>Listes</a>
+          <a href="#tables" class="sidebar-link"><i class="fas fa-table"></i>Tableaux</a>
+          <a href="#forms" class="sidebar-link"><i class="fas fa-file-alt"></i>Formulaires</a>
+          <a href="#semantic" class="sidebar-link"><i class="fas fa-code"></i>HTML sémantique</a>
+          <a href="#resources" class="sidebar-link"><i class="fas fa-book"></i>Ressources</a>
+          <a href="#exercices" class="sidebar-link fw-bold"><i class="fas fa-laptop-code"></i>Exercices</a>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="col-lg-9">
+        <div class="content-container">
+          <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png" alt="HTML Icon" class="html-icon">
+          
+          <h1 class="section-title">Maîtriser HTML : Fondations du Web</h1>
+          
+          <div class="html-explanation">
+            <h3 id="what-is-html"><i class="fas fa-question-circle me-2 text-primary"></i>Qu'est-ce que HTML ?</h3>
+            <p>HTML (HyperText Markup Language) est le <strong>langage standard</strong> utilisé pour créer et structurer le contenu des pages web. C'est la <strong>fondation de tout site web</strong>, qui définit la structure et le contenu d'une page.</p>
+            
+            <div class="analogy-box">
+              <h5><i class="fas fa-lightbulb me-2 text-warning"></i>Analogie pratique</h5>
+              <p>Pensez à HTML comme à la <strong>structure d'une maison</strong> :</p>
+              <ul>
+                <li>Les <span class="highlight">&lt;h1&gt;</span> et <span class="highlight">&lt;h2&gt;</span> sont les titres principaux (fondations)</li>
+                <li>Les <span class="highlight">&lt;p&gt;</span> sont les murs (contenu principal)</li>
+                <li>Les <span class="highlight">&lt;img&gt;</span> sont les fenêtres (éléments visuels)</li>
+                <li>Les <span class="highlight">&lt;a&gt;</span> sont les portes (liens entre les pièces)</li>
+              </ul>
+              <p>Sans HTML, un site web serait comme une maison sans structure - impossible à construire !</p>
+            </div>
+          </div>
+          
+          <div class="progress-section">
+            <h3 id="how-works"><i class="fas fa-cogs me-2 text-info"></i>Comment fonctionne HTML ?</h3>
+            <p>HTML fonctionne avec un système de <strong>balises</strong> qui entourent le contenu pour indiquer au navigateur comment l'afficher :</p>
+            
+            <div class="row mt-4">
+              <div class="col-md-6">
+                <div class="feature-card">
+                  <i class="fas fa-code"></i>
+                  <h5>Balises d'ouverture et fermeture</h5>
+                  <p>La plupart des éléments HTML ont une balise d'ouverture <span class="highlight">&lt;balise&gt;</span> et une balise de fermeture <span class="highlight">&lt;/balise&gt;</span> avec le contenu entre les deux.</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="feature-card">
+                  <i class="fas fa-window-restore"></i>
+                  <h5>Rôle du navigateur</h5>
+                  <p>Le navigateur web (Chrome, Firefox, etc.) lit le code HTML et le transforme en page visuelle que les utilisateurs peuvent voir et interagir avec.</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="timeline">
+              <h4 class="mb-4">Évolution d'HTML</h4>
+              <div class="timeline-item">
+                <h5>1991 - HTML 1.0</h5>
+                <p>Première version avec 18 balises seulement</p>
+              </div>
+              <div class="timeline-item">
+                <h5>1995 - HTML 2.0</h5>
+                <p>Standardisation par l'IETF</p>
+              </div>
+              <div class="timeline-item">
+                <h5>1997 - HTML 4.0</h5>
+                <p>Introduction des CSS et support multimédia</p>
+              </div>
+              <div class="timeline-item">
+                <h5>2014 - HTML5</h5>
+                <p>Version moderne avec sémantique améliorée et API avancées</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="progress-section">
+            <h3 id="structure"><i class="fas fa-sitemap me-2 text-success"></i>Structure de Base d'une Page HTML</h3>
+            <p>Toute page HTML suit une structure fondamentale qui sert de squelette à votre contenu :</p>
+            
+            <div class="code-block">
+              <div class="code-header">
+                <span>structure.html</span>
+                <button class="copy-btn"><i class="far fa-copy me-2"></i>Copier</button>
+              </div>
+              <pre><code><span class="code-line" data-line="1">&lt;!DOCTYPE html&gt;</span>
+<span class="code-line" data-line="2">&lt;html lang="fr"&gt;</span>
+<span class="code-line" data-line="3">&lt;head&gt;</span>
+<span class="code-line" data-line="4">  &lt;meta charset="UTF-8"&gt;</span>
+<span class="code-line" data-line="5">  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span>
+<span class="code-line" data-line="6">  &lt;title&gt;Titre de la page&lt;/title&gt;</span>
+<span class="code-line" data-line="7">  &lt;!-- Métadonnées et liens CSS --&gt;</span>
+<span class="code-line" data-line="8">&lt;/head&gt;</span>
+<span class="code-line" data-line="9">&lt;body&gt;</span>
+<span class="code-line" data-line="10">  &lt;!-- Contenu visible de la page --&gt;</span>
+<span class="code-line" data-line="11">  &lt;header&gt;</span>
+<span class="code-line" data-line="12">    &lt;!-- En-tête de page --&gt;</span>
+<span class="code-line" data-line="13">  &lt;/header&gt;</span>
+<span class="code-line" data-line="14">  </span>
+<span class="code-line" data-line="15">  &lt;main&gt;</span>
+<span class="code-line" data-line="16">    &lt;!-- Contenu principal --&gt;</span>
+<span class="code-line" data-line="17">    &lt;section&gt;</span>
+<span class="code-line" data-line="18">      &lt;h1&gt;Titre principal&lt;/h1&gt;</span>
+<span class="code-line" data-line="19">      &lt;p&gt;Paragraphe de texte&lt;/p&gt;</span>
+<span class="code-line" data-line="20">    &lt;/section&gt;</span>
+<span class="code-line" data-line="21">  &lt;/main&gt;</span>
+<span class="code-line" data-line="22">  </span>
+<span class="code-line" data-line="23">  &lt;footer&gt;</span>
+<span class="code-line" data-line="24">    &lt;!-- Pied de page --&gt;</span>
+<span class="code-line" data-line="25">  &lt;/footer&gt;</span>
+<span class="code-line" data-line="26">&lt;/body&gt;</span>
+<span class="code-line" data-line="27">&lt;/html&gt;</span></code></pre>
+            </div>
+            
+            <div class="row mt-4">
+              <div class="col-md-4">
+                <div class="feature-card">
+                  <i class="fas fa-file-medical"></i>
+                  <h5>&lt;!DOCTYPE html&gt;</h5>
+                  <p>Déclaration obligatoire pour indiquer la version HTML (HTML5)</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="feature-card">
+                  <i class="fas fa-heading"></i>
+                  <h5>&lt;head&gt;</h5>
+                  <p>Contient les métadonnées, liens CSS, et autres informations non visibles</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="feature-card">
+                  <i class="fas fa-body"></i>
+                  <h5>&lt;body&gt;</h5>
+                  <p>Contient tout le contenu visible de la page (texte, images, etc.)</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="quiz-container">
+              <div class="quiz-question">
+                <i class="fas fa-question-circle me-2 text-primary"></i>Quelle balise contient le contenu principal visible d'une page web ?
+              </div>
+              <div class="quiz-option" data-correct="true">&lt;body&gt;</div>
+              <div class="quiz-option">&lt;head&gt;</div>
+              <div class="quiz-option">&lt;html&gt;</div>
+              <div class="quiz-option">&lt;main&gt;</div>
+              <div class="quiz-feedback correct">
+                <i class="fas fa-check-circle me-2"></i>Correct ! La balise &lt;body&gt; contient tout le contenu visible de la page.
+              </div>
+            </div>
+          </div>
+          
+          <div class="progress-section">
+            <h3 id="elements"><i class="fas fa-cube me-2 text-primary"></i>Éléments de base en HTML</h3>
+            
+            <div class="mb-4">
+              <h5><i class="fas fa-paragraph me-2"></i>Paragraphe &lt;p&gt;</h5>
+              <p>La balise <span class="highlight">&lt;p&gt;</span> définit un paragraphe de texte. C'est l'élément de base pour le contenu textuel.</p>
+              
+              <div class="code-block">
+                <div class="code-header">
+                  <span>paragraphe.html</span>
+                  <button class="copy-btn"><i class="far fa-copy me-2"></i>Copier</button>
+                </div>
+                <pre><code><span class="code-line" data-line="1">&lt;p&gt;Ceci est un paragraphe de texte. En HTML, les paragraphes sont des éléments de bloc qui structurent votre contenu.&lt;/p&gt;</span>
+<span class="code-line" data-line="2">&lt;p&gt;Un deuxième paragraphe montre comment le navigateur ajoute automatiquement un espace entre les éléments.&lt;/p&gt;</span></code></pre>
+              </div>
+              
+              <div class="code-output">
+                <h6>Résultat :</h6>
+                <p>Ceci est un paragraphe de texte. En HTML, les paragraphes sont des éléments de bloc qui structurent votre contenu.</p>
+                <p>Un deuxième paragraphe montre comment le navigateur ajoute automatiquement un espace entre les éléments.</p>
+              </div>
+            </div>
+            
+            <div class="mb-4">
+              <h5><i class="fas fa-heading me-2"></i>En-têtes &lt;h1&gt; à &lt;h6&gt;</h5>
+              <p>Les balises d'en-tête créent une hiérarchie de titres essentielle pour la structure et le référencement.</p>
+              
+              <div class="code-block">
+                <div class="code-header">
+                  <span>titres.html</span>
+                  <button class="copy-btn"><i class="far fa-copy me-2"></i>Copier</button>
+                </div>
+                <pre><code><span class="code-line" data-line="1">&lt;h1&gt;Titre Principal (Niveau 1)&lt;/h1&gt;</span>
+<span class="code-line" data-line="2">&lt;h2&gt;Section Importante (Niveau 2)&lt;/h2&gt;</span>
+<span class="code-line" data-line="3">&lt;h3&gt;Sous-section (Niveau 3)&lt;/h3&gt;</span>
+<span class="code-line" data-line="4">&lt;h4&gt;Titre Niveau 4&lt;/h4&gt;</span>
+<span class="code-line" data-line="5">&lt;h5&gt;Titre Niveau 5&lt;/h5&gt;</span>
+<span class="code-line" data-line="6">&lt;h6&gt;Titre Niveau 6&lt;/h6&gt;</span></code></pre>
+              </div>
+              
+              <div class="code-output">
+                <h6>Résultat :</h6>
+                <h1>Titre Principal (Niveau 1)</h1>
+                <h2>Section Importante (Niveau 2)</h2>
+                <h3>Sous-section (Niveau 3)</h3>
+                <h4>Titre Niveau 4</h4>
+                <h5>Titre Niveau 5</h5>
+                <h6>Titre Niveau 6</h6>
+              </div>
+              
+              <div class="alert alert-info mt-3">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                <strong>Bonnes pratiques :</strong> Utilisez une seule balise &lt;h1&gt; par page pour votre titre principal. 
+                Cela aide les moteurs de recherche à comprendre votre contenu.
+              </div>
+            </div>
+          </div>
+          
+          <div class="progress-section">
+            <h3 id="lists"><i class="fas fa-list me-2 text-success"></i>Listes en HTML</h3>
+            
+            <div class="row">
+              <div class="col-md-6">
+                <div class="feature-card">
+                  <i class="fas fa-list-ul"></i>
+                  <h5>Liste Non Ordonnée</h5>
+                  <p>Pour les éléments sans ordre particulier (liste à puces)</p>
+                  <pre class="mt-3"><code>&lt;ul&gt;
+  &lt;li&gt;Élément 1&lt;/li&gt;
+  &lt;li&gt;Élément 2&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                  <div class="code-output mt-3">
+                    <h6>Résultat :</h6>
+                    <ul>
+                      <li>Élément 1</li>
+                      <li>Élément 2</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="feature-card">
+                  <i class="fas fa-list-ol"></i>
+                  <h5>Liste Ordonnée</h5>
+                  <p>Pour les éléments séquentiels (liste numérotée)</p>
+                  <pre class="mt-3"><code>&lt;ol&gt;
+  &lt;li&gt;Première étape&lt;/li&gt;
+  &lt;li&gt;Deuxième étape&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+                  <div class="code-output mt-3">
+                    <h6>Résultat :</h6>
+                    <ol>
+                      <li>Première étape</li>
+                      <li>Deuxième étape</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="progress-section">
+            <h3 id="tables"><i class="fas fa-table me-2 text-warning"></i>Tableaux en HTML</h3>
+            <p>Les tableaux organisent les données en lignes et colonnes :</p>
+            
+            <div class="code-block">
+              <div class="code-header">
+                <span>tableau.html</span>
+                <button class="copy-btn"><i class="far fa-copy me-2"></i>Copier</button>
+              </div>
+              <pre><code><span class="code-line" data-line="1">&lt;table&gt;</span>
+<span class="code-line" data-line="2">  &lt;tr&gt;</span>
+<span class="code-line" data-line="3">    &lt;th&gt;Nom&lt;/th&gt;</span>
+<span class="code-line" data-line="4">    &lt;th&gt;Âge&lt;/th&gt;</span>
+<span class="code-line" data-line="5">    &lt;th&gt;Ville&lt;/th&gt;</span>
+<span class="code-line" data-line="6">  &lt;/tr&gt;</span>
+<span class="code-line" data-line="7">  &lt;tr&gt;</span>
+<span class="code-line" data-line="8">    &lt;td&gt;Marie&lt;/td&gt;</span>
+<span class="code-line" data-line="9">    &lt;td&gt;28&lt;/td&gt;</span>
+<span class="code-line" data-line="10">    &lt;td&gt;Paris&lt;/td&gt;</span>
+<span class="code-line" data-line="11">  &lt;/tr&gt;</span>
+<span class="code-line" data-line="12">  &lt;tr&gt;</span>
+<span class="code-line" data-line="13">    &lt;td&gt;Pierre&lt;/td&gt;</span>
+<span class="code-line" data-line="14">    &lt;td&gt;32&lt;/td&gt;</span>
+<span class="code-line" data-line="15">    &lt;td&gt;Lyon&lt;/td&gt;</span>
+<span class="code-line" data-line="16">  &lt;/tr&gt;</span>
+<span class="code-line" data-line="17">&lt;/table&gt;</span></code></pre>
+            </div>
+            
+            <div class="code-output mt-3">
+              <h6>Résultat :</h6>
+              <table class="example-table">
+                <tr>
+                  <th>Nom</th>
+                  <th>Âge</th>
+                  <th>Ville</th>
+                </tr>
+                <tr>
+                  <td>Marie</td>
+                  <td>28</td>
+                  <td>Paris</td>
+                </tr>
+                <tr>
+                  <td>Pierre</td>
+                  <td>32</td>
+                  <td>Lyon</td>
+                </tr>
+              </table>
+            </div>
+            
+            <div class="mt-4">
+              <h5>Éléments d'un tableau :</h5>
+              <ul>
+                <li><span class="highlight">&lt;table&gt;</span> : Conteneur principal</li>
+                <li><span class="highlight">&lt;tr&gt;</span> : Définit une ligne de tableau</li>
+                <li><span class="highlight">&lt;th&gt;</span> : Cellule d'en-tête (gras et centré)</li>
+                <li><span class="highlight">&lt;td&gt;</span> : Cellule standard de données</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="progress-section">
+            <h3 id="forms"><i class="fas fa-file-alt me-2 text-info"></i>Formulaires en HTML</h3>
+            <p>Les formulaires permettent aux utilisateurs d'interagir avec votre site :</p>
+            
+            <div class="code-block">
+              <div class="code-header">
+                <span>formulaire.html</span>
+                <button class="copy-btn"><i class="far fa-copy me-2"></i>Copier</button>
+              </div>
+              <pre><code><span class="code-line" data-line="1">&lt;form action="/traitement" method="POST"&gt;</span>
+<span class="code-line" data-line="2">  &lt;label for="nom"&gt;Nom :&lt;/label&gt;</span>
+<span class="code-line" data-line="3">  &lt;input type="text" id="nom" name="nom" required&gt;</span>
+<span class="code-line" data-line="4">  </span>
+<span class="code-line" data-line="5">  &lt;label for="email"&gt;Email :&lt;/label&gt;</span>
+<span class="code-line" data-line="6">  &lt;input type="email" id="email" name="email" required&gt;</span>
+<span class="code-line" data-line="7">  </span>
+<span class="code-line" data-line="8">  &lt;label for="message"&gt;Message :&lt;/label&gt;</span>
+<span class="code-line" data-line="9">  &lt;textarea id="message" name="message"&gt;&lt;/textarea&gt;</span>
+<span class="code-line" data-line="10">  </span>
+<span class="code-line" data-line="11">  &lt;button type="submit"&gt;Envoyer&lt;/button&gt;</span>
+<span class="code-line" data-line="12">&lt;/form&gt;</span></code></pre>
+            </div>
+            
+            <div class="interactive-form mt-4">
+              <h5><i class="fas fa-play-circle me-2 text-success"></i>Formulaire interactif</h5>
+              <form id="demoForm">
+                <div class="mb-3">
+                  <label for="demoNom" class="form-label">Nom :</label>
+                  <input type="text" class="form-control" id="demoNom" required>
+                </div>
+                <div class="mb-3">
+                  <label for="demoEmail" class="form-label">Email :</label>
+                  <input type="email" class="form-control" id="demoEmail" required>
+                </div>
+                <div class="mb-3">
+                  <label for="demoMessage" class="form-label">Message :</label>
+                  <textarea class="form-control" id="demoMessage" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Envoyer</button>
+              </form>
+            </div>
+            
+            <div class="learning-path mt-5">
+              <h4><i class="fas fa-road me-2"></i>Parcours d'apprentissage HTML</h4>
+              <div class="path-step completed">
+                <h5>Fondations HTML</h5>
+                <p>Comprendre la structure de base et les balises essentielles</p>
+              </div>
+              <div class="path-step completed">
+                <h5>Éléments de formulaire</h5>
+                <p>Créer des formulaires interactifs avec différentes entrées</p>
+              </div>
+              <div class="path-step">
+                <h5>HTML Sémantique</h5>
+                <p>Utiliser les balises sémantiques pour une meilleure accessibilité</p>
+              </div>
+              <div class="path-step">
+                <h5>Multimédia et intégration</h5>
+                <p>Ajouter des images, vidéos et autres contenus externes</p>
+              </div>
+              <div class="path-step">
+                <h5>Accessibilité Web</h5>
+                <p>Rendre vos sites accessibles à tous les utilisateurs</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="conclusion-box">
+            <h4><i class="fas fa-graduation-cap me-2"></i>Conclusion</h4>
+            <p>HTML est la <strong>fondation indispensable</strong> de tout site web. Bien que simple à apprendre, sa maîtrise est essentielle pour créer des sites bien structurés, accessibles et optimisés pour le référencement.</p>
+            <p>En comprenant les concepts fondamentaux présentés ici, vous avez posé les bases solides pour devenir un développeur web compétent.</p>
+          </div>
+          
+          <div class="d-flex justify-content-between mt-5 flex-wrap">
+            <a href="#" class="try-btn"><i class="fas fa-arrow-left me-2"></i>Précédent</a>
+            <div class="my-2">
+              <a href="Quizhtml.html" class="try-btn me-2"><i class="fas fa-question-circle me-2"></i>Quiz Complet</a>
+              <a href="courExercices.html" class="try-btn"><i class="fas fa-laptop-code me-2"></i>Exercices Pratiques</a>
+            </div>
+            <a href="courCss.html" class="try-btn">Suivant<i class="fas fa-arrow-right ms-2"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <h5 class="mb-4"><i class="fas fa-book me-2"></i>Ressources</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white d-block mb-2">Documentation HTML</a></li>
+            <li><a href="#" class="text-white d-block mb-2">Guide du débutant</a></li>
+            <li><a href="#" class="text-white d-block mb-2">Référence des balises</a></li>
+            <li><a href="#" class="text-white d-block mb-2">Exercices pratiques</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5 class="mb-4"><i class="fas fa-graduation-cap me-2"></i>Formations</h5>
+          <ul class="list-unstyled">
+            <li><a href="courHtml.html" class="text-white d-block mb-2">HTML Avancé</a></li>
+            <li><a href="courCss.html" class="text-white d-block mb-2">CSS Moderne</a></li>
+            <li><a href="courJavaScript.html" class="text-white d-block mb-2">JavaScript</a></li>
+            <li><a href="courBootstrap.html" class="text-white d-block mb-2">Développement Frontend</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5 class="mb-4"><i class="fas fa-envelope me-2"></i>Contact</h5>
+          <p class="mb-3">Des questions sur HTML ? Contactez notre équipe pédagogique</p>
+          <div class="d-flex">
+            <a href="#" class="text-white me-3 fs-5"><i class="fab fa-github"></i></a>
+            <a href="#" class="text-white me-3 fs-5"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="text-white me-3 fs-5"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-white fs-5"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+      <hr class="my-4 bg-light">
+      <div class="text-center">
+        <p>&copy; 2024 DevAcademy - École de développement web. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Barre de progression
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById("progressBar").style.width = scrolled + "%";
+      
+      // Bouton scroll to top
+      const scrollTopBtn = document.querySelector('.scroll-top');
+      if (window.pageYOffset > 300) {
+        scrollTopBtn.classList.add('show');
+      } else {
+        scrollTopBtn.classList.remove('show');
+      }
+      
+      // Mise à jour du menu actif
+      updateActiveSection();
+    });
+    
+    // Scroll to top
+    document.querySelector('.scroll-top').addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+    
+    // Navigation fluide
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 100,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
+    // Copie de code
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const codeBlock = this.closest('.code-block').querySelector('code');
+        const textArea = document.createElement('textarea');
+        textArea.value = codeBlock.textContent;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        
+        // Feedback visuel
+        const originalText = this.innerHTML;
+        this.innerHTML = '<i class="fas fa-check me-2"></i>Copié!';
+        setTimeout(() => {
+          this.innerHTML = originalText;
+        }, 2000);
+      });
+    });
+    
+    // Animation des éléments
+    const animateOnScroll = () => {
+      const elements = document.querySelectorAll('.feature-card, .html-icon, .conclusion-box');
+      
+      elements.forEach(element => {
+        const position = element.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+        
+        if(position < screenPosition) {
+          element.style.opacity = 1;
+          element.style.transform = 'translateY(0)';
+        }
+      });
+    };
+    
+    // Initialiser les animations
+    document.querySelectorAll('.feature-card, .html-icon, .conclusion-box').forEach(el => {
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    });
+    
+    window.addEventListener('scroll', animateOnScroll);
+    window.addEventListener('load', animateOnScroll);
+    
+    // Gestion du menu actif
+    function updateActiveSection() {
+      const sections = document.querySelectorAll('.progress-section');
+      const sidebarLinks = document.querySelectorAll('.sidebar-link');
+      
+      let currentSection = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (window.pageYOffset >= sectionTop - 150) {
+          currentSection = section.id;
+        }
+      });
+      
+      sidebarLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${currentSection}`) {
+          link.classList.add('active');
+        }
+      });
+    }
+    
+    // Quiz interactif
+    document.querySelectorAll('.quiz-option').forEach(option => {
+      option.addEventListener('click', function() {
+        const isCorrect = this.getAttribute('data-correct') === 'true';
+        const feedback = this.closest('.quiz-container').querySelector('.quiz-feedback');
+        
+        // Réinitialiser les autres options
+        this.closest('.quiz-container').querySelectorAll('.quiz-option').forEach(opt => {
+          opt.classList.remove('correct', 'incorrect');
+        });
+        
+        // Mettre à jour l'état de l'option sélectionnée
+        if (isCorrect) {
+          this.classList.add('correct');
+          feedback.classList.add('correct');
+          feedback.classList.remove('incorrect');
+        } else {
+          this.classList.add('incorrect');
+          feedback.classList.add('incorrect');
+          feedback.classList.remove('correct');
+          
+          // Mettre en évidence la bonne réponse
+          const correctOption = this.closest('.quiz-container').querySelector('.quiz-option[data-correct="true"]');
+          correctOption.classList.add('correct');
+        }
+      });
+    });
+    
+    // Formulaire interactif
+    document.getElementById('demoForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Formulaire soumis avec succès! En production, ces données seraient envoyées au serveur.');
+    });
+    
+    // Initialiser la mise à jour de la section active
+    window.addEventListener('load', updateActiveSection);
+  </script>
+</body>
+</html>

@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevAcademy - Apprendre Bootstrap 5</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0c5e11;
+            --primary-light: #13cd13;
+            --secondary: #4a90e2;
+            --accent: #ff6b35;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --success-bg: #e8f5e9;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark);
+            background-color: #f8fbfa;
+            overflow-x: hidden;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Bannière de gratuité */
+        .free-banner {
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .free-banner:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(45deg,
+                    rgba(255, 255, 255, 0.1),
+                    rgba(255, 255, 255, 0.1) 10px,
+                    rgba(255, 255, 255, 0.2) 10px,
+                    rgba(255, 255, 255, 0.2) 20px);
+            z-index: 1;
+        }
+
+        .free-banner span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .free-badge {
+            background: #ff6b35;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-left: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Navigation */
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 5px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.8rem;
+            letter-spacing: -1px;
+        }
+
+        .navbar-brand span {
+            color: var(--primary);
+        }
+
+        .navbar-nav .nav-link {
+            position: relative;
+            color: var(--dark) !important;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--primary-light);
+            transition: all 0.3s ease-in-out;
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav .nav-link:hover::before {
+            width: 100%;
+        }
+
+        .navbar-nav .nav-link:hover {
+            background-color: rgba(19, 205, 19, 0.1);
+        }
+
+        .dropdown-item:focus,
+        .dropdown-item:hover {
+            background-color: var(--primary-light);
+            color: white;
+        }
+
+        /* Section principale */
+        .hero-section {
+            background: linear-gradient(rgba(12, 94, 17, 0.9), rgba(19, 205, 19, 0.7)), 
+                         url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070') center/cover;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-content:hover {
+            transform: translateY(-10px);
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--primary-light);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        /* Sections de cours */
+        .features-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .card-header {
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Statistiques */
+        .stats-section {
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+            color: white;
+            padding: 60px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: auto;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-light);
+        }
+
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: var(--primary-light);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+        }
+
+        .course-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Bannière de gratuité -->
+    <div class="free-banner">
+        <span>Plateforme d'apprentissage 100% GRATUITE <span class="free-badge">SANS ABONNEMENT</span></span>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="Devoir_sem2.html">
+                <h1>Dev<span>Academy</span></h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="courHtml.html">HTML</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courCss.html">CSS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courJavaScript.html">JavaScript</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fab fa-bootstrap me-2"></i>Bootstrap
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="Exo.html">Exercices</a></li>
+                            <li><a class="dropdown-item" href="courBootstrap.html">Tutoriels</a></li>
+                            <li><a class="dropdown-item" href="courBootstrap.html">Apprendre Bootstrap</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courExercices.html">Exercices</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-question-circle me-2"></i>Quiz
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="Quizhtml.html">HTML</a></li>
+                            <li><a class="dropdown-item" href="Quizcss.html">CSS</a></li>
+                            <li><a class="dropdown-item" href="Quizjs.html">JavaScript</a></li>
+                            <li><a class="dropdown-item" href="Quizbootstrap.html">Bootstrap</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- Boutons Connexion / Inscription -->
+                <div class="d-flex">
+                    <a href="#" class="btn btn-outline-success me-2" data-bs-toggle="modal"
+                        data-bs-target="#loginModal">Connexion</a>
+                    <a href="#" class="btn btn-success" data-bs-toggle="modal"
+                        data-bs-target="#registerModal">Inscription</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section Hero -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Bootstrap 5</h1>
+                <p class="lead">La dernière version du framework CSS le plus populaire au monde</p>
+                <p>Bootstrap 5 est la dernière version de Bootstrap, avec une refonte en douceur. Cependant, Internet
+                    Explorer 11 et les versions antérieures ne sont pas pris en charge et jQuery est remplacé par
+                    JavaScript vanilla.</p>
+                <a href="Bootstrap.html">
+                    <button class="btn btn-lg btn-outline-light mt-3">
+                        <i class="fas fa-graduation-cap me-2"></i>Commencer à apprendre
+                    </button>
+                </a>
+                <div class="mt-4">
+                    <span class="badge bg-light text-dark me-2">Responsive</span>
+                    <span class="badge bg-light text-dark me-2">Flexbox</span>
+                    <span class="badge bg-light text-dark me-2">Sans jQuery</span>
+                    <span class="badge bg-light text-dark">Personnalisable</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-bold">Ce que vous allez apprendre</h2>
+                <p class="lead text-muted">Maîtrisez Bootstrap 5 avec notre programme complet</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="card-header">
+                            <i class="feature-icon fas fa-layout"></i>
+                            <h3>Système de grille</h3>
+                        </div>
+                        <div class="card-body p-4">
+                            <p>Apprenez à créer des mises en page réactives avec le système de grille flexbox de Bootstrap. Créez des designs qui s'adaptent parfaitement à tous les appareils.</p>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Conteneurs et breakpoints</li>
+                                <li class="list-group-item">Grilles imbriquées</li>
+                                <li class="list-group-item">Alignement et répartition</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="card-header">
+                            <i class="feature-icon fas fa-paint-brush"></i>
+                            <h3>Composants</h3>
+                        </div>
+                        <div class="card-body p-4">
+                            <p>Découvrez tous les composants prêts à l'emploi de Bootstrap : navigation, boutons, formulaires, cartes, modals et bien plus encore.</p>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Navigation et barres</li>
+                                <li class="list-group-item">Formulaires avancés</li>
+                                <li class="list-group-item">Composants interactifs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="card-header">
+                            <i class="feature-icon fas fa-magic"></i>
+                            <h3>Personnalisation</h3>
+                        </div>
+                        <div class="card-body p-4">
+                            <p>Personnalisez Bootstrap avec Sass, modifiez les variables par défaut et créez votre propre thème unique pour vos projets.</p>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Variables Sass</li>
+                                <li class="list-group-item">Thèmes personnalisés</li>
+                                <li class="list-group-item">Build personnalisé</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4 stat-item">
+                    <div class="stat-number" id="studentCount">25,0+</div>
+                    <div class="stat-label">Étudiants</div>
+                </div>
+                <div class="col-md-4 stat-item">
+                    <div class="stat-number" id="courseCount">30+</div>
+                    <div class="stat-label">Cours</div>
+                </div>
+                <div class="col-md-4 stat-item">
+                    <div class="stat-number" id="projectCount">50+</div>
+                    <div class="stat-label">Projets</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4 class="mb-4">DevAcademy</h4>
+                    <p>Plateforme d'apprentissage en ligne gratuite pour les développeurs web. Apprenez les dernières technologies et devenez un développeur full-stack.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-md-2 col-6 mb-4">
+                    <h5 class="mb-4">Navigation</h5>
+                    <div class="footer-links">
+                        <a href="#">Accueil</a>
+                        <a href="#">Cours</a>
+                        <a href="#">Exercices</a>
+                        <a href="#">Quiz</a>
+                        <a href="#">Contact</a>
+                    </div>
+                </div>
+                
+                <div class="col-md-2 col-6 mb-4">
+                    <h5 class="mb-4">Cours</h5>
+                    <div class="footer-links">
+                        <a href="courHtml.html">HTML</a>
+                        <a href="courCss.html">CSS</a>
+                        <a href="courJavaScript.html">JavaScript</a>
+                        <a href="courBootstrap.html">Bootstrap</a>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-4">Newsletter</h5>
+                    <p>Inscrivez-vous pour recevoir les dernières actualités et les nouveaux cours.</p>
+                    <div class="input-group mt-3">
+                        <input type="email" class="form-control" placeholder="Votre email">
+                        <button class="btn btn-success" type="button">S'inscrire</button>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="mt-4 mb-4" style="border-color: rgba(255,255,255,0.1);">
+            
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p>&copy; 2024 DevAcademy. Tous droits réservés.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#" class="text-white me-3">Conditions d'utilisation</a>
+                    <a href="#" class="text-white">Politique de confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom Script -->
+    <script>
+        // Animation du défilement
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Effet de navbar au défilement
+        window.addEventListener('scroll', function () {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Animation des éléments au défilement
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            elements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight - 100) {
+                    el.classList.add('animated');
+                }
+            });
+        };
+
+        // Initialisation
+        window.addEventListener('load', animateOnScroll);
+        window.addEventListener('scroll', animateOnScroll);
+
+        // Animation des statistiques
+        const counters = document.querySelectorAll('.stat-number');
+        const speed = 200;
+
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText.replace('+', '').replace(',', '');
+
+                if (counter.id === 'studentCount' && count < target) {
+                    counter.innerText = Math.ceil(count + target / speed).toLocaleString() + '+';
+                    setTimeout(updateCount, 10);
+                }
+            };
+
+            // Set initial data attributes
+            if (counter.id === 'studentCount') counter.setAttribute('data-target', 25000);
+            if (counter.id === 'courseCount') counter.setAttribute('data-target', 120);
+            if (counter.id === 'projectCount') counter.setAttribute('data-target', 350);
+
+            updateCount();
+        });
+    </script>
+</body>
+</html>

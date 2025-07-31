@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevAcademy</title>
+    <link rel="stylesheet" href="../Bootstrap/css/bootstrap.css">
+    <link href="../TP_Bootstrap/Projet_bootstrap.css" rel="stylesheet" />
+    <link href="Devoir_sem2.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../TP_Bootstrap/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        * {
+            margin: 0;
+        }
+
+        body {
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img,
+        picture,
+        video,
+        canvas,
+        svg {
+            display: block;
+            max-width: 100%;
+        }
+
+        input,
+        button,
+        textarea,
+        select {
+            font: inherit;
+        }
+
+        p,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            overflow-wrap: break-word;
+        }
+
+        #root,
+        #__next {
+            isolation: isolate;
+        }
+
+        body,
+        html {
+            height: 100%;
+        }
+
+        :root {
+            font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            font-weight: 400;
+
+            color-scheme: light dark;
+            color: #000000;
+            background-color: #e2e8f0;
+
+            font-synthesis: none;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            background-image: url("../TP_Bootstrap/img/portfolio/5.jpg");
+        }
+
+
+        #app {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 32px;
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+                0 8px 10px -6px rgb(0 0 0 / 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: min(100%, 500px);
+        }
+
+        button {
+            display: inline-block;
+            outline: none;
+            cursor: pointer;
+            border-radius: 3px;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 16px;
+            padding: 2px 16px;
+            height: 38px;
+            min-width: 96px;
+            min-height: 38px;
+            border: none;
+            color: #fff;
+            background-color: rgb(88, 101, 242);
+            transition: background-color 0.17s ease, color 0.17s ease;
+        }
+
+        button:hover {
+            background-color: rgb(71, 82, 196);
+        }
+
+        .answers {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            padding: 12px;
+            display: block;
+            border: 2px solid #64748b;
+            border-radius: 4px;
+            margin: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            font-family: monospace;
+            font-size: 24px;
+        }
+
+        label:hover {
+            border-color: #646cff;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+
+        label:has(:checked) {
+            background-color: #646cff50;
+            border-color: #646cff;
+        }
+
+        progress {
+            width: 100%;
+        }
+
+        .correct {
+            background-color: #bbf7d0 !important;
+        }
+
+        .incorrect {
+            background-color: #fecaca !important;
+        }
+
+        .big-title {
+            font-size: 64px;
+            color: red;
+        }
+
+        .js {
+            background: yellow;
+            display: inline-block;
+            padding-left: 6px;
+            margin-left: -6px;
+            padding-right: 6px;
+            margin-right: -6px;
+            padding-top: 6px;
+            padding-bottom: 6px;
+        }
+
+        .navbar-nav .nav-link {
+            position: relative;
+            color: hsl(0, 0%, 90%);
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 50%;
+            background-color: #1faf1acb;
+            transition: all 0.3s ease-in-out;
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav .nav-link:hover::before {
+            width: 100%;
+        }
+
+        .navbar-nav .nav-link:hover {
+           
+            background-color: #13cd1352;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            font-weight: 500;
+            font-size: 17px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark fixed-top navbar  ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="Devoir_sem2.html">
+                <h5 style="color: black;font-weight: bold;font-size: 30px;">Dev<span style="color: #0c5e11c4;">Academy</span> </h5>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="courHtml.html"
+                            style="color: hsl(0, 0%, 4%);">Html</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courCss.html" style="color: hsl(0, 0%, 4%);">Css</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="courBootstrap.html" style="color: hsl(0, 0%, 4%);"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Bootstrap
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="courExercices.html">Exercices</a></li>
+                            <li><a class="dropdown-item" href="courBootstrap.html">tutoriels</a></li>
+                            <li><a class="dropdown-item" href="courBootstrap.html">Apprendre bootstrap</a></li>
+                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courJavaScript.html" style="color: hsl(0, 0%, 4%);">JavaScript</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courExercices.html" style="color: hsl(0, 0%, 4%);">Exercices</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="courQuiz.html" style="color: hsl(0, 0%, 4%);"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Quiz
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="Quizhtml.html">Html</a></li>
+                            <li><a class="dropdown-item" href="Quizcss.html">Css</a></li>
+                            <li><a class="dropdown-item" href="Quizjs.html">JavaScript</a></li>
+                            <li><a class="dropdown-item" href="Quizbootstrap.html">Bootstrap</a></li>
+                        </ul>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit" href="#"
+                        style="color: hsl(0, 0%, 4%);">Recherche</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+
+    <div id="app">
+        <h1 style="font-size: 30px;margin-right: 270px;margin-left: -19px;">
+            <span class="js">CSS</span>
+            Quiz
+        </h1>
+        <button id="start">Commencer</button>
+    </div>
+
+    <script>
+
+        const Questions = [
+            {
+                question: 'Que signifie CSS ?',
+                answers: ['Creative Style Sheets', 'Cascading Style Sheets', 'Colorful Style Sheets'],
+                correct: 'Cascading Style Sheets',
+            },
+            {
+                question: 'Quelle déclaration CSS permet d\'ajouter une majuscule à chaque mot d\'un élément HTML ?',
+                answers: ['text-transform: capitalize;', 'font-transform: capitalize;', 'C\'est impossible '],
+                correct: 'text-transform: capitalize;',
+            },
+            {
+                question: 'Quelle propriété CSS est utilisée pour définir une image de fond pour un élément ?',
+                answers: ['background-image', 'bg-image', 'image-source'],
+                correct: 'background-image',
+            },
+            {
+                question: 'Quelle propriété CSS est utilisée pour ajouter une ombre à un élément ?',
+                answers: ['box-shadow', 'shadow', 'element-shadow'],
+                correct: 'box-shadow',
+            },
+            {
+                question: 'Quel sélecteur CSS est utilisé pour sélectionner tous les éléments enfants directs d\'un élément ?',
+                answers: ['>', '+', '~'],
+                correct: '>',
+            },
+            {
+                question: 'Quelle propriété CSS est utilisée pour modifier l\'opacité d\'un élément ?',
+                answers: ['transparency', 'opacity', 'visibility'],
+                correct: 'opacity',
+            },
+            {
+                question: 'Quelle propriété CSS est utilisée pour définir un cadre autour d\'un élément ?',
+                answers: ['frame', 'border', 'outline'],
+                correct: 'border',
+            },
+            {
+                question: 'Quelle propriété CSS est utilisée pour définir la largeur d\'un élément ?',
+                answers: ['width', 'element-width', 'size'],
+                correct: 'width',
+            },
+            {
+                question: 'Quelle propriété CSS est utilisée pour aligner du texte à droite ?',
+                answers: ['text-align', 'text-right', 'align-right'],
+                correct: 'text-align',
+            },
+            {
+                question: 'Quelle propriété CSS est utilisée pour ajouter de l\'espace à l\'extérieur d\'un élément ?',
+                answers: ['margin', 'padding', 'border'],
+                correct: 'margin',
+            },
+        ];
+
+        const TIMEOUT = 2000;
+        const app = document.querySelector("#app");
+        const startButton = document.querySelector("#start");
+
+        startButton.addEventListener("click", startQuiz);
+
+        function startQuiz(event) {
+            event.stopPropagation();
+            let currentQuestion = 0;
+            let score = 0;
+
+            displayQuestion(currentQuestion);
+
+            function clean() {
+                while (app.firstElementChild) {
+                    app.firstElementChild.remove();
+                }
+                const progress = getProgressBar(Questions.length, currentQuestion);
+                app.appendChild(progress);
+            }
+
+            function displayQuestion(index) {
+                clean();
+                const question = Questions[index];
+
+                if (!question) {
+                    displayFinishMessage();
+                    return;
+                }
+
+                const title = getTitleElement(question.question);
+                app.appendChild(title);
+                const answersDiv = createAnswers(question.answers);
+                app.appendChild(answersDiv);
+
+                const submitButton = getSubmitButton();
+                submitButton.addEventListener("click", submit);
+                app.appendChild(submitButton);
+            }
+
+            function displayFinishMessage() {
+                const h1 = document.createElement("h1");
+                h1.innerText = "Bravo ! Tu as terminé le quiz.";
+                const p = document.createElement("p");
+                p.innerText = `Tu as eu ${score} sur ${Questions.length} points !`;
+
+                app.appendChild(h1);
+                app.appendChild(p);
+            }
+
+            function submit() {
+                const selectedAnswer = app.querySelector('input[name="answer"]:checked');
+
+                if (!selectedAnswer) {
+                    alert("Veuillez sélectionner une réponse !");
+                    return;
+                }
+
+                disableAllAnswers();
+
+                const value = selectedAnswer.value;
+                const question = Questions[currentQuestion];
+                const isCorrect = question.correct === value;
+
+                if (isCorrect) {
+                    score++;
+                }
+
+                showFeedback(isCorrect, question.correct, value);
+                displayNextQuestionButton(() => {
+                    currentQuestion++;
+                    displayQuestion(currentQuestion);
+                });
+
+                const feedback = getFeedbackMessage(isCorrect, question.correct);
+                app.appendChild(feedback);
+            }
+
+            function createAnswers(answers) {
+                const answersDiv = document.createElement("div");
+                answersDiv.classList.add("answers");
+
+                for (const answer of answers) {
+                    const label = getAnswerElement(answer);
+                    answersDiv.appendChild(label);
+                }
+
+                return answersDiv;
+            }
+        }
+
+        function getTitleElement(text) {
+            const title = document.createElement("h3");
+            title.innerText = text;
+            return title;
+        }
+
+        function formatId(text) {
+            return text.replaceAll(" ", "-").replaceAll('"', "'").toLowerCase();
+        }
+
+        function getAnswerElement(text) {
+            const label = document.createElement("label");
+            label.innerText = text;
+            const input = document.createElement("input");
+            const id = formatId(text);
+            input.id = id;
+            label.htmlFor = id;
+            input.setAttribute("type", "radio");
+            input.setAttribute("name", "answer");
+            input.setAttribute("value", text);
+            label.appendChild(input);
+            return label;
+        }
+
+        function getSubmitButton() {
+            const submitButton = document.createElement("button");
+            submitButton.innerText = "Submit";
+            return submitButton;
+        }
+
+        function showFeedback(isCorrect, correct, answer) {
+            const correctAnswerId = formatId(correct);
+            const correctElement = document.querySelector(`label[for="${correctAnswerId}"]`);
+
+            const selectedAnswerId = formatId(answer);
+            const selectedElement = document.querySelector(`label[for="${selectedAnswerId}"]`);
+
+            correctElement.classList.add("correct");
+            selectedElement.classList.add(isCorrect ? "correct" : "incorrect");
+        }
+
+        function getFeedbackMessage(isCorrect, correct) {
+            const paragraph = document.createElement("p");
+            paragraph.innerText = isCorrect
+                ? "Bravo ! Tu as eu la bonne réponse"
+                : `Désolé... mais la bonne réponse était ${correct}`;
+
+            return paragraph;
+        }
+
+        function getProgressBar(max, value) {
+            const progress = document.createElement("progress");
+            progress.setAttribute("max", max);
+            progress.setAttribute("value", value);
+            return progress;
+        }
+
+        function displayNextQuestionButton(callback) {
+            let remainingTimeout = TIMEOUT;
+
+            app.querySelector("button").remove();
+
+            const getButtonText = () => `Next (${remainingTimeout / 1000}s)`;
+
+            const nextButton = document.createElement("button");
+            nextButton.innerText = getButtonText();
+            app.appendChild(nextButton);
+
+            const interval = setInterval(() => {
+                remainingTimeout -= 1000;
+                nextButton.innerText = getButtonText();
+            }, 1000);
+
+            const timeout = setTimeout(() => {
+                handleNextQuestion();
+            }, TIMEOUT);
+
+            const handleNextQuestion = () => {
+                clearInterval(interval);
+                clearTimeout(timeout);
+                callback();
+            };
+
+            nextButton.addEventListener("click", () => {
+                handleNextQuestion();
+            });
+        }
+
+        function disableAllAnswers() {
+            const radioInputs = document.querySelectorAll('input[type="radio"]');
+            for (const radio of radioInputs) {
+                radio.disabled = true;
+            }
+        }
+    </script>
+<script>
+    document.addEventListener('scroll', function () {
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+</script>
+    <script src="../Bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

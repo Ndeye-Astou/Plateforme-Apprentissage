@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style0.css">
+
+    <style>
+        html {
+            background: url(images1/car6.jpg);
+        }
+
+        .navbar-nav .nav-link::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 50%;
+            background-color: white;
+            transition: all 0.3s ease-in-out;
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav .nav-link:hover::before {
+            width: 100%;
+
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: hsl(0, 0%, 90%);
+            background-color: #126417c4;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            font-weight: bold;
+            font-size: 17px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+
+        <div class="menu_toggle">
+            <span></span>
+        </div>
+
+        <div class="logo">
+            <p>Ebek <span>tek</span></p>
+        </div>
+        <ul class="menu">
+            <li><a href="projet_web1.html">Acceuil</a></li>
+            <li><a href="Vehicules.html">Vehicules</a></li>
+            <li><a href="Services.html">Services</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+        </ul>
+        <button class="login_btn">LOGIN</button>
+    </header>
+
+    <section id="home">
+        <div class="left">
+            <h1>Acheter <span>chez Ebek</span> en sureté</h1><br><br>
+            <strong>
+                <h1 style="text-align: center;margin-right: 23px;">A Propos
+            </strong></h1>
+            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi porro nesciunt nemo rem quasi ad ratione
+                esse dolore consequatur exercitationem, placeat natus facere eius, quas vel id in minima enim.
+            </h3>
+
+        </div>
+        <div class="right">
+            <img style="width: 700px; margin-left: 76px;" src="images1/propos.png">
+        </div>
+    </section>
+
+
+
+</body>
+
+</html>

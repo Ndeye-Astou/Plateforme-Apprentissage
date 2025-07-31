@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutoriel JavaScript - DevAcademy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0c5e11;
+            --primary-light: #13cd13;
+            --secondary: #4a90e2;
+            --accent: #ff6b35;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --success-bg: #e8f5e9;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark);
+            background-color: #f8fbfa;
+            line-height: 1.6;
+        }
+
+        /* Bannière de gratuité */
+        .free-banner {
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .free-banner:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(45deg,
+                    rgba(255, 255, 255, 0.1),
+                    rgba(255, 255, 255, 0.1) 10px,
+                    rgba(255, 255, 255, 0.2) 10px,
+                    rgba(255, 255, 255, 0.2) 20px);
+            z-index: 1;
+        }
+
+        .free-banner span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .free-badge {
+            background: #ff6b35;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-left: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Navigation */
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 5px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.8rem;
+            letter-spacing: -1px;
+        }
+
+        .navbar-brand span {
+            color: var(--primary);
+        }
+
+        .navbar-nav .nav-link {
+            position: relative;
+            color: var(--dark) !important;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--primary-light);
+            transition: all 0.3s ease-in-out;
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav .nav-link:hover::before {
+            width: 100%;
+        }
+
+        .navbar-nav .nav-link:hover {
+            background-color: rgba(19, 205, 19, 0.1);
+        }
+
+        .dropdown-item:focus,
+        .dropdown-item:hover {
+            background-color: var(--primary-light);
+            color: white;
+        }
+
+        /* Layout */
+        .main-container {
+            display: flex;
+            margin-top: 20px;
+            gap: 24px;
+        }
+
+        .sidebar {
+            background: white;
+            padding: 20px;
+            border: 1px solid #0cf904;
+            box-shadow: 0 0 15px #0aff02;
+            border-radius: 12px;
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+            flex: 0 0 250px;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            background: white;
+            border: 1px solid #09ff00;
+            box-shadow: 0 0 15px #0aff02;
+            border-radius: 12px;
+            margin-right: 20px;
+        }
+
+        @media (max-width: 992px) {
+            .main-container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                position: static;
+                width: 100%;
+            }
+        }
+
+        /* Content styles */
+        .js-logo {
+            display: block;
+            margin: 0 auto 20px;
+            width: 100px;
+            height: 70px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            transition: all 0.3s ease;
+        }
+
+        h1:hover,
+        h2:hover {
+            color: #f01010;
+        }
+
+        h1 {
+            font-size: 35px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-top: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-light);
+        }
+
+        h3 {
+            font-size: 22px;
+            margin-top: 25px;
+        }
+
+        h4 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .sidebar h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar-link {
+            display: block;
+            padding: 8px 0;
+            color: var(--dark);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .sidebar-link:hover {
+            background-color: #09ff00;
+            padding-left: 10px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .code-block {
+            background: #f5f5f5;
+            border-left: 4px solid var(--primary);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+            overflow-x: auto;
+        }
+
+        .btn-try {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 15px 0;
+            transition: all 0.3s;
+        }
+
+        .btn-try:hover {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            transform: scale(1.05);
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .quiz-btn,
+        .exercises-btn {
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .quiz-btn:hover,
+        .exercises-btn:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Bannière de gratuité -->
+    <div class="free-banner">
+        <span>Plateforme d'apprentissage 100% GRATUITE <span class="free-badge">SANS ABONNEMENT</span></span>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <h1>Dev<span>Academy</span></h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="courHtml.html">HTML</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courCss.html">CSS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courJavaScript.html">JavaScript</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fab fa-bootstrap me-2"></i>Bootstrap
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="courExercices.html">Exercices</a></li>
+                            <li><a class="dropdown-item" href="courJavaScript.html">Tutoriels</a></li>
+                            <li><a class="dropdown-item" href="courJavaScript.html">Apprendre Bootstrap</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courExercices.html">Exercices</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="Quizjs.html" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-question-circle me-2"></i>Quiz
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="courHtml.html">HTML</a></li>
+                            <li><a class="dropdown-item" href="courCss.html">CSS</a></li>
+                            <li><a class="dropdown-item" href="courJavaScript.html">JavaScript</a></li>
+                            <li><a class="dropdown-item" href="courBootstrap.html">Bootstrap</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- Boutons Connexion / Inscription -->
+                <div class="d-flex">
+                    <a href="#" class="btn btn-outline-success me-2" data-bs-toggle="modal"
+                        data-bs-target="#loginModal">Connexion</a>
+                    <a href="#" class="btn btn-success" data-bs-toggle="modal"
+                        data-bs-target="#registerModal">Inscription</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container main-container">
+        <aside class="sidebar">
+            <h1><strong>JavaScript</strong></h1>
+            <a href="#" class="sidebar-link">Introduction JavaScript</a>
+            <a href="#" class="sidebar-link">Formulaires JS</a>
+            <a href="#" class="sidebar-link">Les Tableaux JavaScript</a>
+            <a href="#" class="sidebar-link">Les Variables JS</a>
+            <a href="#" class="sidebar-link">Les Constants JS</a>
+            <a href="#" class="sidebar-link">Les opérations JS</a>
+            <a href="#" class="sidebar-link">Les Objets JavaScript</a>
+            <a href="#" class="sidebar-link">Les Types de données JS</a>
+            <a href="#" class="sidebar-link">Les Structures JS</a>
+            <a href="#" class="sidebar-link">Les Fonctions JS</a>
+            <a href="#" class="sidebar-link">DOM JS</a>
+            <a href="#" class="sidebar-link">Événements</a>
+        </aside>
+
+        <section class="content">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="Logo JavaScript"
+                class="js-logo">
+
+            <h2>Tutoriel JavaScript</h2>
+
+            <div class="intro-section">
+                <h3>Introduction</h3>
+                <h4>Historique de sa création :</h4>
+                <p>JavaScript, souvent abrégé en "JS", a été développé par Brendan Eich chez Netscape Communications
+                    Corporation en 1995. À l'origine, il était destiné à ajouter des fonctionnalités interactives aux
+                    pages web statiques en permettant de manipuler le contenu HTML de manière dynamique du côté client,
+                    c'est-à-dire le navigateur de l'utilisateur. Depuis sa création, JavaScript a évolué pour devenir un
+                    langage de programmation polyvalent utilisé dans de nombreux contextes, y compris le développement
+                    web, les applications mobiles, les jeux, les serveurs, etc.</p>
+
+                <h4>Cadre d'utilisation :</h4>
+                <p>JavaScript est principalement utilisé du côté client pour rendre les pages web interactives et
+                    dynamiques. Il est largement utilisé pour créer des fonctionnalités telles que des animations, des
+                    formulaires interactifs, des jeux, des applications web en temps réel, etc. De plus en plus,
+                    JavaScript est également utilisé côté serveur grâce à des plates-formes comme Node.js, qui
+                    permettent aux développeurs d'utiliser JavaScript pour développer des applications backend.</p>
+
+                <h4>Manière de l'utiliser :</h4>
+                <p>JavaScript est un langage de programmation léger et interprété, ce qui signifie qu'il est exécuté
+                    ligne par ligne par un moteur JavaScript dans l'environnement du navigateur ou du serveur. Pour
+                    l'utiliser dans une page web, vous pouvez incorporer du code JavaScript directement dans les balises
+                    <code>&lt;script&gt;</code> de votre HTML ou lier des fichiers JavaScript externes. Du côté serveur,
+                    vous pouvez exécuter du code JavaScript à l'aide de Node.js ou d'autres environnements d'exécution.
+                </p>
+
+                <h4>Outils essentiels pour utiliser JavaScript :</h4>
+                <ul>
+                    <li><strong>Éditeurs de code :</strong> Des outils comme Visual Studio Code, Sublime Text, ou Atom
+                        sont populaires pour écrire du code JavaScript avec des fonctionnalités d'édition avancées.</li>
+                    <li><strong>Navigateurs web :</strong> Les navigateurs modernes comme Google Chrome, Mozilla
+                        Firefox, et Safari disposent de puissants outils de développement intégrés qui permettent de
+                        déboguer et de profiler du code JavaScript.</li>
+                    <li><strong>Frameworks et bibliothèques :</strong> Des frameworks comme React.js, AngularJS, ou
+                        Vue.js facilitent le développement d'applications web complexes en fournissant des structures et
+                        des fonctionnalités prêtes à l'emploi.</li>
+                </ul>
+
+                <h4>Portée en tant que langage de programmation :</h4>
+                <p>JavaScript est l'un des langages de programmation les plus largement utilisés dans le monde, en
+                    grande partie grâce à sa flexibilité et à sa portabilité. Il est devenu un langage incontournable
+                    pour le développement web moderne, et son utilisation continue de croître dans de nombreux autres
+                    domaines, notamment le développement mobile, l'IoT (Internet des Objets), et les applications
+                    serveur.</p>
+
+                <h4>Exécution de JavaScript côté Client et Côté Serveur</h4>
+
+                <h4>Côté Client (Navigateur Web) :</h4>
+                <p>JavaScript est principalement utilisé côté client pour rendre les pages web interactives. Voici
+                    comment incorporer du JavaScript dans une page HTML pour exécution côté client :</p>
+
+                <div class="code-block">
+                    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="fr"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Titre de la page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Mon Premier Script JavaScript&lt;/h1&gt;
+    &lt;script&gt;
+        // Code JavaScript ici
+        alert("Bonjour, monde !");
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+
+                <h4>Côté Serveur (Node.js) :</h4>
+                <p>JavaScript peut également être exécuté côté serveur grâce à des environnements comme Node.js. Voici
+                    comment créer et exécuter un script JavaScript côté serveur avec Node.js :</p>
+
+                <ol>
+                    <li><strong>Installer Node.js :</strong> Téléchargez et installez Node.js depuis le site officiel
+                        (https://nodejs.org/).</li>
+                    <li><strong>Créer un fichier JavaScript :</strong> Créez un fichier <code>hello.js</code> avec le
+                        code suivant :
+                        <div class="code-block">
+                            <pre><code>// hello.js 
+console.log("Bonjour, monde !");</code></pre>
+                        </div>
+                    </li>
+                    <li><strong>Exécuter le script :</strong> Ouvrez une ligne de commande et exécutez le script avec la
+                        commande <code>node</code> :
+                        <div class="code-block">
+                            <pre><code>node hello.js</code></pre>
+                        </div>
+                    </li>
+                </ol>
+                <a href="#" class="btn-try">Essayez-le vous-même</a>
+                <p>Vous verrez la sortie "Bonjour, monde !" dans la console.</p>
+            </div>
+
+            <div class="variables-section">
+                <h3>Les variables, les types de données et les opérateurs</h3>
+
+                <h4>Variables et constantes :</h4>
+                <ul>
+                    <li><strong>Variables :</strong> En JavaScript, les variables sont déclarées à l'aide des mots-clés
+                        <code>var</code>, <code>let</code>. Elles sont utilisées pour stocker des valeurs qui peuvent
+                        être modifiées au cours de l'exécution du programme.
+                        <div class="code-block">
+                            <pre><code>var age = 25;
+let nom = "Jean";</code></pre>
+                        </div>
+                    </li>
+                    <li><strong>Constantes :</strong> Les constantes sont déclarées avec le mot-clé <code>const</code>
+                        et ne peuvent pas être réaffectées après leur initialisation.
+                        <div class="code-block">
+                            <pre><code>const PI = 3.14;</code></pre>
+                        </div>
+                    </li>
+                </ul>
+
+                <h4>Différences de portées entre les déclarations :</h4>
+                <ul>
+                    <li><code>var</code> : La portée des variables déclarées avec <code>var</code> est fonctionnelle, ce
+                        qui signifie qu'elles peuvent être accessibles même en dehors de leur bloc de code parent.</li>
+                    <li><code>let</code> : La portée des variables déclarées avec <code>let</code> est limitée au bloc
+                        de code dans lequel elles sont déclarées.</li>
+                    <li><code>const</code> : Les constantes déclarées avec <code>const</code> ne peuvent pas être
+                        réaffectées après leur initialisation et ont une portée de bloc.</li>
+                </ul>
+
+                <h4>Types d'opérateurs :</h4>
+                <ul>
+                    <li>Opérateurs arithmétiques : <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>,
+                        <code>%</code>
+                    </li>
+                    <li>Opérateurs d'affectation : <code>=</code>, <code>+=</code>, <code>-=</code>, <code>*=</code>,
+                        <code>/=</code>
+                    </li>
+                    <li>Opérateurs de comparaison : <code>==</code>, <code>===</code>, <code>!==</code>,
+                        <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>
+                    </li>
+                    <li>Opérateurs logiques : <code>&amp;&amp;</code> (ET), <code>||</code> (OU), <code>!</code> (NON)
+                    </li>
+                </ul>
+            </div>
+
+            <div class="console-section">
+                <h3>La Console JavaScript et Méthodes d'Affichage</h3>
+
+                <h4>La Console JavaScript :</h4>
+                <p>La console JavaScript est un outil de débogage intégré dans les navigateurs web, qui permet aux
+                    développeurs de vérifier et de déboguer leur code JavaScript. Elle affiche des messages, des
+                    erreurs, des avertissements et d'autres informations utiles pendant l'exécution du code.</p>
+                <p>La console est un outil essentiel pour comprendre le comportement de votre code et détecter les
+                    erreurs. Voici quelques raisons pour lesquelles elle est importante :</p>
+                <ul>
+                    <li>Affichage des valeurs des variables pendant l'exécution du programme</li>
+                    <li>Détection des erreurs de syntaxe, d'exécution et de logique</li>
+                    <li>Affichage des messages de débogage pour comprendre le flux d'exécution du programme</li>
+                    <li>Mesure des performances du code en affichant le temps d'exécution des fonctions et des boucles
+                    </li>
+                </ul>
+
+                <h4>Méthodes d'Affichage en JavaScript :</h4>
+                <p>JavaScript offre plusieurs méthodes pour afficher des messages, des valeurs et d'autres informations
+                    dans la console. Voici les principales méthodes d'affichage :</p>
+
+                <ol>
+                    <li><strong>console.log()</strong> : Utilisée pour afficher des messages simples dans la console.
+                        <div class="code-block">
+                            <pre><code>console.log("Hello, world!");</code></pre>
+                        </div>
+                    </li>
+                    <li><strong>console.error()</strong> : Utilisée pour afficher des messages d'erreur dans la console.
+                        <div class="code-block">
+                            <pre><code>console.error("Une erreur s'est produite!");</code></pre>
+                        </div>
+                    </li>
+                    <li><strong>console.warn()</strong> : Utilisée pour afficher des messages d'avertissement dans la
+                        console.
+                        <div class="code-block">
+                            <pre><code>console.warn("Attention : cette action est risquée!");</code></pre>
+                        </div>
+                    </li>
+                    <li><strong>console.info()</strong> : Utilisée pour afficher des messages informatifs dans la
+                        console.
+                        <div class="code-block">
+                            <pre><code>console.info("Informations : ce site utilise des cookies.");</code></pre>
+                        </div>
+                    </li>
+                    <li><strong>console.debug()</strong> : Utilisée pour afficher des messages de débogage dans la
+                        console. Cette méthode est similaire à <code>console.log()</code>, mais est principalement
+                        utilisée pour le débogage avancé.
+                        <div class="code-block">
+                            <pre><code>console.debug("Valeur de la variable x :", x);</code></pre>
+                        </div>
+                    </li>
+                    <li><strong>console.table()</strong> : Utilisée pour afficher des données tabulaires dans la
+                        console.
+                        <div class="code-block">
+                            <pre><code>const users = [ 
+    { name: "Alice", age: 30 },
+    { name: "Bob", age: 35 },
+    { name: "Charlie", age: 25 }
+];
+console.table(users);</code></pre>
+                        </div>
+                        <a href="#" class="btn-try">Essayez-le vous-même</a>
+                    </li>
+                </ol>
+
+                <p>Ces méthodes vous permettent d'afficher différentes informations dans la console JavaScript, ce qui
+                    est utile pour le débogage, le suivi des performances et la compréhension du comportement de votre
+                    code.</p>
+            </div>
+
+            <div class="data-types-section">
+                <h3>Types de Données en JavaScript</h3>
+                <p>En JavaScript, les variables peuvent stocker différents types de données. Voici les principaux types
+                    de données en JavaScript :</p>
+
+                <ol>
+                    <li><strong>Nombre (Number)</strong> : Représente les nombres entiers ou décimaux.
+                        <div class="code-block">
+                            <pre><code>let age = 30; // entier
+let prix = 19.99; // décimal</code></pre>
+                        </div>
+                    </li>
+                    <li><strong>Chaîne de caractères (String)</strong> : Représente une séquence de caractères.
+                        <div class="code-block">
+                            <pre><code>let nom = "Jean";</code></pre>
+                        </div>
+                    </li>
+                    <li><strong>Booléen (Boolean)</strong> : Représente une valeur vraie (true) ou fausse (false).
+                        <div class="code-block">
+                            <pre><code>let estMajeur = true;</code></pre>
+                        </div>
+                    </li>
+                    <li><strong>Null</strong> : Représente une valeur nulle ou vide.
+                        <div class="code-block">
+                            <pre><code>let resultat = null;</code></pre>
+                        </div>
+                    </li>
+                    <li><strong>Indéfini (Undefined)</strong> : Représente une variable qui n'a pas encore été affectée
+                        ou à laquelle aucune valeur n'a été attribuée.
+                        <div class="code-block">
+                            <pre><code>let prenom;</code></pre>
+                        </div>
+                    </li>
+                    <li><strong>Objet (Object)</strong> : Représente une collection de données et/ou de fonctionnalités.
+                        <div class="code-block">
+                            <pre><code>let personne = { nom: "Alice", age: 25 };</code></pre>
+                        </div>
+                    </li>
+                    <li><strong>Tableau (Array)</strong> : Représente une collection ordonnée d'éléments.
+                        <div class="code-block">
+                            <pre><code>let nombres = [1, 2, 3, 4, 5];</code></pre>
+                        </div>
+                    </li>
+                </ol>
+
+                <h4>Vérification des Types de Données :</h4>
+                <p>Pour vérifier le type de données d'une variable en JavaScript, vous pouvez utiliser l'opérateur
+                    <code>typeof</code>.
+                </p>
+                <div class="code-block">
+                    <pre><code>let x = 10;
+console.log(typeof x); // Affiche "number"</code></pre>
+                </div>
+
+                <h4>Conversion de Types :</h4>
+                <p>JavaScript est un langage de typage dynamique, ce qui signifie que les types de données peuvent être
+                    convertis implicitement ou explicitement. Voici quelques exemples de conversion de types :</p>
+
+                <ul>
+                    <li><strong>Conversion explicite :</strong>
+                        <div class="code-block">
+                            <pre><code>let age = "30";
+console.log(typeof age); // Affiche "string"
+age = parseInt(age); // Conversion en nombre entier
+console.log(typeof age); // Affiche "number"</code></pre>
+                        </div>
+                    </li>
+                    <li><strong>Conversion implicite :</strong>
+                        <div class="code-block">
+                            <pre><code>let total = 10 + "20"; // Concaténation de chaînes (conversion implicite)
+console.log(total); // Affiche "1020"</code></pre>
+                        </div>
+                    </li>
+                </ul>
+
+                <p>La connaissance des types de données et de leurs comportements est essentielle pour travailler
+                    efficacement avec JavaScript.</p>
+            </div>
+
+            <div class="structures-section">
+                <h3>Structures de contrôle</h3>
+
+                <h4>Structures conditionnelles :</h4>
+                <ul>
+                    <li><strong>if...else</strong> : Utilisée pour exécuter des blocs de code en fonction d'une
+                        condition.
+                        <div class="code-block">
+                            <pre><code>let age = 18;
+if (age >= 18) {
+    console.log("Vous êtes majeur.");
+} else {
+    console.log("Vous êtes mineur.");
+}</code></pre>
+                        </div>
+                    </li>
+                    <li><strong>Ternaire</strong> : Une version abrégée de la structure if...else.
+                        <div class="code-block">
+                            <pre><code>let estMajeur = (age >= 18) ? "majeur" : "mineur";
+console.log("Vous êtes " + estMajeur + ".");</code></pre>
+                        </div>
+                    </li>
+                </ul>
+
+                <h4>Structures répétitives :</h4>
+                <ul>
+                    <li><strong>while</strong> : Exécute un bloc de code tant qu'une condition spécifiée est vraie.
+                        <div class="code-block">
+                            <pre><code>let i = 0;
+while (i < 5) {
+    console.log(i);
+    i++;
+}</code></pre>
+                        </div>
+                    </li>
+                    <li><strong>do...while</strong> : Exécute un bloc de code une fois, puis répète l'exécution tant
+                        qu'une condition spécifiée est vraie.
+                        <div class="code-block">
+                            <pre><code>let i = 0;
+do {
+    console.log(i);
+    i++;
+} while (i < 5);</code></pre>
+                        </div>
+                    </li>
+                    <li><strong>for</strong> : Exécute un bloc de code un certain nombre de fois.
+                        <div class="code-block">
+                            <pre><code>for (let i = 0; i < 5; i++) {
+    console.log(i);
+}</code></pre>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="nav-buttons">
+                <a href="Quizjs.html">
+                    <button class="quiz-btn">Quiz JavaScript</button>
+                </a>
+                <a href="courExercices.html">
+                    <button class="exercises-btn">Exercices pratiques</button>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom Script -->
+    <script>
+        // Gestion du scroll pour la navbar
+        document.addEventListener('DOMContentLoaded', function () {
+            const navbar = document.getElementById('navbar');
+
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Animation pour les titres
+            const headings = document.querySelectorAll('h1, h2, h3, h4');
+            headings.forEach(heading => {
+                heading.addEventListener('mouseenter', function () {
+                    this.style.color = '#f01010';
+                });
+
+                heading.addEventListener('mouseleave', function () {
+                    this.style.color = '';
+                });
+            });
+
+            // Animation pour les liens de la sidebar
+            const sidebarLinks = document.querySelectorAll('.sidebar-link');
+            sidebarLinks.forEach(link => {
+                link.addEventListener('mouseenter', function () {
+                    this.style.backgroundColor = '#09ff00';
+                    this.style.color = 'white';
+                    this.style.fontWeight = 'bold';
+                    this.style.paddingLeft = '10px';
+                });
+
+                link.addEventListener('mouseleave', function () {
+                    this.style.backgroundColor = '';
+                    this.style.color = '';
+                    this.style.fontWeight = '';
+                    this.style.paddingLeft = '';
+                });
+            });
+
+            // Animation pour les boutons
+            const buttons = document.querySelectorAll('.btn-try, .quiz-btn, .exercises-btn');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function () {
+                    this.style.transform = 'translateY(-2px)';
+                });
+
+                button.addEventListener('mouseleave', function () {
+                    this.style.transform = '';
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

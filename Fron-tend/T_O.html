@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../Bootstrap/css/bootstrap.css">
+    <link href="../TP_Bootstrap/Projet_bootstrap.css" rel="stylesheet" />
+    <link href="Devoir_sem2.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../TP_Bootstrap/css/style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <style>
+        .d {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .d1 {
+
+            background: white;
+            height: 850px;
+            padding: 50px;
+            width: 50px;
+            margin-left: 24px;
+            border-color: #09ff00;
+            transition: 0.4s ease-in-out;
+            border: 1px solid #0cf904;
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 0 15px #0aff02;
+            border-radius: 12px;
+            position: sticky;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 57%;
+        }
+
+        .d2 {
+            font-size: 15px;
+            width: 50%;
+            padding-bottom: 15px;
+            margin-left: 24px;
+            background: white;
+            border-color: #09ff00;
+            transition: 0.4s ease-in-out;
+            border: 1px solid #09ff00;
+            transform: translateY(-10px) scale(1.00);
+            box-shadow: 0 0 15px #0aff02;
+            border-radius: 12px;
+            margin-right: 60px;
+        }
+
+        h1:hover {
+            text-align: center;
+            justify-content: center;
+            color: rgb(240, 16, 16);
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            justify-content: center;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        img:hover {
+            animation-name: rotate;
+            animation-duration: 1s;
+            animation-iteration-count: 10;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .m9:hover {
+            text-align: center;
+            justify-content: center;
+            color: rgb(240, 16, 16);
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .m1:hover {
+            text-align: center;
+            justify-content: center;
+            color: rgb(240, 16, 16);
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .m1 {
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+        h4 {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .etudiant {
+            font-weight: 0px;
+            font-size: small;
+            color: rgb(27, 26, 26);
+
+        }
+
+        section {
+            background-color: rgb(241, 248, 248);
+            color: black;
+        }
+
+        .etudiant:hover {
+            background-color: #09ff00;
+        }
+
+        div::before {
+            content: "";
+            width: 4px;
+            height: 100%;
+            margin: 0;
+
+
+        }
+
+        div::after {
+            content: "";
+            width: 4px;
+            height: 100%;
+            margin: 0 1%;
+        }
+
+        .but {
+            font-size: 19px;
+            background: green;
+            color: white;
+            padding: 2px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .but:hover {
+            background-color: transparent;
+            color: #09ff00;
+            border: 1px dashed #09ff00;
+            transition: 2s;
+            margin-left: 4%;
+            transform: scale(2);
+
+        }
+
+        .but {
+            font-size: 19px;
+            background: green;
+            color: white;
+            padding: 2px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .but:hover {
+            background-color: transparent;
+            color: #09ff00;
+            border: 1px dashed #09ff00;
+            transition: 2s;
+            margin-left: 4%;
+            transform: scale(2);
+
+        }
+
+        .but2 {
+            font-size: 19px;
+            background: green;
+            color: white;
+            padding: 2px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .but2:hover {
+            background-color: transparent;
+            color: #09ff00;
+            border: 1px dashed #09ff00;
+            transition: 2s;
+            margin-left: 10%;
+            transform: scale(2);
+
+        }
+
+
+        .navbar-nav .nav-link {
+            position: relative;
+            color: hsl(0, 0%, 90%);
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 50%;
+            background-color: #1faf1acb;
+            transition: all 0.3s ease-in-out;
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav .nav-link:hover::before {
+            width: 100%;
+        }
+
+        .navbar-nav .nav-link:hover {
+
+            background-color: #13cd1352;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            font-weight: 500;
+            font-size: 17px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark fixed-top navbar ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="Devoir_sem2.html">
+                <h5 style="color: black;font-weight: bold;font-size: 30px;">EBEK<span
+                        style="color: #0c5e11c4;">TEK</span> </h5>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="courHtml.html"
+                            style="color: hsl(0, 0%, 4%);">Html</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courCss.html" style="color: hsl(0, 0%, 4%);">Css</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="courBootstrap.html" style="color: hsl(0, 0%, 4%);"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Bootstrap
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="courExercices.html">Exercices</a></li>
+                            <li><a class="dropdown-item" href="courBootstrap.html">tutoriels</a></li>
+                            <li><a class="dropdown-item" href="courBootstrap.html">Apprendre bootstrap</a></li>
+                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courJavaScript.html" style="color: hsl(0, 0%, 4%);">JavaScript</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courExercices.html" style="color: hsl(0, 0%, 4%);">Exercices</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="courQuiz.html" style="color: hsl(0, 0%, 4%);"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Quiz
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="Quizhtml.html">Html</a></li>
+                            <li><a class="dropdown-item" href="Quizcss.html">Css</a></li>
+                            <li><a class="dropdown-item" href="Quizjs.html">JavaScript</a></li>
+                            <li><a class="dropdown-item" href="Quizbootstrap.html">Bootstrap</a></li>
+                        </ul>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit" href="#"
+                        style="color: hsl(0, 0%, 4%);">Recherche</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <section>
+        <div class="d">
+            <div class="d1">
+                <div>
+                    <h1 style="font-size: 28px;"><strong>Tableaux et Objets JS</strong></h1>
+                </div>
+                <div>
+                    <a href="courJavaScript.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Introduction JavaScript</h6>
+                    </a>
+                </div>
+                <div><a href="domjs.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Formulaires js</h6>
+                    </a></div>
+                <div><a href="courJavaScript.html">
+                        <h6 class="etudiant" style="font-weight: 900;"> Cours JavaScript</h6>
+                    </a></div>
+                <div><a href="courJavaScript.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Les Variables js</h6>
+                    </a></div>
+                <div><a href="courJavaScript.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Les Constants js</h6>
+                    </a></div>
+                <div><a href="courJavaScript.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Les oprérations js</h6>
+                    </a></div>
+                <div><a href="Quizjs.html">
+                        <h6 class="etudiant" style="font-weight: 900;"> Quiz JavaScript</h6>
+                    </a></div>
+                <div><a href="courJavaScript.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Les Types de données js</h6>
+                    </a></div>
+                <div><a href="courJavaScript.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Les Structures js</h6>
+                    </a></div>
+                <div><a href="fonctionjs.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Les Fonctions js</h6>
+                    </a></div>
+                <div><a href="domjs.html">
+                        <h6 class="etudiant" style="font-weight: 900;">DOM js</h6>
+                    </a></div>
+                <div><a href="Evenjs.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Evenements</h6>
+                    </a></div>
+            </div>
+
+
+
+            <div class="d2"
+                style="margin-left: 64px;width: 3123px;padding-left: 12px;height: auto;padding-right: 12px;">
+                <div>
+                    <img style="width: 100px;height: 70px;text-align: center;margin-left: 377px;margin-top: 7px;"
+                        src="js.png" alt="">
+                </div>
+
+                <div>
+                    <h2 style="text-align: center;font-size: 36px;">Les Tableaux et les Objets en JavaScript</h2>
+                </div>
+
+                <div>
+                    <p style="font-size: 17px;font-weight: 600;margin-left: 17px;">* Les Tableaux en JavaScript</p>
+                    <p>Les tableaux en JavaScript sont des structures de données utilisées pour stocker une collection
+                        d'éléments. Ils
+                        peuvent contenir une variété de types de données, y compris des nombres, des chaînes de
+                        caractères, des
+                        objets, voire d'autres tableaux. Les tableaux permettent d'organiser et de manipuler
+                        efficacement des données
+                        dans vos programmes JavaScript.</p>
+                    <p style="font-weight: 600;font-size: 14px;margin-left: 12px;">- Introduction aux Tableaux</p>
+                    <p>Un tableau en JavaScript est une collection ordonnée d'éléments, indexée par des entiers,
+                        commençant par 0
+                        pour le premier élément.</p>
+                    <p style="font-weight: 600;margin-left: 22px;"> Syntaxe d'un tableau js :</p>
+                    <div class="w3-panel w3-card w3-light-grey">
+                        <h4>Exemple</h4>
+                        <div class="w3-code htmlHigh notranslate">
+                            let fruits = ["Pomme", "Banane", "Orange", "Fraise"];
+                        </div>
+                    </div>
+                    <p>- Dans cet exemple, nous avons déclaré un tableau nommé <strong>fruits</strong> contenant quatre
+                        éléments : <strong style="color: rgb(155, 56, 38);font-weight: 100;">"Pomme"</strong>,
+                        <strong style="color: rgb(155, 56, 38);font-weight: 100;">"Banane"</strong> , <strong
+                            style="color: rgb(155, 56, 38);font-weight: 100;">"Orange"</strong> et <strong
+                            style="color: rgb(155, 56, 38);font-weight: 100;">"Fraise"</strong>.
+                    </p>
+                </div>
+
+                <div>
+                    <p style="font-weight: 600;font-size: 14px;margin-left: 12px;">- Accès aux Éléments d'un Tableau</p>
+                    <p>Pour accéder à un élément spécifique d'un tableau, vous pouvez utiliser son index entre crochets.
+                        Par
+                        exemple, pour accéder au deuxième élément du tableau <strong
+                            style="color: rgb(155, 56, 38);font-weight: 100;">fruits</strong>, vous pouvez utiliser
+                        <strong style="color: rgb(155, 56, 38);font-weight: 100;">fruits[1]</strong> :
+                    </p>
+
+                    <div class="w3-panel w3-card w3-light-grey">
+                        <h4>Exemple</h4>
+                        <div class="w3-code htmlHigh notranslate">
+                            console.log(fruits[1]); // Affiche "Banane"
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <p style="font-weight: 600;font-size: 14px;margin-left: 12px;">- Modification des Éléments d'un
+                        Tableau
+                    </p>
+                    <p>Vous pouvez modifier les éléments d'un tableau en utilisant leur index. Par exemple, pour
+                        remplacer "Banane"
+                        par "Ananas", vous pouvez faire :
+
+                    <div class="w3-panel w3-card w3-light-grey">
+                        <h4>Exemple</h4>
+                        <div class="w3-code htmlHigh notranslate">
+                            fruits[1] = "Ananas"; <br>
+                            console.log(fruits); // Affiche ["Pomme", "Ananas", "Orange", "Fraise"]
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <p style="font-weight: 600;font-size: 14px;margin-left: 12px;">- Ajout et Suppression d'Éléments
+                    </p>
+                    <p>Vous pouvez ajouter de nouveaux éléments à un tableau en utilisant la méthode
+                        <strong>push()</strong> ou en spécifiant
+                        directement un index. De même, vous pouvez supprimer des éléments en utilisant la méthode
+                        <strong>pop()</strong> pour
+                        supprimer le dernier élément, ou <strong>splice()</strong> pour supprimer un élément à un index
+                        spécifique.
+
+                    <div class="w3-panel w3-card w3-light-grey">
+                        <h4>Exemple</h4>
+                        <div class="w3-code htmlHigh notranslate">
+                            // Ajouter un élément à la fin du tableau <br>
+                            fruits.push("Cerise");<br>
+                            // Supprimer le dernier élément du tableau<br>
+                            fruits.pop();<br>
+                            // Ajouter un élément à un index spécifique<br>
+                            fruits.splice(1, 0, "Kiwi");<br>
+                            // Supprimer un élément à un index spécifique<br>
+                            fruits.splice(2, 1);<br>
+                            console.log(fruits); // Affiche ["Pomme", "Kiwi", "Orange", "Fraise"]
+                        </div>
+                    </div>
+                    <a class="navbar-brand" href="courExercices.html">
+                        <h5 style="color: hsl(0, 0%, 4%);margin-left: 5px;"><button class="but2">Essayez-le vous même
+                            </button>
+                        </h5>
+                    </a>
+                </div>
+
+                <div>
+                    <p style="font-weight: 600;font-size: 14px;margin-left: 12px;">- Parcourir un Tableau
+                    </p>
+                    <p>Vous pouvez parcourir tous les éléments d'un tableau en utilisant une boucle
+                        <strong>for</strong>, <strong>while</strong>, <strong>do...while</strong>, ou
+                        <strong>forEach()</strong>.
+
+                    <div class="w3-panel w3-card w3-light-grey">
+                        <h4>Exemple</h4>
+                        <div class="w3-code htmlHigh notranslate">
+                            // Utilisation d'une boucle for <br>
+                            for (let i = 0; i < fruits.length; i++) { <br>
+                                console.log(fruits[i]); <br>
+                                }<br>
+                                // Utilisation de la méthode forEach()<br>
+                                fruits.forEach(function(fruit) { <br>
+                                console.log(fruit);<br>
+                                });<br>
+                        </div>
+                    </div>
+
+                    <p style="font-weight: 600;font-size: 14px;margin-left: 12px;">- Utilisation de <strong
+                            style="color: rgb(155, 56, 38);">while</strong>
+                    </p>
+                    <p>La boucle <strong style="color: rgb(155, 56, 38); font-weight: 100;">while </strong> continue
+                        d'exécuter son bloc
+                        de code tant qu'une condition donnée est vraie. Voici un
+                        exemple de parcours d'un tableau avec <strong
+                            style="color: rgb(155, 56, 38); font-weight: 100;">while </strong> :
+                    </p>
+
+                    <div class="w3-panel w3-card w3-light-grey">
+                        <h4>Exemple</h4>
+                        <div class="w3-code htmlHigh notranslate">
+                            let fruits = ["Pomme", "Banane", "Orange", "Fraise"];<br>
+                            let index = 0;<br>
+                            while (index < fruits.length) {<br>
+                                console.log(fruits[index]); <br>
+                                index++; }
+                        </div>
+                    </div>
+                    <a class="navbar-brand" href="courExercices.html">
+                        <h5 style="color: hsl(0, 0%, 4%);margin-left: 5px;"><button class="but2">Essayez-le vous même
+                            </button>
+                        </h5>
+                    </a>
+
+                    <p style="font-weight: 600;font-size: 14px;margin-left: 12px;margin-top: 22px;">- Utilisation de
+                        <strong style="color: rgb(155, 56, 38);">do...while</strong>
+                    </p>
+
+                    <p>La boucle <strong style="color: rgb(155, 56, 38); font-weight: 100;">do...while </strong> est
+                        similaire à la boucle
+                        <strong style="color: rgb(155, 56, 38); font-weight: 100;">while </strong> , mais elle s'assure
+                        que le bloc de
+                        code est
+                        exécuté au
+                        moins une fois avant de vérifier la condition. Voici un exemple de parcours d'un tableau avec
+                        <strong style="color: rgb(155, 56, 38); font-weight: 100;">do...while </strong>
+                    </p>
+
+                    <div class="w3-panel w3-card w3-light-grey">
+                        <h4>Exemple</h4>
+                        <div class="w3-code htmlHigh notranslate">
+                            let fruits = ["Pomme", "Banane", "Orange", "Fraise"];<br>
+                            let index = 0; <br>
+                            do { <br>
+                            console.log(fruits[index]); <br>
+                            index++; <br>
+                            } while (index < fruits.length); <br>
+                        </div>
+                    </div>
+                    <a class="navbar-brand" href="courExercices.html">
+                        <h5 style="color: hsl(0, 0%, 4%);margin-left: 5px;"><button class="but2">Essayez-le vous
+                                même
+                            </button>
+                        </h5>
+                    </a>
+                </div>
+
+                <div>
+                    <div>
+                        <p style="font-weight: 500;font-size: 16px;margin-left: 12px;">- Fonctions Couramment Utilisées
+                            avec les Tableaux
+                        </p>
+                        <p>JavaScript fournit plusieurs fonctions intégrées pour travailler avec des tableaux, voici
+                            quelques-unes des plus
+                            couramment utilisées :</p>
+
+                        <ol>
+                            <li style="font-size: 14px;font-weight: 700;"> push() : <strong style="font-weight: 100;">
+                                    Ajoute un ou plusieurs éléments à la fin du tableau.</strong>
+                            </li>
+
+                            <li style="font-size: 14px;font-weight: 700;"> pop() : <strong style="font-weight: 100;">
+                                    Supprime le dernier élément du tableau et renvoie cet élément.</strong>
+                            </li>
+
+                            <li style="font-size: 14px;font-weight: 700;"> shift() : <strong style="font-weight: 100;">
+                                    Supprime le premier élément du tableau et renvoie cet élément.</strong>
+                            </li>
+
+                            <li style="font-size: 14px;font-weight: 700;"> unshift() : <strong
+                                    style="font-weight: 100;">
+                                    Ajoute un ou plusieurs éléments au début du tableau.</strong>
+                            </li>
+
+                            <li style="font-size: 14px;font-weight: 700;"> splice() : <strong style="font-weight: 100;">
+                                    Modifie le contenu d'un tableau en supprimant, remplaçant ou ajoutant des
+                                    éléments.</strong>
+                            </li>
+
+                            <li style="font-size: 14px;font-weight: 700;"> concat() : <strong style="font-weight: 100;">
+                                    Fusionne deux ou plusieurs tableaux en un seul tableau.</strong>
+                            </li>
+
+                            <li style="font-size: 14px;font-weight: 700;"> slice() : <strong style="font-weight: 100;">
+                                    Extrait une partie d'un tableau et renvoie une nouvelle tableau.</strong>
+                            </li>
+
+                            <li style="font-size: 14px;font-weight: 700;"> forEach() : <strong
+                                    style="font-weight: 100;">
+                                    Exécute une fonction donnée sur chaque élément du tableau.</strong>
+                            </li>
+
+                            <li style="font-size: 14px;font-weight: 700;"> map() : <strong style="font-weight: 100;">
+                                    Crée un nouveau tableau contenant les résultats de l'application d'une fonction à
+                                    chaque
+                                    élément du tableau d'origine.</strong>
+                            </li>
+
+                            <li style="font-size: 14px;font-weight: 700;"> filter() : <strong style="font-weight: 100;">
+                                    Crée un nouveau tableau contenant les éléments du tableau d'origine qui passent un
+                                    test
+                                    spécifié.</strong>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div>
+                        <p style="font-size: 17px;font-weight: 600;margin-left: 17px;">* Les Objets en JavaScript</p>
+                        <p>Les objets en JavaScript sont des collections de propriétés, et une propriété est une
+                            association entre un nom
+                            (ou clé) et une valeur. Les valeurs des propriétés peuvent être des fonctions, ce qui permet
+                            aux objets de
+                            stocker des comportements ainsi que des données.</p>
+                        <p style="font-weight: 600;font-size: 14px;margin-left: 12px;">- Introduction aux Objets</p>
+                        <p>Un tableau en JavaScript est une collection ordonnée d'éléments, indexée par des entiers,
+                            commençant par 0
+                            pour le premier élément.</p>
+                        <p style="font-weight: 600;margin-left: 22px;"> Syntaxe d'un tableau js :</p>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                let personne = { <br>
+                                nom: "Jean",<br>
+                                age: 30,<br>
+                                profession: "Développeur"<br>
+                                };<br>
+                            </div>
+                        </div>
+                        <a class="navbar-brand" href="courJavaScript.html">
+                            <h5 style="color: hsl(0, 0%, 4%);margin-left: 5px;"><button class="but2">Essayez-le vous
+                                    même
+                                </button>
+                            </h5>
+                        </a>
+                    </div>
+
+                    <div>
+                        <p style="font-weight: 600;font-size: 14px;margin-left: 12px;">- Accès aux Propriétés d'un Objet
+                        </p>
+                        <p>Vous pouvez accéder aux propriétés d'un objet en utilisant la notation par point ou la
+                            notation par crochets.
+                        </p>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                // Notation par point<br>
+                                console.log(personne.nom); // Affiche "Jean"<br>
+                                // Notation par crochets<br>
+                                console.log(personne["age"]); // Affiche 30
+                            </div>
+                        </div>
+                        <a class="navbar-brand" href="courJavaScript.html">
+                            <h5 style="color: hsl(0, 0%, 4%);margin-left: 5px;"><button class="but2">Essayez-le vous
+                                    même
+                                </button>
+                            </h5>
+                        </a>
+                    </div>
+
+                    <div>
+                        <p style="font-weight: 600;font-size: 14px;margin-left: 12px;">- Modification des Propriétés
+                            d'un Objet</p>
+                        <p>Vous pouvez modifier les propriétés d'un objet en utilisant la notation par point ou par
+                            crochets. Par exemple,
+                            pour changer la profession de <strong
+                                style="color: rgb(155, 56, 38);font-weight: 100;">personne</strong> :
+                        </p>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                personne.profession = "Designer";<br>
+                                console.log(personne.profession); // Affiche "Designer"
+                            </div>
+                        </div>
+                        <a class="navbar-brand" href="courJavaScript.html">
+                            <h5 style="color: hsl(0, 0%, 4%);margin-left: 5px;"><button class="but2">Essayez-le vous
+                                    même
+                                </button>
+                            </h5>
+                        </a>
+                    </div>
+
+
+                    <div>
+                        <p style="font-weight: 600;font-size: 14px;margin-left: 12px;">- Ajout et Suppression de
+                            Propriétés</p>
+                        <p>Vous pouvez ajouter de nouvelles propriétés à un objet ou supprimer des propriétés existantes
+                            :
+                        </p>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                // Ajouter une nouvelle propriété <br>
+                                personne.nationalite = "Française";<br>
+                                // Supprimer une propriété<br>
+                                delete personne.age;<br>
+                                console.log(personne); // Affiche { nom: "Jean", profession: "Designer",<br>
+                                nationalite: "Française" }
+
+                            </div>
+                        </div>
+                        <a class="navbar-brand" href="courJavaScript.html">
+                            <h5 style="color: hsl(0, 0%, 4%);margin-left: 5px;"><button class="but2">Essayez-le vous
+                                    même
+                                </button>
+                            </h5>
+                        </a>
+                    </div>
+
+
+                    <div>
+                        <p style="font-weight: 600;font-size: 14px;margin-left: 12px;">- Méthodes d'un Objet</p>
+                        <p>Les méthodes sont des fonctions définies à l'intérieur d'un objet. Elles permettent aux
+                            objets d'avoir des
+                            comportements.
+                        </p>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                let voiture = { <br>
+                                marque: "Toyota", <br>
+                                modele: "Corolla", <br>
+                                annee: 2020, <br>
+                                afficherDetails: function() { <br>
+                                console.log(`Marque: ${this.marque}, Modèle: ${this.modele}, Année: <br>
+                                ${this.annee}`); <br>
+                                } <br>
+                                };
+
+                            </div>
+                        </div>
+                        <p>- L'utilisation du mot-clé <strong>this</strong> en JavaScript peut être un peu déroutante au
+                            début, mais il est crucial pour
+                            travailler efficacement avec des objets et des méthodes.
+                        <p style="margin-left: 12px;"> .Le mot-clé <strong
+                                style="color: rgb(155, 56, 38);font-weight: 100;">this</strong> fait référence à l'objet
+                            "propriétaire" actuel du contexte d'exécution. En d'autres termes, this
+                            fait référence à l'objet à partir duquel une méthode est appelée.
+                        </p>
+
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                let voiture2 = { <br>
+                                marque: "Honda",<br>
+                                modele: "Civic",<br>
+                                annee: 2022,<br>
+                                afficherDetails: function() {
+                                console.log(`Marque: ${this.marque}, Modèle: ${this.modele}, Année:<br>
+                                ${this.annee}`);<br>
+                                }<br>
+                                };<br>
+                                // Appel de la méthode afficherDetails pour voiture2<br>
+                                voiture2.afficherDetails(); // Affiche "Marque: Honda, Modèle: Civic, Année: 2022"
+                            </div>
+                        </div>
+                        <p>Dans cet exemple : <strong>this</strong> dans la méthode <strong>afficherDetails</strong> de
+                            <strong>voiture2</strong> fait référence à l'objet voiture2.
+                        </p>
+                    </div>
+
+                    <div>
+                        <p style="font-weight: 600;font-size: 15px;margin-left: 12px;">-Boucle sur les Propriétés d'un
+                            Objet</p>
+                        <p>Vous pouvez utiliser une boucle for...in pour itérer sur toutes les propriétés d'un objet.
+
+                        </p>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                for (let propriete in personne) { <br>
+                                console.log(propriete + ": " + personne[propriete]);<br>
+                                }
+                            </div>
+                        </div>
+                        <a class="navbar-brand" href="T_O.html">
+                            <h5 style="color: hsl(0, 0%, 4%);margin-left: 5px;"><button class="but2">Essayez-le vous
+                                    même
+                                </button>
+                            </h5>
+                        </a>
+                    </div>
+
+                </div>
+
+
+
+<div style="display: flex; flex-direction: row;">
+    <a class="navbar-brand" href="Quizjs.html">
+        <h5 style="color: hsl(0, 0%, 4%);margin-left: 24px;"><button class="but">Quiz</button>
+        </h5>
+    </a>
+
+    <a class="navbar-brand" href="courExercices.html">
+        <h5 style="color: hsl(0, 0%, 4%);margin-left: 688px;"><button class="but">Exercices</button>
+        </h5>
+    </a>
+</div>
+
+</div>
+</section>
+
+<footer class="container-fluid bg-dark text-white p-4">
+    <p>&copy; 2024 Ebektek. Tous droits réservés.</p>
+  </footer>
+
+<script src="../Bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

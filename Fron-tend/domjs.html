@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevAcademy</title>
+    <link rel="stylesheet" href="../Bootstrap/css/bootstrap.css">
+    <link href="../TP_Bootstrap/Projet_bootstrap.css" rel="stylesheet" />
+    <link href="Devoir_sem2.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../TP_Bootstrap/css/style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <style>
+        .d {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .d1 {
+
+            background: white;
+            height: 850px;
+            padding: 50px;
+            width: 50px;
+            margin-left: 24px;
+            border-color: #09ff00;
+            transition: 0.4s ease-in-out;
+            border: 1px solid #0cf904;
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 0 15px #0aff02;
+            border-radius: 12px;
+            position: sticky;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 47%;
+        }
+
+        .d2 {
+            font-size: 15px;
+            width: 50%;
+            padding-bottom: 15px;
+            margin-left: 24px;
+            background: white;
+            border-color: #09ff00;
+            transition: 0.4s ease-in-out;
+            border: 1px solid #09ff00;
+            transform: translateY(-10px) scale(1.00);
+            box-shadow: 0 0 15px #0aff02;
+            border-radius: 12px;
+            margin-right: 60px;
+        }
+
+        h1:hover {
+            text-align: center;
+            justify-content: center;
+            color: rgb(240, 16, 16);
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            justify-content: center;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        img:hover {
+            animation-name: rotate;
+            animation-duration: 1s;
+            animation-iteration-count: 10;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .m9:hover {
+            text-align: center;
+            justify-content: center;
+            color: rgb(240, 16, 16);
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .m1:hover {
+            text-align: center;
+            justify-content: center;
+            color: rgb(240, 16, 16);
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .m1 {
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+        h4 {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .etudiant {
+            font-weight: 0px;
+            font-size: small;
+            color: rgb(27, 26, 26);
+
+        }
+
+        section {
+            background-color: rgb(241, 248, 248);
+            color: black;
+        }
+
+        .etudiant:hover {
+            background-color: #09ff00;
+        }
+
+        div::before {
+            content: "";
+            width: 4px;
+            height: 100%;
+            margin: 0;
+
+
+        }
+
+        div::after {
+            content: "";
+            width: 4px;
+            height: 100%;
+            margin: 0 1%;
+        }
+
+        .but {
+            font-size: 19px;
+            background: green;
+            color: white;
+            padding: 2px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .but:hover {
+            background-color: transparent;
+            color: #09ff00;
+            border: 1px dashed #09ff00;
+            transition: 2s;
+            margin-left: 4%;
+            transform: scale(2);
+
+        }
+
+        .but2 {
+            font-size: 19px;
+            background: green;
+            color: white;
+            padding: 2px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .but2:hover {
+            background-color: transparent;
+            color: #09ff00;
+            border: 1px dashed #09ff00;
+            transition: 2s;
+            margin-left: 4%;
+            transform: scale(2);
+
+        }
+
+        .but2 {
+            font-size: 19px;
+            background: green;
+            color: white;
+            padding: 2px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .but2:hover {
+            background-color: transparent;
+            color: #09ff00;
+            border: 1px dashed #09ff00;
+            transition: 2s;
+            margin-left: 10%;
+            transform: scale(2);
+
+        }
+
+
+        .navbar-nav .nav-link {
+            position: relative;
+            color: hsl(0, 0%, 90%);
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 50%;
+            background-color: #1faf1acb;
+            transition: all 0.3s ease-in-out;
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav .nav-link:hover::before {
+            width: 100%;
+        }
+
+        .navbar-nav .nav-link:hover {
+
+            background-color: #13cd1352;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            font-weight: 500;
+            font-size: 17px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark fixed-top navbar ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="Devoir_sem2.html">
+                <h5 style="color: black;font-weight: bold;font-size: 30px;">Dev<span
+                        style="color: #0c5e11c4;">Academy</span> </h5>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="courHtml.html"
+                            style="color: hsl(0, 0%, 4%);">Html</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courCss.html" style="color: hsl(0, 0%, 4%);">Css</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="courBootstrap.html" style="color: hsl(0, 0%, 4%);"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Bootstrap
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="courExercices.html">Exercices</a></li>
+                            <li><a class="dropdown-item" href="courBootstrap.html">tutoriels</a></li>
+                            <li><a class="dropdown-item" href="courBootstrap.html">Apprendre bootstrap</a></li>
+                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courJavaScript.html" style="color: hsl(0, 0%, 4%);">JavaScript</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courExercices.html" style="color: hsl(0, 0%, 4%);">Exercices</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="courQuiz.html" style="color: hsl(0, 0%, 4%);"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Quiz
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="Quizhtml.html">Html</a></li>
+                            <li><a class="dropdown-item" href="Quizcss.html">Css</a></li>
+                            <li><a class="dropdown-item" href="Quizjs.html">JavaScript</a></li>
+                            <li><a class="dropdown-item" href="Quizbootstrap.html">Bootstrap</a></li>
+                        </ul>
+                </ul>
+                <!-- Boutons Connexion / Inscription -->
+                <div class="d-flex">
+                    <a href="#" class="btn btn-outline-success me-2" data-bs-toggle="modal"
+                        data-bs-target="#loginModal">Connexion</a>
+                    <a href="#" class="btn btn-success" data-bs-toggle="modal"
+                        data-bs-target="#registerModal">Inscription</a>
+                </div>
+
+                <!-- Modal Connexion -->
+                <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="loginModalLabel">Connexion</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Fermer"></button>
+                            </div>
+                            <form action="/login" method="POST"> <!-- Exemple d'action -->
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label for="loginEmail" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="loginEmail" name="email"
+                                            placeholder="votre@email.com" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="loginPassword" class="form-label">Mot de passe</label>
+                                        <input type="password" class="form-control" id="loginPassword" name="password"
+                                            placeholder="Mot de passe" required>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Fermer</button>
+                                    <button type="submit" class="btn btn-success">Se connecter</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Inscription -->
+                <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="registerModalLabel">Inscription</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Fermer"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="registerName" class="form-label">Nom</label>
+                                        <input type="text" class="form-control" id="registerName"
+                                            placeholder="Votre nom">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="registerEmail" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="registerEmail"
+                                            placeholder="votre@email.com">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="registerPassword" class="form-label">Mot de passe</label>
+                                        <input type="password" class="form-control" id="registerPassword"
+                                            placeholder="Mot de passe">
+                                    </div>
+                                    <button type="submit" class="btn btn-success w-100">S'inscrire</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </nav>
+
+    <section>
+        <div class="d">
+            <div class="d1">
+                <div>
+                    <h1><strong>DOM JS</strong></h1>
+                </div>
+                <div>
+                    <a href="courJavaScript.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Introduction JavaScript</h6>
+                    </a>
+                </div>
+                <div><a href="domjs.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Formulaires JS</h6>
+                    </a></div>
+                <div><a href="T_O.html">
+                        <h6 class="etudiant" style="font-weight: 900;"> Tableaux js</h6>
+                    </a></div>
+                <div><a href="courJavaScript.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Les Variables js</h6>
+                    </a></div>
+                <div><a href="courJavaScript.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Les Constants js</h6>
+                    </a></div>
+                <div><a href="courJavaScript.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Les oprérations js</h6>
+                    </a></div>
+                <div><a href="Quizjs.html">
+                        <h6 class="etudiant" style="font-weight: 900;"> Quiz JavaScript</h6>
+                    </a></div>
+                <div><a href="T_O.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Objets js</h6>
+                    </a></div>
+                <div><a href="courJavaScript.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Les Structures js</h6>
+                    </a></div>
+                <div><a href="fonctionjs.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Les Fonctions js</h6>
+                    </a></div>
+                <div><a href="domjs.html">
+                        <h6 class="etudiant" style="font-weight: 900;">DOM js</h6>
+                    </a></div>
+                <div><a href="Evenjs.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Evenements</h6>
+                    </a></div>
+            </div>
+
+
+
+            <div class="d2"
+                style="margin-left: 64px;width: 3123px;padding-left: 12px;height: auto;padding-right: 12px;">
+                <div>
+                    <img style="width: 100px;height: 70px;text-align: center;margin-left: 377px;margin-top: 7px;"
+                        src="js.png" alt="">
+                </div>
+
+                <div>
+                    <h2 style="text-align: center;font-size: 38px;">Le DOM en JavaScript</h2>
+                </div>
+
+                <div>
+                    <h5 style="font-size: 20px;font-weight: 600;margin-top: 22px;">Introduction au DOM</h5>
+                    <ol>
+                        <li>
+                            <h5 style="font-size: 15px;font-weight: 700;margin-top:12px ;">Qu'est-ce que le DOM ?</h5>
+                        </li>
+                        <p>Le DOM, ou Document Object Model (Modèle d'Objet du Document), est une interface de
+                            programmation
+                            pour les documents HTML et XML. Il représente la page web de manière structurée sous forme
+                            d'un arbre
+                            d'objets que les langages de programmation, comme JavaScript, peuvent manipuler. Le DOM
+                            permet
+                            d'accéder, de modifier, de supprimer et d'ajouter des éléments à la structure d'un document.
+                        </p>
+
+                        <li>
+                            <h5 style="font-size: 15px;font-weight: 700;margin-top:12px ;">Utilité du DOM</h5>
+                        </li>
+                        <p>Le DOM est essentiel pour créer des pages web interactives et dynamiques. Il permet aux
+                            développeurs de :</p>
+                        <ul style="font-size: small;">
+                            <li type="square">Accéder et modifier le contenu HTML et les attributs des éléments.</li>
+                            <li type="square">Modifier la structure du document en ajoutant ou supprimant des éléments.
+                            </li>
+                            <li type="square">Réagir aux événements déclenchés par les utilisateurs (clics, saisies de
+                                texte, etc.).
+                            </li>
+                            <li type="square">Manipuler le style CSS pour changer l'apparence des éléments.</li>
+                        </ul>
+
+                        <li>
+                            <h5 style="font-size: 15px;font-weight: 700;margin-top:12px ;">Spécifications du DOM</h5>
+                        </li>
+                        <p>Le DOM est une norme définie par le W3C (World Wide Web Consortium). Les spécifications du
+                            DOM
+                            définissent l'API que les navigateurs doivent implémenter pour permettre l'interaction avec
+                            les documents. Les
+                            versions courantes incluent le DOM Level 1, Level 2 et Level 3, chacune apportant des
+                            améliorations et des
+                            fonctionnalités supplémentaires.</p>
+                    </ol>
+                </div>
+
+                <div>
+                    <h5 style="font-size: 20px;font-weight: 600;margin-top: -7px;">Structure du DOM</h5>
+                    <p>Le DOM représente un document HTML sous forme d'un arbre d'objets. Chaque élément HTML, attribut
+                        et texte est un objet du DOM, appelé "nœud".</p>
+                    <ol style="font-size: small;">
+                        <li><strong>Document :</strong> Représente le document entier.</li>
+                        <li><strong>Element :</strong> Représente un élément HTML.</li>
+                        <li><strong>Attribute :</strong> Représente un attribut d'un élément HTML.</li>
+                        <li><strong>Text :</strong> Représente le contenu textuel d'un élément ou d'un attribut.</li>
+                        <li><strong>Comment :</strong> Représente un commentaire dans le document.</li>
+                        <li><strong>DocumentFragment :</strong> Représente une partie détachée du document.</li>
+                    </ol>
+                </div>
+
+                <div>
+                    <h5 style="font-size: 20px;font-weight: 600;margin-top: -7px;">Structure du DOM</h5>
+                    <p>Considérons le document HTML suivant :</p>
+                    <div class="w3-panel w3-card w3-light-grey">
+                        <h4>Exemple</h4>
+                        <div class="w3-code htmlHigh notranslate">
+                            &lt;!DOCTYPE html&gt;<br>&lt;html&gt;<br>
+                            &lt;title&gt;Exemple de DOM&lt;/title&gt;<br><br>
+                            &lt;h1&gt;Bienvenue&lt;/h1&gt;<br>
+                            &lt;p id="paragraphe"&gt;Ceci est un paragraphe.&lt;/p&gt;<br><br>
+                            &lt;/body&gt;<br>
+                            &lt;/html&gt;
+                        </div>
+                    </div>
+                    <p>L'arbre DOM correspondant serait :</p>
+                    <div class="w3-panel w3-card w3-light-grey">
+                        <h4>Arbre DOM</h4>
+                        <div class="w3-code htmlHigh notranslate">
+                            Document <br>
+                            ├── html <br>
+                            │ ├── head <br>
+                            │ │ └── title <br>
+                            │ └── body <br>
+                            │ ├── h1 <br>
+                            │ └── p#paragraphe
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h5 style="font-size: 20px;font-weight: 600;margin-top: 22px;">Accéder au DOM avec JavaScript</h5>
+                    <h5 style="font-size: 15px;font-weight: 600;margin-top:12px ;">Sélection d'Éléments</h5>
+                    <p style="font-size: small;">JavaScript fournit plusieurs méthodes pour accéder aux éléments du DOM
+                        :
+                    </p>
+                    <ol>
+                        <li><strong style="color: rgb(155, 56, 38);font-weight: 100;">getElementById</strong> :
+                            Sélectionne un élément par son identifiant.</li>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                let paragraphe = document.getElementById("paragraphe");
+                            </div>
+                        </div>
+                        <li><strong style="color: rgb(155, 56, 38);font-weight: 100;">getElementsByClassName</strong> :
+                            Sélectionne des éléments par leur classe.</li>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                let elements = document.getElementsByClassName("maClasse");
+                            </div>
+                        </div>
+                        <li><strong style="color: rgb(155, 56, 38);font-weight: 100;">getElementsByTagName</strong> :
+                            Sélectionne des éléments par leur nom de balise.</li>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                let paragraphes = document.getElementsByTagName("p");
+                            </div>
+                        </div>
+                        <li><strong style="color: rgb(155, 56, 38);font-weight: 100;">querySelector</strong> :
+                            Sélectionne le premier élément correspondant à un sélecteur CSS.</li>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                let premierParagraphe = document.querySelector("p");
+                            </div>
+                        </div>
+                        <li><strong style="color: rgb(155, 56, 38);font-weight: 100;">querySelectorAll</strong> :
+                            Sélectionne tous les éléments correspondant à un sélecteur CSS.</li>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                let tousLesParagraphes = document.querySelectorAll("p");
+                            </div>
+                        </div>
+                    </ol>
+                </div>
+                <div>
+                    <h5 style="font-size: 20px;font-weight: 600;margin-top: 22px;">Manipulation du Contenu</h5>
+                    <p>Vous pouvez manipuler le contenu des éléments sélectionnés en utilisant les propriétés et
+                        méthodes du DOM</p>
+                    <ol>
+                        <li>
+                            <h5 style="font-size: 15px;font-weight: 700;margin-top:12px ;">Modifier le Texte</h5>
+                        </li>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                let titre = document.querySelector("h1"); <br>
+                                titre.textContent = "Nouveau Titre";
+                            </div>
+                        </div>
+                        <li>
+                            <h5 style="font-size: 15px;font-weight: 700;margin-top:12px ;">Modifier le HTML</h5>
+                        </li>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                let paragraphe = document.getElementById("paragraphe"); <br>
+                                paragraphe.innerHTML = "Nouveau &lt;strong&gt;contenu&lt;/strong&gt;";
+                            </div>
+                        </div>
+                        <a class="navbar-brand" href="T_O.html">
+                            <h5 style="color: hsl(0, 0%, 4%);margin-left: 5px;"><button class="but2">Essayez-le vous
+                                    même
+                                </button>
+                            </h5>
+                        </a>
+                    </ol>
+                </div>
+
+                <div>
+                    <h5 style="font-size: 20px;font-weight: 600;margin-top: 22px;">Manipulation des Attributs</h5>
+
+                    <ol>
+                        <li>
+                            <h5 style="font-size: 15px;font-weight: 700;margin-top:12px ;">Accéder et Modifier les
+                                Attributs</h5>
+                        </li>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                let paragraphe = document.getElementById("paragraphe"); <br>
+                                let id = paragraphe.getAttribute("id");<br>
+                                paragraphe.setAttribute("class", "nouvelleClasse");
+                            </div>
+                        </div>
+                        <li>
+                            <h5 style="font-size: 15px;font-weight: 700;margin-top:12px ;">Ajouter et Supprimer des
+                                Attributs</h5>
+                        </li>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                paragraphe.setAttribute("title", "Ceci est un paragraphe"); <br>
+                                paragraphe.removeAttribute("title");
+                            </div>
+                        </div>
+                        <a class="navbar-brand" href="T_O.html">
+                            <h5 style="color: hsl(0, 0%, 4%);margin-left: 5px;"><button class="but2">Essayez-le vous
+                                    même
+                                </button>
+                            </h5>
+                        </a>
+                    </ol>
+                </div>
+
+                <div>
+                    <h5 style="font-size: 20px;font-weight: 600;margin-top: 22px;">Manipulation de la Structure du DOM
+                    </h5>
+
+                    <ol>
+                        <li>
+                            <h5 style="font-size: 15px;font-weight: 700;margin-top:12px ;">Ajouter des Éléments</h5>
+                        </li>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                let nouveauParagraphe = document.createElement("p"); <br>
+                                nouveauParagraphe.textContent = "Paragraphe ajouté"; <br>
+                                document.body.appendChild(nouveauParagraphe);
+                            </div>
+                        </div>
+                        <li>
+                            <h5 style="font-size: 15px;font-weight: 700;margin-top:12px ;">Insérer des Éléments</h5>
+                        </li>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                let nouveauParagraphe = document.createElement("p"); <br>
+                                nouveauParagraphe.textContent = "Paragraphe inséré"; <br>
+                                let premierParagraphe = document.querySelector("p"); <br>
+                                document.body.insertBefore(nouveauParagraphe, premierParagraphe);
+                            </div>
+                        </div>
+                        <li>
+                            <h5 style="font-size: 15px;font-weight: 700;margin-top:12px ;">Supprimer des Éléments</h5>
+                        </li>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                let paragraphe = document.getElementById("paragraphe");<br>
+                                paragraphe.remove();
+                            </div>
+                        </div>
+                    </ol>
+                </div>
+
+                <div>
+                    <h5 style="font-size: 20px;font-weight: 600;margin-top: 22px;">Manipulation du Style</h5>
+                    <p>Vous pouvez manipuler les styles CSS des éléments via JavaScript en utilisant la propriété
+                        <code>style</code>.
+                    </p>
+                    <div class="w3-panel w3-card w3-light-grey">
+                        <h4>Exemple</h4>
+                        <div class="w3-code htmlHigh notranslate">
+                            let paragraphe = document.getElementById("paragraphe");<br>
+                            paragraphe.style.color = "blue";<br>
+                            paragraphe.style.fontSize = "18px";
+                        </div>
+                    </div>
+                    <a class="navbar-brand" href="T_O.html">
+                        <h5 style="color: hsl(0, 0%, 4%);margin-left: 5px;"><button class="but2">Essayez-le vous
+                                même
+                            </button>
+                        </h5>
+                    </a>
+                </div>
+
+                <div>
+                    <h5 style="font-size: 20px;font-weight: 600;margin-top: 22px;">Classes CSS</h5>
+                    <p>Vous pouvez ajouter, supprimer et basculer des classes CSS sur les éléments.
+                    </p>
+                    <div class="w3-panel w3-card w3-light-grey">
+                        <h4>Exemple</h4>
+                        <div class="w3-code htmlHigh notranslate">
+                            let paragraphe = document.getElementById("paragraphe");<br>
+                            // Ajouter une classe<br>
+                            paragraphe.classList.add("nouvelleClasse");<br>
+                            // Supprimer une classe<br>
+                            paragraphe.classList.remove("nouvelleClasse");
+                        </div>
+                    </div>
+                    <a class="navbar-brand" href="T_O.html">
+                        <h5 style="color: hsl(0, 0%, 4%);margin-left: 5px;"><button class="but2">Essayez-le vous
+                                même
+                            </button>
+                        </h5>
+                    </a>
+                </div>
+
+                <div style="display: flex; flex-direction: row;">
+                    <a class="navbar-brand" href="Quizjs.html">
+                        <h5 style="color: hsl(0, 0%, 4%);margin-left: 24px;"><button class="but">Quiz</button>
+                        </h5>
+                    </a>
+                
+                    <a class="navbar-brand" href="courExercices.html">
+                        <h5 style="color: hsl(0, 0%, 4%);margin-left: 688px;"><button class="but">Exercices</button>
+                        </h5>
+                    </a>
+                </div>
+                
+
+            </div>
+    </section>
+
+    <footer class="container-fluid bg-dark text-white p-4">
+        <p>&copy; 2024 Ebektek. Tous droits réservés.</p>
+    </footer>
+
+    <script src="../Bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

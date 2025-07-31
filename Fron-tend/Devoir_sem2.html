@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevAcademy | Apprendre à coder gratuitement</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <style>
+        :root {
+            --primary: #0c5e11;
+            --primary-light: #13cd13;
+            --secondary: #4a90e2;
+            --accent: #ff6b35;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --success-bg: #e8f5e9;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark);
+            background-color: #f8fbfa;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Bannière de gratuité */
+        .free-banner {
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .free-banner:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(45deg,
+                    rgba(255, 255, 255, 0.1),
+                    rgba(255, 255, 255, 0.1) 10px,
+                    rgba(255, 255, 255, 0.2) 10px,
+                    rgba(255, 255, 255, 0.2) 20px);
+            z-index: 1;
+        }
+
+        .free-banner span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .free-badge {
+            background: #ff6b35;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-left: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        /* Navigation */
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 5px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.8rem;
+            letter-spacing: -1px;
+        }
+
+        .navbar-brand span {
+            color: var(--primary);
+        }
+
+        .navbar-nav .nav-link {
+            position: relative;
+            color: var(--dark) !important;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--primary-light);
+            transition: all 0.3s ease-in-out;
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav .nav-link:hover::before {
+            width: 100%;
+        }
+
+        .navbar-nav .nav-link:hover {
+            background-color: rgba(19, 205, 19, 0.1);
+        }
+
+        .dropdown-item:focus,
+        .dropdown-item:hover {
+            background-color: var(--primary-light);
+            color: white;
+        }
+
+        /* Header */
+        .masthead {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            padding: 180px 0 100px;
+            color: white;
+            text-align: center;
+            transition: background-image 1s ease-in-out;
+            z-index: 1;
+            overflow: hidden;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)),
+                url('https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80');
+        }
+
+        .masthead::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8));
+            z-index: 2;
+        }
+
+        .masthead .container {
+            position: relative;
+            z-index: 3;
+        }
+
+        .masthead-heading {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .masthead-subtitle {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .free-guarantee {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 15px 20px;
+            display: inline-block;
+            margin-top: 20px;
+            border: 2px solid white;
+        }
+
+        /* Sections */
+        .tech-section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .tech-section:nth-child(odd) {
+            background-color: #f0f8ff;
+        }
+
+        .section-title {
+            position: relative;
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-light);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .tech-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .tech-description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        .tech-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            height: 100%;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .tech-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .tech-card h4 {
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .tech-card h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-light);
+            border-radius: 2px;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            border-radius: 10px;
+            padding: 20px;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 0.95rem;
+            overflow-x: auto;
+            margin-bottom: 20px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .code-comment {
+            color: #75715e;
+        }
+
+        .code-tag {
+            color: #f92672;
+        }
+
+        .code-attr {
+            color: #a6e22e;
+        }
+
+        .code-value {
+            color: #e6db74;
+        }
+
+        .btn-tech {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 28px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 10px rgba(12, 94, 17, 0.3);
+        }
+
+        .btn-tech:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(19, 205, 19, 0.4);
+        }
+
+        .btn-free {
+            background-color: #ff6b35;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 28px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 10px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn-free:hover {
+            background-color: #ff8a65;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 138, 101, 0.4);
+        }
+
+        .tech-image {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.4s ease;
+        }
+
+        .tech-image:hover {
+            transform: scale(1.03);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 30px;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        /* Section gratuité */
+        .free-section {
+            padding: 100px 0;
+            background-color: var(--success-bg);
+            position: relative;
+        }
+
+        .free-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px 30px;
+            margin-bottom: 30px;
+            height: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            border-top: 5px solid var(--primary);
+        }
+
+        .free-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .free-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 30px;
+            color: white;
+            transition: all 0.4s ease;
+        }
+
+        .free-card:hover .free-icon {
+            transform: rotateY(360deg);
+        }
+
+        /* Section témoignages */
+        .testimonials-section {
+            padding: 100px 0;
+            background: linear-gradient(to bottom, #f0f8ff, #f8f9fa);
+            position: relative;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 80px;
+            font-family: Georgia, serif;
+            color: rgba(12, 94, 17, 0.1);
+            line-height: 1;
+        }
+
+        .testimonial-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            margin-top: 25px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            margin-right: 15px;
+        }
+
+        .stars {
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-buttons {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-cta {
+            background: white;
+            color: var(--primary);
+            border: none;
+            border-radius: 50px;
+            padding: 15px 35px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-cta:hover {
+            background: var(--dark);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-cta-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            border-radius: 50px;
+            padding: 15px 35px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .btn-cta-outline:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 80px 0 20px;
+            position: relative;
+        }
+
+        .footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+        }
+
+        .footer h4 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .footer h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-light);
+            border-radius: 2px;
+        }
+
+        .footer ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .footer ul li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .footer ul li:before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary-light);
+        }
+
+        .footer ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer ul li a:hover {
+            color: var(--primary-light);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .contact-btn {
+            margin-top: 30px;
+        }
+
+        .newsletter-form {
+            margin-top: 20px;
+        }
+
+        .newsletter-form .form-control {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            padding: 12px 15px;
+            border-radius: 30px 0 0 30px;
+        }
+
+        .newsletter-form .form-control:focus {
+            box-shadow: none;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .newsletter-form .btn {
+            border-radius: 0 30px 30px 0;
+            background: var(--primary-light);
+            border: none;
+            padding: 12px 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .masthead {
+                padding: 150px 0 80px;
+            }
+
+            .masthead-heading {
+                font-size: 2.8rem;
+            }
+
+            .tech-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .masthead {
+                padding: 120px 0 60px;
+            }
+
+            .masthead-heading {
+                font-size: 2.3rem;
+            }
+
+            .masthead-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .tech-section {
+                padding: 70px 0;
+            }
+
+            .tech-title {
+                font-size: 2rem;
+            }
+
+            .footer .col-md-3 {
+                margin-bottom: 40px;
+            }
+
+            .stat-number {
+                font-size: 2.8rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+
+            .masthead-heading {
+                font-size: 2rem;
+            }
+
+            .tech-title {
+                font-size: 1.8rem;
+            }
+
+            .btn-tech,
+            .btn-outline-tech,
+            .btn-free {
+                display: block;
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+
+        /* Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <!-- Bannière de gratuité -->
+    <div class="free-banner">
+        <span>Plateforme d'apprentissage 100% GRATUITE <span class="free-badge">SANS ABONNEMENT</span></span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="Devoir_sem2.html">
+                <h1>Dev<span>Academy</span></h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="courHtml.html">HTML</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courCss.html">CSS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courJavaScript.html">JavaScript</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fab fa-bootstrap me-2"></i>Bootstrap
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="Exo.html">Exercices</a></li>
+                            <li><a class="dropdown-item" href="courBootstrap.html">Tutoriels</a></li>
+                            <li><a class="dropdown-item" href="courBootstrap.html">Apprendre Bootstrap</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courExercices.html">Exercices</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-question-circle me-2"></i>Quiz
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="Quizhtml.html">HTML</a></li>
+                            <li><a class="dropdown-item" href="Quizcss.html">CSS</a></li>
+                            <li><a class="dropdown-item" href="Quizjs.html">JavaScript</a></li>
+                            <li><a class="dropdown-item" href="Quizbootstrap.html">Bootstrap</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- Boutons Connexion / Inscription -->
+                <div class="d-flex">
+                    <a href="#" class="btn btn-outline-success me-2" data-bs-toggle="modal"
+                        data-bs-target="#loginModal">Connexion</a>
+                    <a href="#" class="btn btn-success" data-bs-toggle="modal"
+                        data-bs-target="#registerModal">Inscription</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="masthead">
+        <div class="container">
+            <h1 class="masthead-heading animate__animated animate__fadeInDown">Apprendre à coder gratuitement</h1>
+            <p class="lead mb-4 masthead-subtitle animate__animated animate__fadeIn animate__delay-1s">Accédez à tous
+                nos cours, exercices et ressources sans payer un centime</p>
+
+            <div class="free-guarantee animate__animated animate__fadeIn animate__delay-2s">
+                <h4><i class="fas fa-lock-open me-2"></i>Accès 100% gratuit - Aucune paiement requise</h4>
+            </div>
+
+            <div class="d-flex justify-content-center gap-3 mt-4 animate__animated animate__fadeIn animate__delay-2s">
+                <a href="courJavaScript.html" class="btn btn-light btn-lg">
+                    <i class="fas fa-book-open me-2"></i>Commencer à apprendre
+                </a>
+                <a href="https://youtu.be/u5W2NWItytc?si=x_oWrQ2XAkDlNNNF" class="btn btn-outline-light btn-lg">
+                    <i class="fas fa-video me-2"></i>Voir les cours
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number" id="studentCount">0+</div>
+                        <div class="stat-label">Étudiants</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number" id="courseCount">100+</div>
+                        <div class="stat-label">Cours gratuits</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number" id="projectCount">50+</div>
+                        <div class="stat-label">Exercices</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <div class="stat-number" id="mentorCount">0FCFA</div>
+                        <div class="stat-label">Coût d'inscription</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HTML Section -->
+    <section class="tech-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Technologies Web Gratuites</h2>
+            <div class="row align-items-center animate-on-scroll">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h2 class="tech-title">HTML</h2>
+                    <p class="tech-description">Apprenez les bases du langage de structuration web gratuitement. Créez
+                        des pages web sémantiques et accessibles sans dépenser un centime.</p>
+                    <a href="courHtml.html" class="btn btn-free">
+                        <i class="fas fa-graduation-cap me-2"></i>Cours gratuit
+                    </a>
+                    <a href="courExercices.html" class="btn btn-outline-tech">
+                        <i class="fas fa-laptop-code me-2"></i>Exercices pratiques
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <div class="tech-card">
+                        <h4>Exemple HTML</h4>
+                        <div class="code-block">
+                            <span class="code-tag">&lt;!DOCTYPE html&gt;</span><br>
+                            <span class="code-tag">&lt;html</span> <span class="code-attr">lang</span>=<span
+                                class="code-value">"fr"</span><span class="code-tag">&gt;</span><br>
+                            <span class="code-tag">&lt;head&gt;</span><br>
+                            &nbsp;&nbsp;<span class="code-tag">&lt;meta</span> <span
+                                class="code-attr">charset</span>=<span class="code-value">"UTF-8"</span><span
+                                class="code-tag">&gt;</span><br>
+                            &nbsp;&nbsp;<span class="code-tag">&lt;title&gt;</span>Titre de la page<span
+                                class="code-tag">&lt;/title&gt;</span><br>
+                            <span class="code-tag">&lt;/head&gt;</span><br>
+                            <span class="code-tag">&lt;body&gt;</span><br>
+                            &nbsp;&nbsp;<span class="code-comment">&lt;!-- Contenu de la page --&gt;</span><br>
+                            &nbsp;&nbsp;<span class="code-tag">&lt;h1&gt;</span>Mon premier titre<span
+                                class="code-tag">&lt;/h1&gt;</span><br>
+                            &nbsp;&nbsp;<span class="code-tag">&lt;p&gt;</span>Mon premier paragraphe<span
+                                class="code-tag">&lt;/p&gt;</span><br>
+                            <span class="code-tag">&lt;/body&gt;</span><br>
+                            <span class="code-tag">&lt;/html&gt;</span>
+                        </div>
+                        <a href="Quizhtml.html" class="btn btn-success">
+                            <i class="fas fa-play-circle me-2"></i>Essayez gratuitement
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CSS Section -->
+    <section class="tech-section">
+        <div class="container">
+            <div class="row align-items-center animate-on-scroll">
+                <div class="col-lg-6 order-lg-2 mb-5 mb-lg-0">
+                    <h2 class="tech-title">CSS</h2>
+                    <p class="tech-description">Maîtrisez l'art de la mise en page et du design web gratuitement. Créez
+                        des interfaces élégantes et responsives sans aucun coût.</p>
+                    <a href="courCss.html" class="btn btn-free">
+                        <i class="fas fa-graduation-cap me-2"></i>Cours gratuit
+                    </a>
+                    <a href="Exo.html" class="btn btn-outline-tech">
+                        <i class="fas fa-laptop-code me-2"></i>Exercices pratiques
+                    </a>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="tech-card">
+                        <h4>Exemple CSS</h4>
+                        <div class="code-block">
+                            <span class="code-comment">/* Styles pour le corps de la page */</span><br>
+                            <span class="code-attr">body</span> {<br>
+                            &nbsp;&nbsp;<span class="code-attr">background-color</span>: <span
+                                class="code-value">#d0e4fe</span>;<br>
+                            &nbsp;&nbsp;<span class="code-attr">font-family</span>: <span class="code-value">'Segoe UI',
+                                sans-serif</span>;<br>
+                            }<br><br>
+
+                            <span class="code-comment">/* Styles pour les titres */</span><br>
+                            <span class="code-attr">h1</span> {<br>
+                            &nbsp;&nbsp;<span class="code-attr">color</span>: <span
+                                class="code-value">#0c5e11</span>;<br>
+                            &nbsp;&nbsp;<span class="code-attr">text-align</span>: <span
+                                class="code-value">center</span>;<br>
+                            &nbsp;&nbsp;<span class="code-attr">margin-bottom</span>: <span
+                                class="code-value">1.5rem</span>;<br>
+                            }<br><br>
+
+                            <span class="code-comment">/* Styles pour les cartes */</span><br>
+                            <span class="code-attr">.card</span> {<br>
+                            &nbsp;&nbsp;<span class="code-attr">border-radius</span>: <span
+                                class="code-value">15px</span>;<br>
+                            &nbsp;&nbsp;<span class="code-attr">box-shadow</span>: <span class="code-value">0 5px 15px
+                                rgba(0,0,0,0.1)</span>;<br>
+                            &nbsp;&nbsp;<span class="code-attr">transition</span>: <span class="code-value">transform
+                                0.3s ease</span>;<br>
+                            }<br>
+                            <span class="code-attr">.card:hover</span> {<br>
+                            &nbsp;&nbsp;<span class="code-attr">transform</span>: <span
+                                class="code-value">translateY(-10px)</span>;<br>
+                            }
+                        </div>
+                        <a href="Quizcss.html" class="btn btn-success">
+                            <i class="fas fa-play-circle me-2"></i>Essayez gratuitement
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript Section -->
+    <section class="tech-section">
+        <div class="container">
+            <div class="row align-items-center animate-on-scroll">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h2 class="tech-title">JavaScript</h2>
+                    <p class="tech-description">Donnez vie à vos pages web gratuitement. Apprenez à créer des
+                        interactions dynamiques et des applications web complexes. Explorez ES6, les promesses et
+                        async/await.</p>
+                    <a href="courJavaScript.html" class="btn btn-free">
+                        <i class="fas fa-graduation-cap me-2"></i>Cours gratuit
+                    </a>
+                    <a href="courExercices.html" class="btn btn-outline-tech">
+                        <i class="fas fa-laptop-code me-2"></i>Projets pratiques
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <div class="tech-card">
+                        <h4>Exemple JavaScript</h4>
+                        <div class="code-block">
+                            <span class="code-comment">// Sélectionner un élément par son id</span><br>
+                            <span class="code-attr">const</span> demoElement = document.<span
+                                class="code-attr">getElementById</span>(<span class="code-value">'demo'</span>);<br><br>
+
+                            <span class="code-comment">// Fonction pour changer le style</span><br>
+                            <span class="code-attr">function</span> <span class="code-attr">changeStyle</span>() {<br>
+                            &nbsp;&nbsp;demoElement.<span class="code-attr">style</span>.<span
+                                class="code-attr">fontSize</span> = <span class="code-value">"25px"</span>;<br>
+                            &nbsp;&nbsp;demoElement.<span class="code-attr">style</span>.<span
+                                class="code-attr">color</span> = <span class="code-value">"red"</span>;<br>
+                            &nbsp;&nbsp;demoElement.<span class="code-attr">innerHTML</span> = <span
+                                class="code-value">"Texte modifié!"</span>;<br>
+                            }<br><br>
+
+                            <span class="code-comment">// Ajouter un écouteur d'événement</span><br>
+                            <span class="code-attr">const</span> myButton = document.<span
+                                class="code-attr">getElementById</span>(<span class="code-value">'myBtn'</span>);<br>
+                            myButton.<span class="code-attr">addEventListener</span>(<span
+                                class="code-value">'click'</span>, changeStyle);<br><br>
+
+                            <span class="code-comment">// Fonction asynchrone moderne</span><br>
+                            <span class="code-attr">const</span> <span class="code-attr">fetchData</span> = <span
+                                class="code-attr">async</span> () => {<br>
+                            &nbsp;&nbsp;<span class="code-attr">try</span> {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-attr">const</span> response = <span
+                                class="code-attr">await</span> fetch(<span
+                                class="code-value">'https://api.example.com/data'</span>);<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-attr">const</span> data = <span
+                                class="code-attr">await</span> response.json();<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;console.log(data);<br>
+                            &nbsp;&nbsp;} <span class="code-attr">catch</span> (error) {<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;console.error(<span class="code-value">'Erreur:'</span>, error);<br>
+                            &nbsp;&nbsp;}<br>
+                            };
+                        </div>
+                        <a href="Quizjs.html" class="btn btn-success">
+                            <i class="fas fa-play-circle me-2"></i>Essayez gratuitement
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap Section -->
+    <section class="tech-section">
+        <div class="container">
+            <div class="row align-items-center animate-on-scroll">
+                <div class="col-lg-6 order-lg-2 mb-5 mb-lg-0">
+                    <h2 class="tech-title">Bootstrap</h2>
+                    <p class="tech-description">Développez des sites web responsives gratuitement avec le framework CSS
+                        le plus populaire. Apprenez à créer des interfaces modernes avec le système de grille et les
+                        composants prêts à l'emploi.</p>
+                    <a href="courBootstrap.html" class="btn btn-free">
+                        <i class="fas fa-graduation-cap me-2"></i>Cours gratuit
+                    </a>
+                    <a href="courBootstrap.html" class="btn btn-outline-tech">
+                        <i class="fas fa-laptop-code me-2"></i>Tutoriels
+                    </a>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <div class="tech-card text-center">
+                        <h4>Exemple Bootstrap</h4>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/1200px-Bootstrap_logo.svg.png"
+                            alt="Logo Bootstrap" class="tech-image mb-4" style="max-height: 200px;">
+                        <div class="mb-4">
+                            <p>Découvrez comment créer des interfaces modernes et responsives avec Bootstrap.</p>
+                            <div class="d-flex justify-content-center gap-2 mt-3">
+                                <span class="badge bg-primary">Grille</span>
+                                <span class="badge bg-success">Composants</span>
+                                <span class="badge bg-info">Responsive</span>
+                                <span class="badge bg-warning">Personnalisation</span>
+                            </div>
+                        </div>
+                        <a href="courBootstrap.html" class="btn btn-success">
+                            <i class="fas fa-play-circle me-2"></i>Voir les exemples
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section gratuité -->
+    <section class="free-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Pourquoi DevAcademy est gratuit ?</h2>
+            <div class="row animate-on-scroll">
+                <div class="col-md-4">
+                    <div class="free-card">
+                        <div class="free-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Mission éducative</h3>
+                        <p>Nous croyons que l'éducation au codage devrait être accessible à tous, indépendamment des
+                            moyens financiers.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="free-card">
+                        <div class="free-icon">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <h3>Communauté solidaire</h3>
+                        <p>Notre plateforme est soutenue par des contributeurs bénévoles et des dons qui permettent de
+                            maintenir la gratuité.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="free-card">
+                        <div class="free-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Accès illimité</h3>
+                        <p>Tous les cours, exercices et ressources sont disponibles gratuitement, sans limitation de
+                            durée ou de contenu.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section témoignages -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Ce que disent nos étudiants</h2>
+
+            <div class="row animate-on-scroll">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>"J'ai appris à coder gratuitement avec DevAcademy et décroché mon premier emploi de
+                                développeur web. Une plateforme incroyable qui a changé ma vie professionnelle."</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">R</div>
+                                <div>
+                                    <h5 class="mb-0">Robert</h5>
+                                    <p class="mb-0">Développeuse Front-End</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>"En tant qu'étudiant sans budget, DevAcademy a été une bénédiction. Des cours de qualité
+                                professionnelle totalement gratuits. Je recommande à tous ceux qui veulent apprendre à
+                                coder."</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">I</div>
+                                <div>
+                                    <h5 class="mb-0">Ibrahima</h5>
+                                    <p class="mb-0">Étudiant en informatique</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p>"Je n'arrivais pas à croire que tout était gratuit. Les exercices pratiques, les projets,
+                                les quiz... Tout est accessible sans payer. Une ressource inestimable pour les
+                                autodidactes."</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">S</div>
+                                <div>
+                                    <h5 class="mb-0">Sophie</h5>
+                                    <p class="mb-0">Designer en reconversion</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content animate-on-scroll">
+                <h2 class="text-white mb-4">Commencez votre voyage en programmation aujourd'hui</h2>
+                <p class="lead mb-4">Rejoignez plus de 250 étudiants qui apprennent gratuitement avec DevAcademy</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-cta">
+                        <i class="fas fa-user-graduate me-2"></i>S'inscrire gratuitement
+                    </a>
+                    <a href="courHtml.html" class="btn btn-cta-outline">
+                        <i class="fas fa-book-open me-2"></i>Explorer les cours
+                    </a>
+                </div>
+                <p class="mt-4">Aucune paiement requise - Accès immédiat et permanent</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                    <h4>À propos de DevAcademy</h4>
+                    <p>DevAcademy est une plateforme d'apprentissage en ligne 100% gratuite dédiée aux technologies web.
+                        Nous proposons des cours de qualité, des tutoriels pratiques et des exercices pour tous les
+                        niveaux.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="Devoir_sem2.html">Accueil</a></li>
+                        <li><a href="courBootstrap.html">Cours</a></li>
+                        <li><a href="courHtml.html">Tutoriels</a></li>
+                        <li><a href="Exo.html">Exercices</a></li>
+                        <li><a href="Quizhtml.html">Quiz</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h4>Ressources gratuites</h4>
+                    <ul>
+                        <li><a href="#">Documentation HTML</a></li>
+                        <li><a href="#">Référence CSS</a></li>
+                        <li><a href="#">Guide JavaScript</a></li>
+                        <li><a href="#">Composants Bootstrap</a></li>
+                        <li><a href="#">Projets pratiques</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4>Newsletter</h4>
+                    <p>Recevez les nouveaux cours et ressources gratuites directement dans votre boîte mail.</p>
+                    <div class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Votre email" aria-label="Email">
+                            <button class="btn btn-primary" type="button">S'inscrire</button>
+                        </div>
+                    </div>
+                    <div class="contact-btn mt-4">
+                        <a href="contact.html" class="btn btn-outline-light">
+                            <i class="fas fa-envelope me-2"></i>Nous contacter
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 DevAcademy. Tous droits réservés. | Plateforme 100% gratuite | Conçu avec ❤️ pour les
+                    développeurs</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom Script -->
+    <script>
+        // Animation du défilement
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Effet de navbar au défilement
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Animation des éléments au défilement
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            elements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight - 100) {
+                    el.classList.add('animated');
+                }
+            });
+        };
+
+        // Initialisation
+        window.addEventListener('load', animateOnScroll);
+        window.addEventListener('scroll', animateOnScroll);
+
+        // Animation des statistiques
+        const counters = document.querySelectorAll('.stat-number');
+        const speed = 200;
+
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText.replace('+', '').replace(',', '');
+
+                if (counter.id === 'studentCount' && count < target) {
+                    counter.innerText = Math.ceil(count + target / speed).toLocaleString() + '+';
+                    setTimeout(updateCount, 10);
+                }
+            };
+
+            // Set initial data attributes
+            if (counter.id === 'studentCount') counter.setAttribute('data-target', 25000);
+            if (counter.id === 'courseCount') counter.setAttribute('data-target', 120);
+            if (counter.id === 'projectCount') counter.setAttribute('data-target', 350);
+
+            updateCount();
+        });
+    </script>
+    
+    <!-- Modal Connexion -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Connexion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                </div>
+                <form action="/login" method="POST">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="loginEmail" name="email"
+                                placeholder="votre@email.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Mot de passe</label>
+                            <input type="password" class="form-control" id="loginPassword" name="password"
+                                placeholder="Mot de passe" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        <button type="submit" class="btn btn-success">Se connecter</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Inscription -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Inscription</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="registerName" class="form-label">Nom</label>
+                            <input type="text" class="form-control" id="registerName" placeholder="Votre nom">
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="registerEmail" placeholder="votre@email.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Mot de passe</label>
+                            <input type="password" class="form-control" id="registerPassword"
+                                placeholder="Mot de passe">
+                        </div>
+                        <button type="submit" class="btn btn-success w-100">S'inscrire</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

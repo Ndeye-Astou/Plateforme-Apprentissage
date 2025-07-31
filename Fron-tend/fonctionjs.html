@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../Bootstrap/css/bootstrap.css">
+    <link href="../TP_Bootstrap/Projet_bootstrap.css" rel="stylesheet" />
+    <link href="Devoir_sem2.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../TP_Bootstrap/css/style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <style>
+        .d {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .d1 {
+
+            background: white;
+            height: 850px;
+            padding: 50px;
+            width: 50px;
+            margin-left: 24px;
+            border-color: #09ff00;
+            transition: 0.4s ease-in-out;
+            border: 1px solid #0cf904;
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 0 15px #0aff02;
+            border-radius: 12px;
+            position: sticky;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 20%;
+        }
+
+        .d2 {
+            font-size: 15px;
+            width: 50%;
+            padding-bottom: 15px;
+            margin-left: 24px;
+            background: white;
+            border-color: #09ff00;
+            transition: 0.4s ease-in-out;
+            border: 1px solid #09ff00;
+            transform: translateY(-10px) scale(1.00);
+            box-shadow: 0 0 15px #0aff02;
+            border-radius: 12px;
+            margin-right: 60px;
+        }
+
+        h1:hover {
+            text-align: center;
+            justify-content: center;
+            color: rgb(240, 16, 16);
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        h1 {
+            text-align: center;
+            justify-content: center;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        img:hover {
+            animation-name: rotate;
+            animation-duration: 1s;
+            animation-iteration-count: 10;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .m9:hover {
+            text-align: center;
+            justify-content: center;
+            color: rgb(240, 16, 16);
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .m1:hover {
+            text-align: center;
+            justify-content: center;
+            color: rgb(240, 16, 16);
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .m1 {
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+        h4 {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .etudiant {
+            font-weight: 0px;
+            font-size: small;
+            color: rgb(27, 26, 26);
+
+        }
+
+        section {
+            background-color: rgb(241, 248, 248);
+            color: black;
+        }
+
+        .etudiant:hover {
+            background-color: #09ff00;
+        }
+
+        div::before {
+            content: "";
+            width: 4px;
+            height: 100%;
+            margin: 0;
+
+
+        }
+
+        div::after {
+            content: "";
+            width: 4px;
+            height: 100%;
+            margin: 0 1%;
+        }
+
+        .but {
+            font-size: 19px;
+            background: green;
+            color: white;
+            padding: 2px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .but:hover {
+            background-color: transparent;
+            color: #09ff00;
+            border: 1px dashed #09ff00;
+            transition: 2s;
+            margin-left: 4%;
+            transform: scale(2);
+
+        }
+
+        .but {
+            font-size: 19px;
+            background: green;
+            color: white;
+            padding: 2px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .but:hover {
+            background-color: transparent;
+            color: #09ff00;
+            border: 1px dashed #09ff00;
+            transition: 2s;
+            margin-left: 4%;
+            transform: scale(2);
+
+        }
+
+        .but2 {
+            font-size: 19px;
+            background: green;
+            color: white;
+            padding: 2px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .but2:hover {
+            background-color: transparent;
+            color: #09ff00;
+            border: 1px dashed #09ff00;
+            transition: 2s;
+            margin-left: 10%;
+            transform: scale(2);
+
+        }
+
+
+        .navbar-nav .nav-link {
+            position: relative;
+            color: hsl(0, 0%, 90%);
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .navbar-nav .nav-link::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 50%;
+            background-color: #1faf1acb;
+            transition: all 0.3s ease-in-out;
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav .nav-link:hover::before {
+            width: 100%;
+        }
+
+        .navbar-nav .nav-link:hover {
+
+            background-color: #13cd1352;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            font-weight: 500;
+            font-size: 17px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark fixed-top navbar ">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="Devoir_sem2.html">
+                <h5 style="color: black;font-weight: bold;font-size: 30px;">EBEK<span
+                        style="color: #0c5e11c4;">TEK</span> </h5>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="courHtml.html"
+                            style="color: hsl(0, 0%, 4%);">Html</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courCss.html" style="color: hsl(0, 0%, 4%);">Css</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="courBootstrap.html" style="color: hsl(0, 0%, 4%);"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Bootstrap
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="courExercices.html">Exercices</a></li>
+                            <li><a class="dropdown-item" href="courBootstrap.html">tutoriels</a></li>
+                            <li><a class="dropdown-item" href="courBootstrap.html">Apprendre bootstrap</a></li>
+                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courJavaScript.html" style="color: hsl(0, 0%, 4%);">JavaScript</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courExercices.html" style="color: hsl(0, 0%, 4%);">Exercices</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="courQuiz.html" style="color: hsl(0, 0%, 4%);"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Quiz
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="Quizhtml.html">Html</a></li>
+                            <li><a class="dropdown-item" href="Quizcss.html">Css</a></li>
+                            <li><a class="dropdown-item" href="Quizjs.html">JavaScript</a></li>
+                            <li><a class="dropdown-item" href="Quizbootstrap.html">Bootstrap</a></li>
+                        </ul>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit" href="#"
+                        style="color: hsl(0, 0%, 4%);">Recherche</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <section>
+        <div class="d">
+            <div class="d1">
+                <div>
+                    <h1><strong>JavaScript</strong></h1>
+                </div>
+                <div>
+                    <a href="courJavaScript.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Introduction JavaScript</h6>
+                    </a>
+                </div>
+                <div><a href="courJavaScript.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Notion JavaScript</h6>
+                    </a></div>
+                <div><a href="T_O.html">
+                        <h6 class="etudiant" style="font-weight: 900;"> Tableaux js</h6>
+                    </a></div>
+                <div><a href="courJavaScript.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Les Variables js</h6>
+                    </a></div>
+                <div><a href="courJavaScript.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Les Constants js</h6>
+                    </a></div>
+                <div><a href="courJavaScript.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Les oprérations js</h6>
+                    </a></div>
+                <div><a href="Quizjs.html">
+                        <h6 class="etudiant" style="font-weight: 900;"> Quiz JavaScript</h6>
+                    </a></div>
+                <div><a href="courJavaScript.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Les Types de données js</h6>
+                    </a></div>
+                <div><a href="T_O.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Objets js</h6>
+                    </a></div>
+                <div><a href="fonctionjs.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Les Fonctions js</h6>
+                    </a></div>
+                <div><a href="domjs.html">
+                        <h6 class="etudiant" style="font-weight: 900;">DOM js</h6>
+                    </a></div>
+                <div><a href="courExercices.html">
+                        <h6 class="etudiant" style="font-weight: 900;">Exercices CSS</h6>
+                    </a></div>
+            </div>
+
+
+
+            <div class="d2"
+                style="margin-left: 64px;width: 3123px;padding-left: 12px;height: auto;padding-right: 12px;">
+                <div>
+                    <img style="width: 100px;height: 70px;text-align: center;margin-left: 377px;margin-top: 7px;"
+                        src="js.png" alt="">
+                </div>
+
+                <div>
+                    <h2 style="text-align: center;font-size: 38px;">Les Fonctions en JavaScript</h2>
+                </div>
+
+                <div>
+                    <h5 style="font-size: 22px;font-weight: 600;margin-left: 14px;">Introduction</h5>
+                    <p>- Les fonctions sont des blocs de code réutilisables qui permettent d'organiser et de structurer
+                        votre code. Elles prennent des entrées (appelées paramètres), effectuent des opérations et
+                        retournent une valeur.</p>
+
+                </div>
+
+                <div>
+
+                    <h5 style="font-size: 24px;font-weight: 600;margin-left: 14px;">Déclaration de Fonction</h5>
+                    <ol>
+                        <li>
+                            <h5 style="font-size: 16px;font-weight: 600;margin-top: 19px;">Fonction Nommée</h5>
+                        </li>
+                        <p>Une fonction nommée est définie avec le mot-clé <strong>function</strong> suivi d'un nom, de
+                            paramètres entre parenthèses et d'un bloc de code entre accolades.</p>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                function saluer(nom) { <br>
+                                return "Bonjour " + nom + "!";<br>
+                                }<br>
+                                console.log(saluer("Alice")); // Affiche "Bonjour Alice!"
+                            </div>
+                        </div>
+                        <a class="navbar-brand" href="courExercices.html">
+                            <h5 style="color: hsl(0, 0%, 4%);margin-left: 5px;"><button class="but2">Essayez-le vous
+                                    même
+                                </button>
+                            </h5>
+                        </a>
+
+                        <li>
+                            <h5 style="font-size: 16px;font-weight: 600;margin-top: 19px;">Fonction Anonyme</h5>
+                        </li>
+                        <p>Une fonction anonyme est une fonction sans nom, souvent utilisée comme valeur de retour ou
+                            argument pour une autre fonction.</p>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                let afficherMessage = function(message) { <br>
+                                console.log(message); <br>
+                                }; <br>
+                                afficherMessage("Salut!"); // Affiche "Salut!"
+                            </div>
+                        </div>
+                        <a class="navbar-brand" href="courExercices.html">
+                            <h5 style="color: hsl(0, 0%, 4%);margin-left: 5px;"><button class="but2">Essayez-le vous
+                                    même
+                                </button>
+                            </h5>
+                        </a>
+
+                        <li>
+                            <h5 style="font-size: 16px;font-weight: 600;margin-top: 19px;">Fonction Fléchée (Arrow
+                                Function)</h5>
+                        </li>
+                        <p>Les fonctions fléchées offrent une syntaxe plus concise et ne lient pas leur propre
+                            <strong>this</strong>.
+                        </p>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                let addition = (a, b) => a + b; <br>
+                                console.log(addition(2, 3)); // Affiche 5
+                            </div>
+                        </div>
+                        <a class="navbar-brand" href="courExercices.html">
+                            <h5 style="color: hsl(0, 0%, 4%);margin-left: 5px;"><button class="but2">Essayez-le vous
+                                    même
+                                </button>
+                            </h5>
+                        </a>
+
+                        <li>
+                            <h5 style="font-size: 16px;font-weight: 600;margin-top: 19px;">Fonctions Imbriquées</h5>
+                        </li>
+                        <p>Les fonctions peuvent être définies à l'intérieur d'autres fonctions.</p>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                function exterieur(a) { <br>
+                                function interieur(b) { <br>
+                                return a + b; <br>
+                                } <br>
+                                return interieur; <br>
+                                } <br>
+                                let additionDeCinq = exterieur(5); <br>
+                                console.log(additionDeCinq(3)); // Affiche 8
+                            </div>
+                        </div>
+                    </ol>
+                </div>
+
+                <div>
+                    <h5 style="font-size: 24px;font-weight: 600;margin-left: 14px;margin-top: 24px;">Fonctions
+                        Prédéfinies (Built-in Functions)</h5>
+
+                    <p>JavaScript inclut de nombreuses fonctions prédéfinies qui peuvent être utilisées immédiatement.
+                    </p>
+                    <ol>
+                        <li>
+                            <h5 style="font-size: 16px;font-weight: 600;margin-top: 19px;">parseInt()</h5>
+                        </li>
+
+                        <p style="font-size: small;">Convertit une chaîne en entier.</p>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                let entier = "123"; <br>
+                                console.log(typeof entier);// Affiche string <br>
+                                entier = parseInt("123"); <br>
+                                console.log(entier); // Affiche 123 <br>
+                                console.log(typeof entier); // Affiche number
+                            </div>
+                        </div>
+                        <a class="navbar-brand" href="courExercices.html">
+                            <h5 style="color: hsl(0, 0%, 4%);margin-left: 5px;"><button class="but2">Essayez-le vous
+                                    même
+                                </button>
+                            </h5>
+                        </a>
+
+                        <li>
+                            <h5 style="font-size: 16px;font-weight: 600;margin-top: 19px;">parseFloat()</h5>
+                        </li>
+                        <p style="font-size: small;">Convertit une chaîne en nombre à virgule flottante.</p>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                let flottant = parseFloat("123.45");<br>
+                                console.log(flottant); // Affiche 123.45
+                            </div>
+                        </div>
+
+                        <li>
+                            <h5 style="font-size: 16px;font-weight: 600;margin-top: 19px;">isNaN()</h5>
+                        </li>
+                        <p style="font-size: small;">Vérifie si une valeur est NaN (Not-a-Number).</p>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                let resultat = isNaN("123");<br>
+                                console.log(resultat); // Affiche false
+                            </div>
+                        </div>
+                        <a class="navbar-brand" href="courExercices.html">
+                            <h5 style="color: hsl(0, 0%, 4%);margin-left: 5px;"><button class="but2">Essayez-le vous
+                                    même
+                                </button>
+                            </h5>
+                        </a>
+
+                        <li>
+                            <h5 style="font-size: 16px;font-weight: 600;margin-top: 19px;">setTimeout()</h5>
+                        </li>
+                        <p style="font-size: small;">Exécute une fonction après un certain délai.</p>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                setTimeout(function() {<br>
+                                console.log("Exécuté après 2 secondes");<br>
+                                }, 2000);
+                            </div>
+                        </div>
+                        <li>
+                            <h5 style="font-size: 16px;font-weight: 600;margin-top: 19px;">setInterval()</h5>
+                        </li>
+                        <p style="font-size: small;">Exécute une fonction à intervalles réguliers.</p>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                let compteur = 0;<br>
+                                let intervalId = setInterval(function() {<br>
+                                compteur++;<br>
+                                console.log("Compteur : " + compteur);<br>
+                                if (compteur === 5) {<br>
+                                clearInterval(intervalId);<br>
+                                }<br>
+                                }, 1000);
+                            </div>
+                        </div>
+                        <a class="navbar-brand" href="courExercices.html">
+                            <h5 style="color: hsl(0, 0%, 4%);margin-left: 5px;"><button class="but2">Essayez-le vous
+                                    même
+                                </button>
+                            </h5>
+                        </a>
+                    </ol>
+                </div>
+
+                <div>
+                    <h5 style="font-size: 24px;font-weight: 600;margin-left: 14px;margin-top: 24px;">Fonctions
+                        Fonctions Avancées</h5>
+                    <ol>
+                        <li>
+                            <h5 style="font-size: 16px;font-weight: 600;margin-top: 19px;">Fonctions de Rappel (Callback
+                                Functions)</h5>
+                        </li>
+                        <p>Les fonctions de rappel sont des fonctions passées en argument à une autre fonction, qui les
+                            appelle après avoir terminé son travail.</p>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                function demanderNom(callback) {<br>
+                                let nom = prompt("Quel est votre nom?");<br>
+                                callback(nom);<br>
+                                }<br>
+                                demanderNom(function(nom) {<br>
+                                console.log("Bonjour " + nom + "!");<br>
+                                });
+                            </div>
+                        </div>
+                        <a class="navbar-brand" href="courExercices.html">
+                            <h5 style="color: hsl(0, 0%, 4%);margin-left: 5px;"><button class="but2">Essayez-le vous
+                                    même
+                                </button>
+                            </h5>
+                        </a>
+
+                        <li>
+                            <h5 style="font-size: 16px;font-weight: 600;margin-top: 19px;">Fonctions Immédiatement
+                                Invocables (IIFE)</h5>
+                        </li>
+                        <p>Les fonctions immédiatement invoquées sont définies et exécutées immédiatement.</p>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                (function() { <br>
+                                console.log("Cette fonction est immédiatement invoquée.");<br>
+                                })();
+                            </div>
+                        </div>
+                        <li>
+                            <h5 style="font-size: 16px;font-weight: 600;margin-top: 19px;">Fonctions Asynchrones</h5>
+                        </li>
+                        <p>Les fonctions asynchrones utilisent <code>async</code> et <code>await</code> pour gérer les
+                            opérations asynchrones de manière plus lisible.</p>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                async function fetchData() { <br>
+                                let response = await fetch('https://api.example.com/data');<br>
+                                let data = await response.json();<br>
+                                console.log(data);<br>
+                                }<br>
+                                fetchData();
+                            </div>
+                        </div>
+                        <a class="navbar-brand" href="courExercices.html">
+                            <h5 style="color: hsl(0, 0%, 4%);margin-left: 5px;"><button class="but2">Essayez-le vous
+                                    même
+                                </button>
+                            </h5>
+                        </a>
+
+                        <h5 style="font-size: 22px;font-weight: 600;margin-left: 14px;margin-top: 24px;">Portée des
+                            Variables</h5>
+                        <p>Les variables en JavaScript peuvent avoir une portée globale ou locale.</p>
+                        <ul>
+                            <li><strong>Globale :</strong> Déclarée en dehors de toute fonction.</li>
+                            <li><strong>Locale :</strong> Déclarée à l'intérieur d'une fonction.</li>
+                        </ul>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                let globalVar = "Je suis globale";<br>
+                                function afficherGlobale() {<br>
+                                console.log(globalVar);<br>
+                                }<br>
+                                afficherGlobale(); // Affiche "Je suis globale"
+                            </div>
+                        </div>
+
+                        <h5 style="font-size: 22px;font-weight: 600;margin-left: 14px;margin-top: 24px;">Récursivité
+                        </h5>
+                        <p>Une fonction récursive est une fonction qui s'appelle elle-même.</p>
+                        <div class="w3-panel w3-card w3-light-grey">
+                            <h4>Exemple</h4>
+                            <div class="w3-code htmlHigh notranslate">
+                                function factorielle(n) {<br>
+                                if (n <= 1) {<br>
+                                    return 1;<br>
+                                    } else {<br>
+                                    return n * factorielle(n - 1);<br>
+                                    }<br>
+                                    }<br>
+                                    console.log(factorielle(5)); // Affiche 120
+                            </div>
+                        </div>
+
+                        <h5 style="font-size: 22px;font-weight: 600;margin-left: 14px;margin-top: 24px;">Spread Operator
+                        </h5>
+                        <p>Le spread operator (<code>...</code>) permet d'étaler les éléments d'un tableau ou les
+                            propriétés
+                            d'un objet. Il est particulièrement utile dans les fonctions pour accepter un nombre
+                            variable
+                            d'arguments ou pour étendre des objets.</p>
+                        <ol>
+                            <li>
+                                <h5 style="font-size: 16px;font-weight: 600;margin-top: 19px;">Utilisation avec les
+                                    Tableaux</h5>
+                            </li>
+                            <div class="w3-panel w3-card w3-light-grey">
+                                <h4>Exemple</h4>
+                                <div class="w3-code htmlHigh notranslate">
+                                    let nombres = [1, 2, 3];<br>
+                                    let plusDeNombres = [...nombres, 4, 5, 6];<br>
+                                    console.log(plusDeNombres); // Affiche [1, 2, 3, 4, 5, 6]
+                                </div>
+                            </div>
+                            <li>
+                                <h5 style="font-size: 16px;font-weight: 600;margin-top: 19px;">Utilisation avec les
+                                    Objets</h5>
+                            </li>
+                            <div class="w3-panel w3-card w3-light-grey">
+                                <h4>Exemple</h4>
+                                <div class="w3-code htmlHigh notranslate">
+                                    let personne = { nom: "Alice", age: 25 };<br>
+                                    let personneAvecVille = { ...personne, ville: "Paris" };<br>
+                                    console.log(personneAvecVille); // Affiche { nom: "Alice", age: 25, ville:
+                                    "Paris"<br>
+                                    }
+                                </div>
+                            </div>
+                            <li>
+                                <h5 style="font-size: 16px;font-weight: 600;margin-top: 19px;">Utilisation dans les
+                                    Fonctions</h5>
+                            </li>
+                            <p>Le spread operator peut être utilisé pour passer un nombre variable d'arguments à une
+                                fonction.
+                            </p>
+                            <div class="w3-panel w3-card w3-light-grey">
+                                <h4>Exemple</h4>
+                                <div class="w3-code htmlHigh notranslate">
+                                    function addition(...nombres) {<br>
+                                    return nombres.reduce((acc, curr) => acc + curr, 0);<br>
+                                    }<br>
+                                    console.log(addition(1, 2, 3, 4)); // Affiche 10
+                                </div>
+                            </div>
+                            <a class="navbar-brand" href="courExercices.html">
+                                <h5 style="color: hsl(0, 0%, 4%);margin-left: 5px;"><button class="but2">Essayez-le vous
+                                        même
+                                    </button>
+                                </h5>
+                            </a>
+                        </ol>
+                </ol>
+            </div>
+
+            <div style="display: flex; flex-direction: row;">
+                <a class="navbar-brand" href="Quizjs.html">
+                    <h5 style="color: hsl(0, 0%, 4%);margin-left: 24px;"><button class="but">Quiz</button>
+                    </h5>
+                </a>
+
+                <a class="navbar-brand" href="courExercices.html">
+                    <h5 style="color: hsl(0, 0%, 4%);margin-left: 688px;"><button class="but">Exercices</button>
+                    </h5>
+                </a>
+          
+        </div>
+    </section>
+
+    <footer class="container-fluid bg-dark text-white p-4">
+        <p>&copy; 2024 Ebektek. Tous droits réservés.</p>
+      </footer>
+
+    <script src="../Bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
