@@ -1,0 +1,269 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String   @id @default(cuid())
+  email       String   @unique
+  name        String
+  avatar      String?
+  phone       String?
+  address     String?
+  neighborhood String?
+  city        String   @default("Dakar")
+  latitude    Float?
+  longitude   Float?
+  bio         String?
+  isVerified  Boolean  @default(false)
+  isActive    Boolean  @default(true)
+  role        Role     @default(USER)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  posts       Post[]
+  events      Event[]
+  eventParticipants EventParticipant[]
+  sentMessages     Message[] @relation("SentMessages")
+  receivedMessages Message[] @relation("ReceivedMessages")
+  conversations    ConversationParticipant[]
+  businesses      Business[]
+  reviews         Review[]
+  notifications   Notification[]
+
+  @@map("users")
+}
+
+model Post {
+  id          String     @id @default(cuid())
+  title       String
+  description String
+  category    PostCategory
+  type        PostType
+  price       Float?
+  images      String?    // JSON string of image URLs array
+  location    String?
+  latitude    Float?
+  longitude   Float?
+  isActive    Boolean    @default(true)
+  isApproved  Boolean    @default(false)
+  views       Int        @default(0)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  expiresAt   DateTime?
+
+  // Relations
+  authorId    String
+  author      User       @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  @@map("posts")
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  location    String
+  address     String?
+  latitude    Float?
+  longitude   Float?
+  startDate   DateTime
+  endDate     DateTime?
+  maxParticipants Int?
+  isPublic    Boolean  @default(true)
+  isApproved  Boolean  @default(false)
+  image       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  organizerId String
+  organizer   User   @relation(fields: [organizerId], references: [id], onDelete: Cascade)
+  participants EventParticipant[]
+
+  @@map("events")
+}
+
+model EventParticipant {
+  id        String   @id @default(cuid())
+  status    ParticipationStatus @default(INTERESTED)
+  createdAt DateTime @default(now())
+
+  // Relations
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  eventId   String
+  event     Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, eventId])
+  @@map("event_participants")
+}
+
+model Conversation {
+  id        String   @id @default(cuid())
+  title     String?
+  isGroup   Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  participants ConversationParticipant[]
+  messages     Message[]
+
+  @@map("conversations")
+}
+
+model ConversationParticipant {
+  id           String   @id @default(cuid())
+  joinedAt     DateTime @default(now())
+  lastReadAt   DateTime?
+
+  // Relations
+  userId         String
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, conversationId])
+  @@map("conversation_participants")
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  content   String
+  type      MessageType @default(TEXT)
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  // Relations
+  senderId       String
+  sender         User         @relation("SentMessages", fields: [senderId], references: [id], onDelete: Cascade)
+  receiverId     String?
+  receiver       User?        @relation("ReceivedMessages", fields: [receiverId], references: [id])
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  @@map("messages")
+}
+
+model Business {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  category    BusinessCategory
+  address     String
+  phone       String?
+  email       String?
+  website     String?
+  hours       String?  // JSON string for opening hours
+  latitude    Float?
+  longitude   Float?
+  images      String?  // JSON string of image URLs array
+  isVerified  Boolean  @default(false)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations
+  ownerId     String
+  owner       User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  reviews     Review[]
+
+  @@map("businesses")
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  rating    Int      // 1-5 stars
+  comment   String?
+  createdAt DateTime @default(now())
+
+  // Relations
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  businessId String
+  business   Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, businessId])
+  @@map("reviews")
+}
+
+model Notification {
+  id        String           @id @default(cuid())
+  title     String
+  message   String
+  type      NotificationType
+  isRead    Boolean          @default(false)
+  data      String?          // JSON data for additional context
+  createdAt DateTime         @default(now())
+
+  // Relations
+  userId    String
+  user      User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("notifications")
+}
+
+// Enums
+enum Role {
+  USER
+  ADMIN
+  MODERATOR
+}
+
+enum PostCategory {
+  ELECTRONICS
+  CLOTHING
+  HOME_GARDEN
+  VEHICLES
+  SERVICES
+  FOOD
+  BOOKS
+  SPORTS
+  OTHER
+}
+
+enum PostType {
+  SELL
+  GIVE
+  EXCHANGE
+  WANTED
+}
+
+enum ParticipationStatus {
+  INTERESTED
+  GOING
+  MAYBE
+  NOT_GOING
+}
+
+enum MessageType {
+  TEXT
+  IMAGE
+  FILE
+}
+
+enum BusinessCategory {
+  RESTAURANT
+  SHOP
+  SERVICE
+  HEALTH
+  EDUCATION
+  ENTERTAINMENT
+  OTHER
+}
+
+enum NotificationType {
+  POST
+  EVENT
+  MESSAGE
+  SYSTEM
+}
